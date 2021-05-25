@@ -121,3 +121,4 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'staticfiles'),
 )
 
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30

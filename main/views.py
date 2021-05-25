@@ -28,11 +28,23 @@ def register(request):
                 user.is_active = True
                 user.save()
                 auth.login(request, user)
-                return redirect('home')
+                return redirect('register_success')
 
     return render(request, 'main/register.html')
 
 def login(request):
+    if request.method == 'POST':
+        if not request.POST.get('remember', None):
+            request.session.set_expiry(0)
+        user = auth.authenticate(
+            username = request.POST['username'],
+            password = request.POST['password']
+        )
+        if user is not None:
+            auth.login(request, user)
+            redirect('home')
+        elif user is None:
+            return render(request, 'main/login.html', {'error': 'You have not registered!'})
     return render(request, 'main/login.html')
 
 def register_success(request):

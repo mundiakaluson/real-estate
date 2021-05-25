@@ -80,7 +80,9 @@ h2 {
 img {
   border: none;
 }
-
+.aa-register-success {
+  padding-top: 100px;
+}
 .aa-primary-btn {
   font-size: 16px;
   padding: 10px 30px;
