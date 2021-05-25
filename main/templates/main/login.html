@@ -12,7 +12,11 @@
                 <a class="lead" href="{% url 'home' %}">Head back Home</a>
                 <p class="display-1">Login and check out latest properties</p>
               </div>
-              <form class="contactform">                                                 
+              {% if error %}
+                <p class="lead text-center" style="color: red;"> {{ error }}</p>
+              {% endif %}
+              <form class="contactform" method="POST" action="{% url 'login' %}"> 
+              {% csrf_token %}                                                
                 <div class="aa-single-field">
                   <label for="email">Username <span class="required">*</span></label>
                   <input type="text" required="required" aria-required="true" value="" name="username">

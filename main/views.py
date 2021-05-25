@@ -42,10 +42,14 @@ def login(request):
         )
         if user is not None:
             auth.login(request, user)
-            redirect('home')
+            return redirect('home')
         elif user is None:
             return render(request, 'main/login.html', {'error': 'You have not registered!'})
     return render(request, 'main/login.html')
 
 def register_success(request):
     return render(request, 'main/register_success.html')
+
+def logout(request):
+    auth.logout(request, user)
+    return redirect('home')

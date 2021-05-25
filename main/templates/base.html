@@ -24,6 +24,28 @@
       <div class="row">
         <div class="col-md-12">
           <div class="aa-header-area">
+          {% if request.user.is_authenticated %}
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="aa-header-left">
+                  <div class="aa-telephone-no">
+                    <span class="fa fa-user"></span>
+                    {{ user.first_name }} {{ user.last_name }}
+                  </div>
+                  <div class="aa-email hidden-xs">
+                    <span class="fa fa-envelope-o"></span> {{ user.email }}
+                  </div>
+                </div>              
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="aa-header-right">
+                  <a href="register.html" class="aa-register">Auction Properties</a>
+                  <a href="signin.html" class="aa-login">Check out properties</a>
+                  <a href="{% url 'logout' %}" class="aa-login">Logout</a>
+                </div>
+              </div>
+            </div>
+          {% else %}
             <div class="row">
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="aa-header-left">
@@ -43,6 +65,7 @@
                 </div>
               </div>
             </div>
+          {% endif %}
           </div>
         </div>
       </div>
