@@ -8,3 +8,9 @@ def properties(request):
 
 def property_details(request):
     return render(request, 'main/property_details.html')
+
+def register(request):
+    return render(request, 'main/register.html')
+
+def login(request):
+    return render(request, 'main/login.html')
