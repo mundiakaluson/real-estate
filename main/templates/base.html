@@ -8,19 +8,7 @@
     <title>KALA HOMES | Home</title>
     
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
-
-    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">   
-    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nouislider.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.css' %}" type="text/css" media="screen" /> 
-    <link id="switcher" href="{% static 'css/theme-color/default-theme.css' %}" rel="stylesheet">     
-
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">    
-
-    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>    
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
+    {% include "includes/css.html" %}
   </head>
   <body class="aa-price-range">  
   <!-- Pre Loader -->
@@ -141,14 +129,6 @@
       </div>
     </div>
   </footer>
-    
-  <script src="{% static 'js/jquery.min.js' %}"></script>   
-  <script src="{% static 'js/bootstrap.js' %}"></script>   
-  <script type="text/javascript" src="{% static 'js/slick.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/nouislider.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/jquery.mixitup.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
-  <script src="{% static 'js/custom.js' %}"></script> 
-
+  {% include "includes/scripts.html" %}
   </body>
 </html>

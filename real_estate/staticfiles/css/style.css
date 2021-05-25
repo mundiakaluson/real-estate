@@ -38,7 +38,7 @@
 
 body {
   background-color: #ffffff;
-  font-family: "Open Sans", sans-serif;
+  font-family: Garamond, serif;
   color: #333333;
   font-size: 15px;
   overflow-x: hidden;
@@ -67,7 +67,7 @@ a:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: Garamond, serif;
 }
 
 h2 {
@@ -221,7 +221,7 @@ img {
 #aa-menu-area .main-navbar .navbar-header .aa-logo {
   border: 2px solid #fff;
   color: #fff;
-  font-family: "Poppins", sans-serif;
+  font-family: Garamond, serif;
   font-size: 30px;
   padding: 15px;
   line-height: 13px;
@@ -505,7 +505,7 @@ img {
   z-index: 999;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-catg {
-  font-family: "Poppins", sans-serif;
+  font-family: Garamond, serif;
   font-size: 25px;
   font-weight: bold;
   letter-spacing: 5px;
@@ -528,14 +528,14 @@ img {
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-off {
   font-size: 14px;
-  font-family: "Poppins", sans-serif;
+  font-family: Garamond, serif;
   color: #555;
   display: inline-block;
   margin-top: 10px;
   font-weight: bold;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-price {
-  font-family: "Poppins", sans-serif;
+  font-family: Garamond, serif;
   font-size: 30px;
   font-weight: bold;
   text-transform: uppercase;
@@ -627,7 +627,7 @@ img {
 }
 #aa-advance-search .aa-advance-search-area .aa-advance-search-bottom .aa-single-filter-search span {
   display: inline-block;
-  font-family: "Poppins", sans-serif;
+  font-family: Garamond, serif;
   margin: 0 10px;
 }
 #aa-advance-search .aa-advance-search-area .aa-advance-search-bottom .aa-single-filter-search .noUi-connect {
@@ -1399,7 +1399,7 @@ img {
 }
 #aa-properties .aa-properties-sidebar .aa-properties-single-sidebar .aa-single-filter-search span {
   display: inline-block;
-  font-family: "Poppins", sans-serif;
+  font-family: Garamond, serif;
   margin: 0 5px;
 }
 #aa-properties .aa-properties-sidebar .aa-properties-single-sidebar .aa-single-filter-search .noUi-connect {
@@ -2341,6 +2341,7 @@ img {
   top: 0;
   overflow-y: auto;
   width: 100%;
+  border-radius: 20px;
 }
 #aa-signin:before {
   background-color: rgba(0, 0, 0, 0.8);
@@ -2374,7 +2375,6 @@ img {
   color: #000;
   display: inline-block;
   font-size: 25px;
-  font-weight: bold;
   margin-bottom: 10px;
   text-transform: uppercase;
 }

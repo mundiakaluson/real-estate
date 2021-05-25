@@ -1,6 +1,54 @@
-{% extends "base.html" %}
 {% load static %}
-
-{% block content %}
-
-{% endblock content %}
+{% include "includes/css.html" %}  
+<body>
+    <section id="aa-signin">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-signin-area">
+            <div class="aa-signin-form">
+              <div class="aa-signin-form-title">
+                <h1>REGISTER WITH US!</h1>
+                <a class="lead" href="{% url 'home' %}">Head back Home</a>
+                <p class="display-1">Register an Account to auction, rent, or buy property instantly!</p>
+              </div>
+              <form class="contactform" action="" method="POST">
+                <div class="aa-single-field">
+                  <label for="name">Username <span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" name="username" placeholder="This will be your signin ID">
+                </div>                                                 
+                <div class="aa-single-field">
+                  <label for="name">First Name <span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" name="first_name" placeholder="First legal name">
+                </div>
+                <div class="aa-single-field">
+                  <label for="name">Last Name <span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" name="last_name" placeholder="Second legal name">
+                </div>
+                <div class="aa-single-field">
+                  <label for="email">Email <span class="required">*</span></label>
+                  <input type="email" required="required" aria-required="true" value="" name="email" placeholder="Your email">
+                </div>
+                <div class="aa-single-field">
+                  <label for="password">Password <span class="required">*</span></label>
+                  <input type="password" name="password" placeholder="Use a strong password"> 
+                </div>
+                <div class="aa-single-field">
+                  <label for="confirm-password">Confirm Password <span class="required">*</span></label>
+                  <input type="password" name="confirm-password" placeholder="Confirm your password"> 
+                </div>
+                <p class="lead text-center">
+                    Already registered? Head over to the <a style="{color: black;} :hover {color: white;}" href="#"> Login Page </a>
+                </p>
+                <div class="aa-single-submit">
+                  <input type="submit" value="Create Account" name="submit">                    
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+</body>
+  {% include "includes/scripts.html" %}
