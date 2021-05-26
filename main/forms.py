@@ -1,15 +1,13 @@
 from django.forms import ModelForm, Textarea
 from .models import Property
 from django.utils.translation import gettext_lazy as _
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
-from crispy_forms.layout import Layout, Submit, Row, Column
+from material import Layout, Row, Fieldset, Column
 
 class PropertyForm(ModelForm):
     class Meta:
         model = Property
         fields = '__all__'
-        error_messages = {
+        """error_messages = {
             'property_description': {
                 'max_length': _('Max character are 1000 for this section!')
             }
@@ -20,7 +18,14 @@ class PropertyForm(ModelForm):
                     'rows': 10,
                     'cols': 40
                 })
-        }
+        }"""
+
+        layuot = Layout(
+            Row(
+                'property_title', 'property_price'
+            ),
+            'property_description', 'property_about'
+        )
 
         """
         def __init__(self, *args, **kwargs):

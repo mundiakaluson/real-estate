@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
 {% include 'material/includes/material_css.html' %}
 {% include 'material/includes/material_js.html' %}
 {% load material_form %}
@@ -44,7 +43,7 @@
                                     <div class="col-md-12">
                                         <div class="aa-contact-area">
                                           <div class="aa-contact-top">
-                                          <!--
+                                            {% comment %}
                                             {{ property_form.property_title | as_crispy_field }}
                                             {{ property_form.property_price | as_crispy_field }}
                                             {{ property_form.property_description | as_crispy_field }}
@@ -70,8 +69,12 @@
                                             {{ property_form.cctv | as_crispy_field }}
                                             {{ property_form.furnished | as_crispy_field }}
                                             {{ property_form.parking | as_crispy_field }}
-                                            -->
-                                            {% form form=property_form %}{% endform %}
+                                            {% endcomment %}
+                                            {% csrf_token %}
+                                            {% form form=property_form layout=form.layout %}
+                                              {% part property_form.property_title prefix %} <i class="material-icons prefix">account_box</i>{% endpart %}
+                                              {% part property_form.property_price prefix %} <i class="material-icons prefix">account_box</i>{% endpart %}
+                                            {% endform %}
                                             <button type="submit" class="btn btn-primary">Sign in</button>
                                           </div>
                                         </div>
