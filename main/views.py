@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth 
+from .forms import PropertyForm
 
 def home(request):
     return render(request, 'main/home.html')
@@ -55,4 +56,5 @@ def logout(request):
     return redirect('home')
 
 def add_property(request):
-    return render(request, 'main/add_property.html')
+    property_form = PropertyForm()
+    return render(request, 'main/add_property.html', {'property_form': property_form})
