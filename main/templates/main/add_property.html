@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_form_tags %}
-
+{% load crispy_forms_tags %}
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+{% load material_form %}
 {% block content %}
 <section id="aa-property-header">
     <div class="container">
@@ -34,24 +36,43 @@
                             <img src="{% static 'img/slider/2.jpg' %}" alt="img">
                             <img src="{% static 'img/slider/3.jpg' %}" alt="img">
                         </div>
+                        <br>
                         <div class="aa-properties-info">
-                            <h2>Property Title</h2>
-                            <input type="text" class="form-control">
-                            <h2>Property Price</h2>
-                            <input type="text" class="form-control">
-                            <h2>Property Introduction</h2>
-                            <h4>Provide a short statement to make your property stand out.</h4>
-                            <textarea type="text" class="form-control" rows="2"></textarea>
-                            <h2>Property About</h2>
-                            <h4>Give a detailed explanation about your property.</h4>
-                            <textarea type="text" class="form-control" rows="3"></textarea>
-                            <form method="POST" action="">
+                            <form method="POST" action="" id="" class="">
                                 <div class="form-control">
                                   <div class="row">
                                     <div class="col-md-12">
                                         <div class="aa-contact-area">
                                           <div class="aa-contact-top">
-                                            {{ property_form | crispy }}
+                                          <!--
+                                            {{ property_form.property_title | as_crispy_field }}
+                                            {{ property_form.property_price | as_crispy_field }}
+                                            {{ property_form.property_description | as_crispy_field }}
+                                            {{ property_form.property_about | as_crispy_field }}
+                                            {{ property_form.property_location | as_crispy_field }}
+                                            {{ property_form.property_condition | as_crispy_field }}
+                                            {{ property_form.property_status | as_crispy_field}}
+                                            {{ property_form.property_square_meters | as_crispy_field }}
+                                            {{ property_form.property_posted_by | as_crispy_field }}
+                                            {{ property_form.property_pic1 | as_crispy_field }}
+                                            {{ property_form.property_pic2 | as_crispy_field }}
+                                            {{ property_form.property_pic3 | as_crispy_field }}
+                                            {{ property_form.property_pic4 | as_crispy_field }}
+                                            {{ property_form.property_pic5 | as_crispy_field }}
+                                            {{ property_form.property_pic6 | as_crispy_field }}
+                                            {{ property_form.property_pic7 | as_crispy_field }}
+                                            {{ property_form.property_pic8 | as_crispy_field }}
+                                            {{ property_form.kitchen | as_crispy_field }}
+                                            {{ property_form.air_condition | as_crispy_field }}
+                                            {{ property_form.balcony | as_crispy_field }}
+                                            {{ property_form.gym | as_crispy_field }}
+                                            {{ property_form.garden | as_crispy_field }}
+                                            {{ property_form.cctv | as_crispy_field }}
+                                            {{ property_form.furnished | as_crispy_field }}
+                                            {{ property_form.parking | as_crispy_field }}
+                                            -->
+                                            {% form form=property_form %}{% endform %}
+                                            <button type="submit" class="btn btn-primary">Sign in</button>
                                           </div>
                                         </div>
                                       <div>
@@ -117,6 +138,7 @@
                                             <div class="aa-tag for-sale">
                                                 For Sale
                                             </div>
+                                            
                                             <div class="aa-properties-item-content">
                                                 <div class="aa-properties-info">
                                                     <span>5 Rooms</span>
