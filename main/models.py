@@ -1,6 +1,74 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from django.template.defaultfilters import slugify
 
+
+def get_pic_name(instance, pic_name):
+    title = instance.property.property_title
+    slug = slugify(title)
+    return "properties/%s/%s-%s" % (title, slug, pic_name)
+    
 class Property(models.Model):
-    pass
-# Create your models here.
+    #Main details
+    CONDITIONS = [
+        ('New', 'New'),
+        ('Renovated', 'Renovated'),
+        ('Old', 'Old'),
+    ]
+
+    STATUS = [
+        ('For Rent', 'For Rent'),
+        ('For Sale', 'For Sale'),
+        ('Sold Out', 'Sold Out'),
+    ]
+
+    POST_OWNER = [
+        ('Property Owner', 'Property Owner'),
+        ('Property Agent', 'Property Agent'),
+        ('Property Manager', 'Property Manager'),
+    ]
+
+    TYPES = [
+        ('Land', 'Land'),
+        ('Plot', 'Plot'),
+        ('Mansion', 'Mansion'),
+        ('Bungalow', 'Bungalow'),
+        ('Cottage', 'Cottage'),
+        ('Apartment', 'Apartment'),
+        ('Condo', 'Condo'),
+        ('Villa', 'Villa'),
+    ]
+
+    property_owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    property_title = models.CharField(max_length=256)
+    property_description = models.CharField(max_length=1024)
+    property_about = models.TextField()
+    property_location = models.CharField(max_length=128)
+    property_price = models.CharField(max_length=64)
+    property_condition = models.CharField(max_length=64, choices=CONDITIONS)
+    property_status = models.CharField(max_length=64, choices=STATUS)
+    property_square_meters = models.CharField(max_length=64)
+    property_posted_by = models.CharField(max_length=64, choices=POST_OWNER)
+    property_post_date = models.DateTimeField()
+    property_type = models.CharField(max_length=64, choices=TYPES)
+    property_active = models.BooleanField(default=False)
+    property_pic1 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
+    property_pic2 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
+    property_pic3 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
+    property_pic4 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
+    property_pic5 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
+    property_pic6 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
+    property_pic7 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
+    property_pic8 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
+
+    #Property Extras
+    kitchen = models.BooleanField()
+    air_condition = models.BooleanField()
+    balcony = models.BooleanField()
+    gym = models.BooleanField()
+    garden = models.BooleanField()
+    cctv = models.BooleanField()
+    playground = models.BooleanField()
+    furnished = models.BooleanField()
+    parking = models.BooleanField()

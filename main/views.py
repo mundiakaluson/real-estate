@@ -53,3 +53,6 @@ def register_success(request):
 def logout(request):
     auth.logout(request, user)
     return redirect('home')
+
+def add_property(request):
+    return render(request, 'main/add_property.html')
