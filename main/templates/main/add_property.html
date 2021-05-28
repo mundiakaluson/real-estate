@@ -36,6 +36,9 @@
                                     <div class="col-md-12">
                                             {% csrf_token %}
                                             {{ property_form.errors }}
+                                            {% for error in form.non_field_errors %}
+                                                <p style="color: red;">{{error}}</p>
+                                            {% endfor %}
                                             {{ property_form.property_post_date }}
                                             {{ property_form.property_owner }}
                                             {{ property_form.property_active }}

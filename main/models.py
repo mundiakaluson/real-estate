@@ -55,7 +55,7 @@ class Property(models.Model):
         ('Plot', 'Plot'),
     ]
 
-    property_owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    property_owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     property_title = models.CharField(max_length=256)
     property_description = models.CharField(max_length=1024)
     property_about = models.TextField()
@@ -65,7 +65,7 @@ class Property(models.Model):
     property_status = models.CharField(max_length=64, choices=STATUS)
     property_square_meters = models.CharField(max_length=64)
     property_posted_by = models.CharField(max_length=64, choices=POST_OWNER)
-    property_post_date = models.DateTimeField()
+    property_post_date = models.DateTimeField(null=True, blank=True)
     property_type = models.CharField(max_length=64, choices=TYPES)
     property_active = models.BooleanField(default=False)
     property_pic1 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
