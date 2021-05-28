@@ -59,7 +59,7 @@ def logout(request):
 
 def add_property(request):
     property_instance = Property()
-    property_form = PropertyForm(request.POST or None, request.FILES or None, instance=property_instance)
+    property_form = PropertyForm(request.POST, request.FILES, instance=property_instance)
     if request.method == 'POST':
         if property_form.is_valid():
             property_owner = request.user
@@ -89,7 +89,9 @@ def add_property(request):
             cctv = property_form.cleaned_data['cctv']
             furnished = property_form.cleaned_data['furnished']
             parking = property_form.cleaned_data['parking']
+            playground = property_form.cleaned_data['playground']
             property_form.property_active = False
             property_form.property_post_date = timezone.now()
+            property_form.save()
 
     return render(request, 'main/add_property.html', {'property_form': property_form})

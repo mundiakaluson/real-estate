@@ -32,11 +32,10 @@
                         <h2>Fill in the property information</h2>
                         <hr>
                         <div class="aa-properties-info">
-                            <form method="POST" action="" id="" class="">
-                                <div class="form-control">
-                                  <div class="row">
+                            <form method="POST" action="{% url 'add_property' %}" id="" class="" enctype="multipart/form-data">
                                     <div class="col-md-12">
                                             {% csrf_token %}
+                                            {{ property_form.errors }}
                                             {{ property_form.property_post_date }}
                                             {{ property_form.property_owner }}
                                             {{ property_form.property_active }}
@@ -65,29 +64,14 @@
                                             {{ property_form.gym | as_crispy_field }}
                                             {{ property_form.garden | as_crispy_field }}
                                             {{ property_form.cctv | as_crispy_field }}
+                                            {{ property_form.playground | as_crispy_field }}
                                             {{ property_form.furnished | as_crispy_field }}
                                             {{ property_form.parking | as_crispy_field }}
-                                            <button type="submit" class="btn btn-primary">Sign in</button>
+                                            <button type="submit" class="btn btn-primary">List Property</button>
                                       <div>
                                     </div>
                                   </div>
-                                </div>
-                                </div>
                             </form>
-                            <h4>Propery Features</h4>
-                            <ul>
-                                <li>4 Bedroom</li>
-                                <li>3 Baths</li>
-                                <li>Kitchen</li>
-                                <li>Air Condition</li>
-                                <li>Belcony</li>
-                                <li>Gym</li>
-                                <li>Garden</li>
-                                <li>CCTV</li>
-                                <li>Children Play Ground</li>
-                                <li>Comunity Center</li>
-                                <li>Security System</li>
-                            </ul>
                         </div>
                         <!-- Properties social share -->
                         <div class="aa-properties-social">
