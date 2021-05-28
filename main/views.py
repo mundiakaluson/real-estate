@@ -65,7 +65,7 @@ def add_property(request):
             property_owner = request.user
             property_title = property_form.cleaned_data['property_title']
             property_price = property_form.cleaned_data['property_price']
-            property_description = property_form.cleaned_data['property_descriptions']
+            property_description = property_form.cleaned_data['property_description']
             property_about = property_form.cleaned_data['property_about']
             property_location = property_form.cleaned_data['property_location']
             property_condition = property_form.cleaned_data['property_condition']
@@ -82,7 +82,7 @@ def add_property(request):
             property_pic1 = property_form.cleaned_data['property_pic7']
             property_pic1 = property_form.cleaned_data['property_pic8']
             kitchen = property_form.cleaned_data['kitchen']
-            air_condition = property_form.cleaned_date['air_condition']
+            air_condition = property_form.cleaned_data['air_condition']
             balcony = property_form.cleaned_data['balcony']
             gym = property_form.cleaned_data['gym']
             garden = property_form.cleaned_data['garden']
