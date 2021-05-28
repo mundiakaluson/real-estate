@@ -35,11 +35,13 @@
                             <form method="POST" action="{% url 'add_property' %}" id="" class="" enctype="multipart/form-data">
                                     <div class="col-md-12">
                                             {% csrf_token %}
-                                            {{ property_form.errors }}
+                                            {% if property_form.errors %}
+                                                <p class="invalid-feedback" style="color: red;">Please correct the errors before listing your property</p>
+                                            {% endif %}
                                             {% for error in form.non_field_errors %}
                                                 <p style="color: red;">{{error}}</p>
                                             {% endfor %}
-                                            <p> Property create on: {{ property_form.property_post_date }}</p>
+                                            <h4> Property created on: {{ property_form.property_post_date }}</h4>
                                             {{ property_form.property_owner }}
                                             {{ property_form.property_active }}
                                             {{ property_form.property_owner }}

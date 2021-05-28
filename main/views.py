@@ -100,3 +100,7 @@ def add_property(request):
         return render(request, 'main/add_property.html', {'property_form': property_form})
 
     return render(request, 'main/add_property.html', {'property_form': property_form})
+
+def my_properties(request):
+    my_properties = Property.objects.filter(property_owner=request.user)
+    return render(request, 'main/my_properties.html', {'my_properties': my_properties})

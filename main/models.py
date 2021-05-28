@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.template.defaultfilters import slugify
 from django import forms
+MAX_UPLOAD_SIZE = 5242880
 
 def get_pic_name(instance, pic_name):
     title = instance.property_title
@@ -11,9 +12,8 @@ def get_pic_name(instance, pic_name):
 
 def validate_image(image):
         file_size = image.file.size
-        limit_kb = 150
-        if file_size > limit_kb:
-            raise forms.ValidationError("Max size of file is %s KB" % limit)
+        if file_size > MAX_UPLOAD_SIZE:
+            raise forms.ValidationError('Max size of file is 5 megabytes!')
 class Property(models.Model):
     #Main details
     CONDITIONS = [
@@ -64,6 +64,7 @@ class Property(models.Model):
     property_title = models.CharField(max_length=256)
     property_description = models.CharField(max_length=1024)
     property_about = models.TextField()
+    property_rooms = models.IntegerField(choices=[(i, i) for i in range (30)])
     property_location = models.CharField(max_length=128)
     property_price = models.CharField(max_length=64)
     property_condition = models.CharField(max_length=64, choices=CONDITIONS)

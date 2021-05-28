@@ -1151,6 +1151,10 @@ img {
   float: left;
   width: 100%;
 }
+
+.invalid-feedback {
+  color: #f60000;
+}
 .aa-blog-single .aa-blog-single-bottom .aa-blog-author {
   float: left;
   font-size: 14px;
