@@ -93,14 +93,3 @@ class Property(models.Model):
     playground = models.BooleanField()
     furnished = models.BooleanField()
     parking = models.BooleanField()
-
-class UserRatings(models.Model):
-    user = models.ForeignKey()
-    user_ratings = models.CharField()
-    user_rating_time = models.DateTimeField()
-    user_profile_pic = models.ImageField()
-    user_url = models.SlugField()
-    user_uuid = models.CharField(0)
-    user_time_logged_in = models.DateTime(default=timezone.now)
-    user_time_logged_out = models.DateTime(default=timezone.now)
-    user_time_assigned_rating = models.DateTime(default=timezone.now, null=True, blank=True)
