@@ -30,14 +30,29 @@ class Property(models.Model):
     ]
 
     TYPES = [
-        ('Land', 'Land'),
-        ('Plot', 'Plot'),
         ('Mansion', 'Mansion'),
         ('Bungalow', 'Bungalow'),
         ('Cottage', 'Cottage'),
         ('Apartment', 'Apartment'),
         ('Condo', 'Condo'),
         ('Villa', 'Villa'),
+        ('Ranch House', 'Ranch House'),
+        ('Beach House', 'Beach House'),
+        ('Hostel', 'Hostel'),
+        ('Pent House', 'Pent House'),
+        ('Bedsitter', 'Bedsitter'),
+        ('Cabin', 'Cabin'),
+        ('Castle', 'Castle'),
+        ('Houseboats', 'Houseboats'),
+        ('Ranch', 'Ranch'),
+        ('Farm House', 'Farm House'),
+        ('Office', 'Office'),
+        ('Mall', 'Mall'),
+        ('Store', 'Store'),
+        ('Shop', 'Shop'),
+        ('Hotel', 'Hotel'),
+        ('Land', 'Land'),
+        ('Plot', 'Plot'),
     ]
 
     property_owner = models.ForeignKey(User, on_delete=models.CASCADE)

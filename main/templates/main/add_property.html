@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% include 'material/includes/material_css.html' %}
-{% include 'material/includes/material_js.html' %}
-{% load material_form %}
+{% load crispy_forms_tags %}
 {% block content %}
 <section id="aa-property-header">
     <div class="container">
@@ -30,20 +28,19 @@
                 <div class="aa-properties-content">
                     <!-- Start properties content body -->
                     <div class="aa-properties-details">
-                        <div class="aa-properties-details-img">
-                            <img src="{% static 'img/slider/1.jpg' %}" alt="img">
-                            <img src="{% static 'img/slider/2.jpg' %}" alt="img">
-                            <img src="{% static 'img/slider/3.jpg' %}" alt="img">
-                        </div>
                         <br>
+                        <h2>Fill in the property information</h2>
+                        <hr>
                         <div class="aa-properties-info">
                             <form method="POST" action="" id="" class="">
                                 <div class="form-control">
                                   <div class="row">
                                     <div class="col-md-12">
-                                        <div class="aa-contact-area">
-                                          <div class="aa-contact-top">
-                                            {% comment %}
+                                            {% csrf_token %}
+                                            {{ property_form.property_post_date }}
+                                            {{ property_form.property_owner }}
+                                            {{ property_form.property_active }}
+                                            {{ property_form.property_owner }}
                                             {{ property_form.property_title | as_crispy_field }}
                                             {{ property_form.property_price | as_crispy_field }}
                                             {{ property_form.property_description | as_crispy_field }}
@@ -53,6 +50,7 @@
                                             {{ property_form.property_status | as_crispy_field}}
                                             {{ property_form.property_square_meters | as_crispy_field }}
                                             {{ property_form.property_posted_by | as_crispy_field }}
+                                            {{ property_form.property_type | as_crispy_field }}
                                             {{ property_form.property_pic1 | as_crispy_field }}
                                             {{ property_form.property_pic2 | as_crispy_field }}
                                             {{ property_form.property_pic3 | as_crispy_field }}
@@ -69,15 +67,7 @@
                                             {{ property_form.cctv | as_crispy_field }}
                                             {{ property_form.furnished | as_crispy_field }}
                                             {{ property_form.parking | as_crispy_field }}
-                                            {% endcomment %}
-                                            {% csrf_token %}
-                                            {% form form=property_form layout=form.layout %}
-                                              {% part property_form.property_title prefix %} <i class="material-icons prefix">account_box</i>{% endpart %}
-                                              {% part property_form.property_price prefix %} <i class="material-icons prefix">account_box</i>{% endpart %}
-                                            {% endform %}
                                             <button type="submit" class="btn btn-primary">Sign in</button>
-                                          </div>
-                                        </div>
                                       <div>
                                     </div>
                                   </div>
