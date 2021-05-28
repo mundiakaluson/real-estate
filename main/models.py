@@ -2,13 +2,18 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.template.defaultfilters import slugify
-
+from django import forms
 
 def get_pic_name(instance, pic_name):
     title = instance.property_title
     slug = slugify(title)
     return "properties/%s/%s-%s" % (title, slug, pic_name)
-    
+
+def validate_image(image):
+        file_size = image.file.size
+        limit_kb = 150
+        if file_size > limit_kb:
+            raise forms.ValidationError("Max size of file is %s KB" % limit)
 class Property(models.Model):
     #Main details
     CONDITIONS = [
@@ -68,14 +73,14 @@ class Property(models.Model):
     property_post_date = models.DateTimeField(auto_now_add=True, editable=True)
     property_type = models.CharField(max_length=64, choices=TYPES)
     property_active = models.BooleanField(default=False)
-    property_pic1 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
-    property_pic2 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
-    property_pic3 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
-    property_pic4 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
-    property_pic5 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
-    property_pic6 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
-    property_pic7 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
-    property_pic8 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
+    property_pic1 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
+    property_pic2 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
+    property_pic3 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
+    property_pic4 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
+    property_pic5 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
+    property_pic6 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
+    property_pic7 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
+    property_pic8 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
 
     #Property Extras
     kitchen = models.BooleanField()

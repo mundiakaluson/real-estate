@@ -39,7 +39,7 @@
                                             {% for error in form.non_field_errors %}
                                                 <p style="color: red;">{{error}}</p>
                                             {% endfor %}
-                                            {{ property_form.property_post_date }}
+                                            <p> Property create on: {{ property_form.property_post_date }}</p>
                                             {{ property_form.property_owner }}
                                             {{ property_form.property_active }}
                                             {{ property_form.property_owner }}
