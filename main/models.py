@@ -65,7 +65,7 @@ class Property(models.Model):
     property_status = models.CharField(max_length=64, choices=STATUS)
     property_square_meters = models.CharField(max_length=64)
     property_posted_by = models.CharField(max_length=64, choices=POST_OWNER)
-    property_post_date = models.DateTimeField(default=timezone.now)
+    property_post_date = models.DateTimeField(auto_now_add=True, editable=True)
     property_type = models.CharField(max_length=64, choices=TYPES)
     property_active = models.BooleanField(default=False)
     property_pic1 = models.ImageField(upload_to=get_pic_name, blank=True, null=True)
