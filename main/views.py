@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth 
 from .forms import PropertyForm
@@ -12,8 +12,9 @@ def home(request):
 def properties(request):
     return render(request, 'main/properties.html')
 
-def property_details(request):
-    return render(request, 'main/property_details.html')
+def property_details(request, property_id):
+    properties = get_object_or_404(Property, pk=property_id)
+    return render(request, 'main/property_details.html', {'properties': properties})
 
 def register(request):
     if request.method == 'POST':
@@ -102,5 +103,5 @@ def add_property(request):
     return render(request, 'main/add_property.html', {'property_form': property_form})
 
 def my_properties(request):
-    my_properties = Property.objects.filter(property_owner=request.user)
+    my_properties = Property.objects.filter(property_owner=request.user, property_active=True)
     return render(request, 'main/my_properties.html', {'my_properties': my_properties})

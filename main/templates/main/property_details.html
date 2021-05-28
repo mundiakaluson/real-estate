@@ -7,9 +7,9 @@
       <div class="row">
         <div class="col-md-12">
           <div class="aa-property-header-inner">
-            <h2>Property Details</h2>
+            <h2> {{ properties.property_title }}</h2>
             <ol class="breadcrumb">
-            <li><a href="#">HOME</a></li>            
+            <li><a href="{% url 'home' %}">HOME</a></li>            
             <li class="active">APARTMENT TITLE</li>
           </ol>
           </div>
@@ -27,20 +27,22 @@
           <div class="aa-properties-content">            
             <!-- Start properties content body -->
             <div class="aa-properties-details">
+            <h2 style="text-align: center;"> {{ properties.property_title }} </h2>
+            <hr>
              <div class="aa-properties-details-img">
-               <img src="{% static 'img/slider/1.jpg' %}" alt="img">
-               <img src="{% static 'img/slider/2.jpg' %}" alt="img">
-               <img src="{% static 'img/slider/3.jpg' %}" alt="img">
+               <img src="{{ properties.property_pic1.url }}" alt="img">
+               <img src="{{ properties.property_pic2.url }}" alt="img">
+               <img src="{{ properties.property_pic3.url }}" alt="img">
              </div>
              <div class="aa-properties-info">
-               <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, alias!</h2>
-               <span class="aa-price">$65000</span>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptatibus veniam non voluptate, ipsa eius magni aliquid ratione sit, odio reprehenderit in quis repudiandae dolor.</p>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur, veritatis, ducimus in aliquam magnam voluptatibus ullam libero fugiat temporibus at, aliquid explicabo placeat eligendi, assumenda magni saepe eius consequuntur.</p>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium dicta aliquid, autem, cum, impedit nostrum, rem molestias quisquam ab iure enim totam? Itaque esse ut adipisci officiis nulla repellendus ratione dolore, iste ex doloribus tenetur eos provident quam quasi maxime.</p>
+               <span class="aa-price">Price ${{ properties.property_price }}</span>
+               <h4>Property Introduction</h4>
+               <p>{{ properties.property_description }}
+               <h4>Property Description</h4>
+               <p>{{ properties.property_about }}</p>
                <h4>Propery Features</h4>
                <ul>
-                 <li>4 Bedroom</li>
+                 <li>Kitchen: {{ properties.kitchen }}</li>
                  <li>3 Baths</li>
                  <li>Kitchen</li>
                  <li>Air Condition</li>
@@ -140,18 +142,13 @@
           <aside class="aa-properties-sidebar">
             <!-- Start Single properties sidebar -->
             <div class="aa-properties-single-sidebar">
-              <h2 class="lead">Property Owner</h2>
-              <h6 class="lead">Name</h6>
-              <h6 class="lead">Registered Date</h6>
+              <h2 class="lead">Property Information</h2>
+              <h6 class="lead"> Owener: {{ properties.property_owner | capfirst }}</h6>
+              <h6 class="lead"> Posted: {{ properties.property_post_date }}</h6>
               <h6 class="lead">Contact</h6>
-              <h2 class="lead">Propery Location</h2>
-              <h6 class="lead">Location</h6>
-              <h2 class="lead">Propery Condition</h2>
-              <h6 class="lead">Property Status</h6>
-              <h2 class="lead">For Sale, Rent, Sold</h2>
-              <h6 class="lead">Condition (Furnished?)</h6>
-              <h2 class="lead">Post Details</h2>
-              <h6 class="lead">Date Posted</h6>
+              <h6 class="lead">Location: {{ properties.property_location }}</h6>
+              <h6 class="lead">Condition: {{ properties.property_condition }}</h6>
+              <h6 class="lead">Status: {{ properties.property_status }}</h6>
             <!-- Start Single properties sidebar -->
             <div class="aa-properties-single-sidebar">
               <h3>Safety Tips</h3>
