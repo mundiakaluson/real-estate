@@ -54,6 +54,7 @@
             <!-- Start properties content body -->
             <div class="aa-properties-content-body">
               <ul class="aa-properties-nav">
+                {% for property in all_approved_properties %}
                 <li>
                   <article class="aa-properties-item">
                     <a class="aa-properties-item-img" href="#">
@@ -64,7 +65,13 @@
                     </div>
                     <div class="aa-properties-item-content">
                       <div class="aa-properties-info">
-                        <span>5 Rooms</span>
+                        <span>
+                        {% if property.property_rooms > 0 %}
+                          {{ property.property_rooms }} Rooms
+                        {% else %}
+                          No Rooms
+                        {% endif %}
+                        </span>
                         <span>2 Beds</span>
                         <span>3 Baths</span>
                         <span>1100 SQ FT</span>
@@ -82,6 +89,7 @@
                     </div>
                   </article>
                 </li>
+                {% endfor %}
               </ul>
             </div>
             <!-- Start properties content bottom -->
