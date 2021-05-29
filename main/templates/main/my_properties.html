@@ -61,7 +61,7 @@
                 <li>
                   <article class="aa-properties-item">
                     <a class="aa-properties-item-img" href="#">
-                      <img alt="img" src="{% static 'img/item/6.jpg' %}">
+                      <img alt="img" src="{{ property.property_pic1.url }}">
                     </a>
                     {% if property.property_status == "For Rent" %}
                         <div class="aa-tag for-rent">
@@ -97,7 +97,7 @@
                         <span class="aa-price">
                           $ {{ property.property_price }}
                         </span>
-                        <a class="aa-secondary-btn" href="{% url 'property_details' property_id %}">View Details</a>
+                        <a class="aa-secondary-btn" href="{% url 'property_details' property.id %}">View Details</a>
                       </div>
                     </div>
                   </article>

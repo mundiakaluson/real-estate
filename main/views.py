@@ -10,7 +10,8 @@ def home(request):
     return render(request, 'main/home.html')
 
 def properties(request):
-    return render(request, 'main/properties.html')
+    all_approved_properties = Property.objects.filter(property_active=True)
+    return render(request, 'main/properties.html', {'all_approved_properties': all_approved_properties})
 
 def property_details(request, property_id):
     properties = get_object_or_404(Property, pk=property_id)
