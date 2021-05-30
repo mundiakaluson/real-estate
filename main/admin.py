@@ -19,7 +19,8 @@ class PageViewAdmin(admin.ModelAdmin):
     list_display = ['viewer', 'property_viewed', 'view']
 
 class UserInformationAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ['visitor', 'city', 'continent_code', 'continent_name', 'country_code', 'country_name', 'dma_code', 'is_in_european_union', 'latitude', 'longitude', 'postal_code', 'region', 'time_zone']
+    list_display = ['visitor', 'city', 'country_name', 'latitude', 'longitude', 'time_zone']
 
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(PageView, PageViewAdmin)
