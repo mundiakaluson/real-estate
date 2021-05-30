@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Property, PageView
+from .models import Property, PageView, UserInformation
 
 
 class PropertyAdmin(admin.ModelAdmin):
@@ -18,5 +18,9 @@ class PageViewAdmin(admin.ModelAdmin):
     readonly_fields = ['viewer', 'property_viewed', 'view']
     list_display = ['viewer', 'property_viewed', 'view']
 
+class UserInformationAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(PageView, PageViewAdmin)
+admin.site.register(UserInformation, UserInformationAdmin)
