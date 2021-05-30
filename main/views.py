@@ -20,7 +20,7 @@ def home(request):
     )
     if not user_checker and not ip_checker:
         location_object = GeoIP2()
-        captured_info = location_object.city('72.14.207.99')
+        captured_info = location_object.city('72.14.207.99') # for test purposes    
         data_capture.visitor = request.user
         data_capture.city = captured_info.get('city')
         data_capture.continent_code = captured_info.get('continent_code')
