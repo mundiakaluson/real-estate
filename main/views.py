@@ -2,11 +2,19 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth 
 from .forms import PropertyForm
-from .models import Property
+from .models import Property, PageView, UserInformation
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from user_visit.models import UserVisit
+from django.contrib.gis.geoip2 import GeoIP2
 
 def home(request):
+    user_ip_address = UserVisit().remote_addr
+    location_object = GeoIP2()
+    captured_info = location_object.city(user_ip_address)
+    user_data_capture = UserInformation()
+    print(captured_info)
+    
     return render(request, 'main/home.html')
 
 def properties(request):
@@ -15,7 +23,19 @@ def properties(request):
 
 def property_details(request, property_id):
     properties = get_object_or_404(Property, pk=property_id)
-    return render(request, 'main/property_details.html', {'properties': properties})
+    current_user = request.user
+    request_view = PageView.objects.filter(
+        viewer = current_user,
+        property_viewed= properties,
+    )
+    if not request_view:
+        PageView.objects.create(
+            viewer = current_user,
+            property_viewed = properties,
+            view = 1
+        )
+    views = PageView.objects.filter(property_viewed=properties).count()
+    return render(request, 'main/property_details.html', {'properties': properties, 'views': views})
 
 def register(request):
     if request.method == 'POST':

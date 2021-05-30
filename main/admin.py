@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Property
+from .models import Property, PageView
+
 
 class PropertyAdmin(admin.ModelAdmin):
     readonly_fields = ['property_post_date',]
@@ -13,4 +14,9 @@ class PropertyAdmin(admin.ModelAdmin):
     def dissaprove_property(self, request, queryset):
         queryset.update(property_active=False)
 
+class PageViewAdmin(admin.ModelAdmin):
+    readonly_fields = ['viewer', 'property_viewed', 'view']
+    list_display = ['viewer', 'property_viewed', 'view']
+
 admin.site.register(Property, PropertyAdmin)
+admin.site.register(PageView, PageViewAdmin)

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
   <section id="aa-property-header">
@@ -143,12 +144,13 @@
             <!-- Start Single properties sidebar -->
             <div class="aa-properties-single-sidebar">
               <h2 class="lead">Property Information</h2>
-              <h6 class="lead"> Owener: {{ properties.property_owner | capfirst }}</h6>
-              <h6 class="lead"> Posted: {{ properties.property_post_date }}</h6>
-              <h6 class="lead">Contact</h6>
-              <h6 class="lead">Location: {{ properties.property_location }}</h6>
-              <h6 class="lead">Condition: {{ properties.property_condition }}</h6>
-              <h6 class="lead">Status: {{ properties.property_status }}</h6>
+              <h6 class="lead"><i class="fa fa-user" aria-hidden="true"></i> Owner: {{ properties.property_owner | capfirst }}</h6>
+              <h6 class="lead"><i class="fa fa-calendar" aria-hidden="true"></i> Posted: {{ properties.property_post_date | naturaltime }}</h6>
+              <h6 class="lead"><i class="fa fa-phone" aria-hidden="true"></i> Contact</h6>
+              <h6 class="lead"><i class="fa fa-map-marker" aria-hidden="true"></i> Location: {{ properties.property_location }}</h6>
+              <h6 class="lead"><i class="fa fa-building" aria-hidden="true"></i> Condition: {{ properties.property_condition }}</h6>
+              <h6 class="lead"><i class="fa fa-check" aria-hidden="true"></i> Status: {{ properties.property_status }}</h6>
+              <h6 class="lead"><i class="fa fa-eye" aria-hidden="true"></i> Views: {{ views }}</h6>
             <!-- Start Single properties sidebar -->
             <div class="aa-properties-single-sidebar">
               <h3>Safety Tips</h3>

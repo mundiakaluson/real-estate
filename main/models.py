@@ -93,3 +93,26 @@ class Property(models.Model):
     playground = models.BooleanField()
     furnished = models.BooleanField()
     parking = models.BooleanField()
+
+    def __str__(self):
+        return self.property_title
+
+class PageView(models.Model):
+    viewer = models.ForeignKey(User, on_delete=models.CASCADE)
+    property_viewed = models.ForeignKey(Property, on_delete=models.CASCADE)
+    view = models.PositiveIntegerField()
+
+class UserInformation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    city = models.CharField(max_length=64)
+    continent_code = models.CharField(max_length=64)
+    continent_name = models.CharField(max_length=64)
+    country_code = models.CharField(max_length=64)
+    country_name = models.CharField(max_length=64)
+    dma_code = models.PositiveIntegerField()
+    is_in_european_union = models.BooleanField()
+    latitude = models.IntegerField()
+    longitude = models.IntegerField()
+    postal_code = models.IntegerField()
+    region = models.CharField(max_length=8)
+    time_zone = models.CharField(max_length=64)
