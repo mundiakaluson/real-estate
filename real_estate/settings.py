@@ -129,3 +129,4 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+GEOIP_PATH = os.path.join(PROJECT_DIR, 'geoip/')

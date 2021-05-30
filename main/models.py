@@ -103,7 +103,7 @@ class PageView(models.Model):
     view = models.PositiveIntegerField()
 
 class UserInformation(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    visitor = models.ForeignKey(User, on_delete=models.CASCADE)
     city = models.CharField(max_length=64)
     continent_code = models.CharField(max_length=64)
     continent_name = models.CharField(max_length=64)

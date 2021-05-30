@@ -9,11 +9,11 @@ from user_visit.models import UserVisit
 from django.contrib.gis.geoip2 import GeoIP2
 
 def home(request):
-    user_ip_address = UserVisit().remote_addr
+    # user_ip_address = UserVisit().remote_addr
     location_object = GeoIP2()
-    captured_info = location_object.city(user_ip_address)
+    captured_info = location_object.city('72.14.207.99')
     user_data_capture = UserInformation()
-    print(captured_info)
+    print(captured_info.get('postal_code'))
     
     return render(request, 'main/home.html')
 
