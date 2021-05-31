@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth 
 from .forms import PropertyForm
-from .models import Property, PageView, UserInformation
+from .models import Property, PageView, UserInformation, Review
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 from user_visit.models import UserVisit
@@ -20,7 +20,7 @@ def home(request):
     )
     if not user_checker and not ip_checker:
         location_object = GeoIP2()
-        captured_info = location_object.city('72.14.207.99') # for test purposes    
+        captured_info = location_object.city('72.14.207.99') #! for test purposes    
         data_capture.visitor = request.user
         data_capture.city = captured_info.get('city')
         data_capture.continent_code = captured_info.get('continent_code')
