@@ -109,3 +109,17 @@ class UserInformation(models.Model):
 
     def __str__(self):
         return "Data for user: %s in country: %s" % (self.visitor, self.country_name)
+
+class Reviews(models.Model):
+    RATINGS = [
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+    ]
+
+    reviewed_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment_reviewed = models.TextField(null=True, blank=True)
+    rating_reviewed = models.CharField(max_length=5, null=True, blank=True, choices=RATINGS)
+    date_reviewed = models.DateTimeField(auto_now_add=True, editable=True)
