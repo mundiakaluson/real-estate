@@ -1,6 +1,10 @@
 from django.contrib import admin
-from .models import Property, PageView, UserInformation
-
+from .models import (
+    Property, 
+    PageView, 
+    UserInformation,
+    Review
+)
 
 class PropertyAdmin(admin.ModelAdmin):
     readonly_fields = ['property_post_date',]
@@ -22,6 +26,11 @@ class UserInformationAdmin(admin.ModelAdmin):
     readonly_fields = ['visitor', 'city', 'continent_code', 'continent_name', 'country_code', 'country_name', 'dma_code', 'is_in_european_union', 'latitude', 'longitude', 'postal_code', 'region', 'time_zone']
     list_display = ['visitor', 'city', 'country_name', 'latitude', 'longitude', 'time_zone']
 
+class ReviewAdmin(admin.ModelAdmin):
+    readonly_fields = ['reviewed_user', 'comment_reviewed', 'rating_reviewed', 'average_review', 'date_reviewed']
+    list_display = ['reviewed_user', 'rating_reviewed', 'average_review', 'date_reviewed']
+
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(PageView, PageViewAdmin)
 admin.site.register(UserInformation, UserInformationAdmin)
+admin.site.register(Review, ReviewAdmin)

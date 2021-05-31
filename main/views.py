@@ -8,6 +8,8 @@ from django.core.exceptions import ValidationError
 from user_visit.models import UserVisit
 from django.contrib.gis.geoip2 import GeoIP2
 
+global properties
+
 def home(request):
     data_capture = UserInformation()
     user_ip_address = UserVisit().remote_addr
@@ -55,6 +57,8 @@ def property_details(request, property_id):
             property_viewed = properties,
             view = 1
         )
+    review_object = Review()
+        
     views = PageView.objects.filter(property_viewed=properties).count()
     return render(request, 'main/property_details.html', {'properties': properties, 'views': views})
 
@@ -147,3 +151,13 @@ def add_property(request):
 def my_properties(request):
     my_properties = Property.objects.filter(property_owner=request.user, property_active=True)
     return render(request, 'main/my_properties.html', {'my_properties': my_properties})
+
+def review(request):
+    if request.method == 'POST':
+        review_object.date_reviewed = timezone.now()
+        review_object.rating_reviewed = request.POST['rating_reviewed']
+        review_object.comment_reviewed = request.POST['comment_reviewed']
+        review_object.reviewed_user = properties.property_owner
+        review_object.save()
+        return redirect('property_details')
+    return redirect('property_details')

@@ -124,3 +124,6 @@ class Review(models.Model):
     rating_reviewed = models.FloatField(max_length=5, null=True, blank=True, choices=RATINGS)
     average_review = models.FloatField(max_length=5, null=True, blank=True)
     date_reviewed = models.DateTimeField(auto_now_add=True, editable=True)
+
+    def __str__(self):
+        return "Review for %s left on %s" % (self.reviewed_user, self.date_reviewed)

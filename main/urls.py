@@ -11,4 +11,5 @@ urlpatterns = [
     path('register_success', views.register_success, name='register_success'),
     path('add_property', views.add_property, name='add_property'),
     path('my_properties', views.my_properties, name='my_properties'),
+    path('review', views.review, name='review'),
 ]
