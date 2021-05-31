@@ -160,14 +160,12 @@
                         <i class="fa fa-star"></i>
                       </h2>
                       <h2>Rate this Service</h2><hr>
-                      {% for property in property_details %}
                       <form action="{% url 'review' %}" method="POST">
-                      {% endfor %}
                       {% csrf_token %}
                         <h6 class="lead">Posting review as: {{ request.user | capfirst }}</h6>
                         <h6 class="lead">Leave a review for {{ properties.property_owner | capfirst }}'s Services.</h6>
                         <p>Please note that every review passes through a quality check. Reviews aiming at tarnishing the name of the property lister will be handled serverly.</p>
-                        <input type="hidden" name="reviewed_user" value="{{ properties.property_owner }}" />
+                        <input type="hidden" name="reviewed_user" value="{{ properties.property_owner.username }}" />
                         <input type="hidden" name="date_reviewed" />
                         <div class="stars">
                           <input class="star star-5" id="star-5" type="radio" value="1" name="rating_reviewed"/>
