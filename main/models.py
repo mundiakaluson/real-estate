@@ -118,8 +118,8 @@ class Review(models.Model):
         ('4.0', '4.0'),
         ('5.0', '5.0'),
     ]
-
-    reviewed_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    all_users = list(User.objects.all())
+    reviewed_user = models.ForeignKey(User, on_delete=models.CASCADE, choices=all_users)
     comment_reviewed = models.TextField(null=True, blank=True)
     rating_reviewed = models.FloatField(max_length=5, null=True, blank=True, choices=RATINGS)
     average_review = models.FloatField(max_length=5, null=True, blank=True)

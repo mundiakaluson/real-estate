@@ -158,7 +158,7 @@ def review(request):
         review_object.date_reviewed = timezone.now()
         review_object.rating_reviewed = request.POST['rating_reviewed']
         review_object.comment_reviewed = request.POST['comment_reviewed']
-        review_object.reviewed_user = request.POST['reviewed_user']
+        #review_object.reviewed_user = request.POST['reviewed_user']
         review_object.save()
         return redirect('property_details')
     return redirect('property_details')
