@@ -8,6 +8,7 @@ from django.core.exceptions import ValidationError
 from user_visit.models import UserVisit
 from django.contrib.gis.geoip2 import GeoIP2
 from django.http import HttpResponseRedirect
+from django.db.models import Avg, Sum
 
 global properties
 
@@ -155,11 +156,23 @@ def my_properties(request):
 def review(request):
     if request.method == 'POST':
         review_object = Review()
-        review_object_choices = get_object_or_404(Review)
         review_object.date_reviewed = timezone.now()
         review_object.rating_reviewed = request.POST['rating_reviewed']
         review_object.comment_reviewed = request.POST['comment_reviewed']
         review_object.reviewed_user = request.POST['reviewed_user']
+        user_rated = request.POST['reviewed_user']
+        user_rated_review = request.POST['rating_reviewed']
+        review_object.average_review = Review.objects.get(
+            rating_reviewed = user_rated_review
+        ).annotate(
+            average_rating = Avg('rating_reviewed')
+        )
         review_object.save()
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'), {'review_object_choices': review_object_choices})
+
+        #current_user_reviews = Review.objects.filter(reviewed_user=review_object.reviewed_user)
+        #current_user_reviews.aggregate(Avg('rating_reviewed'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return redirect('home')
+
+def blogs(request):
+    return render(request, 'main/blogs.html')
