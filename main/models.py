@@ -112,14 +112,13 @@ class UserInformation(models.Model):
 
 class Review(models.Model):
     RATINGS = [
-        ('1.0', '1.0'),
-        ('2.0', '2.0'),
-        ('3.0', '3.0'),
-        ('4.0', '4.0'),
-        ('5.0', '5.0'),
+        (1.0, 1.0),
+        (2.0, 2.0),
+        (3.0, 3.0),
+        (4.0, 4.0),
+        (5.0, 5.0),
     ]
-    all_users = list(User.objects.all())
-    reviewed_user = models.ForeignKey(User, on_delete=models.CASCADE, choices=all_users)
+    reviewed_user = models.CharField(max_length=256)
     comment_reviewed = models.TextField(null=True, blank=True)
     rating_reviewed = models.FloatField(max_length=5, null=True, blank=True, choices=RATINGS)
     average_review = models.FloatField(max_length=5, null=True, blank=True)

@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 from user_visit.models import UserVisit
 from django.contrib.gis.geoip2 import GeoIP2
+from django.http import HttpResponseRedirect
 
 global properties
 
@@ -153,12 +154,12 @@ def my_properties(request):
 
 def review(request):
     if request.method == 'POST':
-        #properties = get_object_or_404(Property, pk=property_id)
         review_object = Review()
+        review_object_choices = get_object_or_404(Review)
         review_object.date_reviewed = timezone.now()
         review_object.rating_reviewed = request.POST['rating_reviewed']
         review_object.comment_reviewed = request.POST['comment_reviewed']
-        #review_object.reviewed_user = request.POST['reviewed_user']
+        review_object.reviewed_user = request.POST['reviewed_user']
         review_object.save()
-        return redirect('property_details')
-    return redirect('property_details')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'), {'review_object_choices': review_object_choices})
+    return redirect('home')
