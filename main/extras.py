@@ -16,3 +16,8 @@ def blog_pictures(instance, picture_title):
     title = instance.article_title
     slug = slugify(title)
     return "blogs/%s/%s-%s" % (title, slug, picture_title)
+
+def profile_picture(instance, picture_title):
+    title = instance.user
+    slug = slugify(title)
+    return "users/%s/%s-%s" % (title, slug, picture_title_title)

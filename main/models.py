@@ -2,7 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django import forms
-from .extras import get_pic_name, validate_image, blog_pictures
+from .extras import (
+    get_pic_name, 
+    validate_image, 
+    blog_pictures,
+    profile_picture,
+)
+from django_countries.fields import CountryField
+from django.dispatch import receiver
 
 class Property(models.Model):
     #Main details
@@ -135,3 +142,31 @@ class Article(models.Model):
     article_tag = models.CharField(max_length=64)
     article_picture = models.ImageField(blank=True, null=True, upload_to=blog_pictures)
     article_content = models.TextField()
+
+class Profile(models.Model):
+    ADMIN = 1
+    AGENT = 2
+    REAL_ESTATE_DEVELOPER = 3
+    AUCTIONEER = 4
+    CLIENT = 5
+    REGISTERED_AS = (
+        (ADMIN, 'Admin'),
+        (AGENT, 'Agent'),
+        (REAL_ESTATE_DEVELOPER, 'Real Estate Developer'),
+        (AUCTIONEER, 'Auctioneer'),
+        (CLIENT, 'Client'),
+    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to=profile_picture)
+    country = CountryField(blank_label='(Please Select your Country)')
+    region = models.CharField(max_length=128)
+    registered_as = models.PositiveSmallIntegerField(choiced=REGISTERED_AS, null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+@receiver(models.signals.post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()

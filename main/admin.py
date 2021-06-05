@@ -4,8 +4,11 @@ from .models import (
     PageView, 
     UserInformation,
     Review, 
-    Article
+    Article,
+    Profile
 )
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 
 class PropertyAdmin(admin.ModelAdmin):
     readonly_fields = ['property_post_date',]
@@ -34,8 +37,24 @@ class ReviewAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     pass
 
+class ProfileInline(admin.StackedInLine):
+    model = Profile
+    can_delete = False
+    verbose_name_plural = 'Profile'
+    fk_name = 'user'
+
+class CustomUserAdmin(UserAdmin):
+    inlines = (ProfileInline,)
+    
+    def gef_inline_instances(self, request, obj=None):
+        if not obj:
+            return list()
+        return super(CustomUserAdmin, self).get_inline_instances(request, obj)
+
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(PageView, PageViewAdmin)
 admin.site.register(UserInformation, UserInformationAdmin)
 admin.site.register(Review, ReviewAdmin)
 admin.site.register(Article, ArticleAdmin)
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
