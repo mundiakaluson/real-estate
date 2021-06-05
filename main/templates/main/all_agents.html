@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2>Agents Registered at Kala Homes</h2>
+            <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>            
+            <li class="active">All Agents</li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+<div class="w3-container">
+  <h2 class="text-center">Avatar List</h2>
+  <p>You can combine w3-ul and the w3-bar classes to create an avatar list:</p>
+  <ul class="w3-li w3-card-4">
+    <li class="w3-bar rounded ">
+      <img src="{% static 'img/slider/3.jpg' %}" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+      <div class="w3-bar-item">
+        <span class="w3-large">Name</span><br><hr>
+        <li class="list-group-item">Email <span class="badge">12</span></li>
+        <li class="list-group-item">Phone <span class="badge">12</span></li>
+        <li class="list-group-item">Last Time Active <span class="badge">12</span></li>
+        <li class="list-group-item">Date Registered <span class="badge">12</span></li>
+        <li class="list-group-item">Ratings <span class="badge">12</span></li>
+      </div>
+    </li>
+    <hr>
+  </ul>
+</div>
+{% endblock content %}

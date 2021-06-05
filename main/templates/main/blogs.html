@@ -24,6 +24,9 @@
   <section id="aa-blog">
     <div class="container">
       <div class="row">
+        {% if empty_check == 0 %}
+            <h2>Sorry there are no articles currently</h6>
+        {% endif %}
         <div class="col-md-12">
           <div class="aa-blog-area">
             <div class="row">
@@ -34,15 +37,14 @@
                     <div class="col-md-6 col-sm-6">
                       <article class="aa-blog-single">
                         <figure class="aa-blog-img">
-                          <a href="#"><img alt="img" src="{% static 'img/blog-img-1.jpg' %}"></a>
+                          <a href="{% url 'blog_details' article.id %}"><img alt="img" width="370" height="320" src="{{ article.article_picture.url }}"></a>
                           <span class="aa-date-tag">{{ article.article_post_date }}</span>
                         </figure>
                         <div class="aa-blog-single-content">
-                          <h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio est quaerat magnam exercitationem voluptas, voluptatem sed quam ab laborum voluptatum tempore dolores itaque, molestias vitae.</p>
+                          <h3><a href="#">{{ article.article_title }}</a></h3>
+                          <p>{{ article.article_intro }}</p>
                           <div class="aa-blog-single-bottom">
-                            <a class="aa-blog-author" href="#"><i class="fa fa-user"></i> Admin</a>
-                            <a class="aa-blog-comments" href="#"><i class="fa fa-comment-o"></i>6</a>
+                            <a class="aa-blog-author" href="#"><i class="fa fa-user"></i>{{ article.article_author | capfirst }}</a>
                           </div>
                         </div>                   
                       </article>

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
     <!-- Start Proerty header  -->
@@ -7,10 +8,10 @@
       <div class="row">
         <div class="col-md-12">
           <div class="aa-property-header-inner">
-            <h2>Blog Details</h2>
+            <h2>{{ article.article_title }}</h2>
             <ol class="breadcrumb">
-            <li><a href="#">HOME</a></li>            
-            <li class="active">Blog Details</li>
+            <li><a href="#">All Blogs</a></li>            
+            <li class="active">{{ article.article_title }}</li>
           </ol>
           </div>
         </div>
@@ -32,30 +33,15 @@
                     <div class="col-md-12">
                       <article class="aa-blog-single aa-blog-details">
                         <figure class="aa-blog-img">
-                          <a href="#"><img alt="img" src="img/slider/1.jpg"></a>
-                          <span class="aa-date-tag">15 April, 16</span>
+                          <a href="#"><img alt="img" width="700" height="500" src="{{ article.article_picture.url }}"></a>
+                          <span class="aa-date-tag"> {{ article.article_post_date }}</span>
                         </figure>
                         <div class="aa-blog-single-content">
-                          <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
+                          <h2> {{ article.article_title }}</h2>
                           <div class="aa-blog-single-bottom">
-                            <a class="aa-blog-author" href="#"><i class="fa fa-user"></i> Admin</a>
-                            <a class="aa-blog-comments" href="#"><i class="fa fa-comment-o"></i>6</a>
+                            <a class="aa-blog-author" href="#"><i class="fa fa-user"></i>{{ article.article_author | capfirst }}</a>
                           </div>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio est quaerat magnam exercitationem voluptas, voluptatem sed quam ab laborum voluptatum tempore dolores itaque, molestias vitae.</p>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum molestias eligendi quidem vero alias ea. Accusantium quas soluta recusandae, ducimus voluptates aut, assumenda earum velit, dignissimos repellendus delectus voluptate, labore.</p>
-                          <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate explicabo consequuntur, impedit aut similique cum.</p>
-                            <cite>- Mr. josep</cite>
-                          </blockquote>
-                          <h1>H1 Title</h1>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia inventore commodi labore. Doloremque voluptas ullam iusto nemo quisquam, saepe sit.</p>
-                          <h2>H2 Title</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia inventore commodi labore. Doloremque voluptas ullam iusto nemo quisquam, saepe sit.</p>
-                          <h3>H3 Title</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia inventore commodi labore. Doloremque voluptas ullam iusto nemo quisquam, saepe sit.</p>
-                          <h4>H4 Title</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, provident.</p>
-                          
+                          <p>{{ article.article_content }}</p>
                         </div>                   
                       </article>
                     </div>
@@ -63,13 +49,8 @@
                     <div class="col-md-12">
                       <div class="aa-blog-post-tag">
                         <ul>
-                          <li>TAGES:</li>
-                          <li><a href="#">POPERTY,</a></li>
-                          <li><a href="#">LAND,</a></li>
-                          <li><a href="#">FLAT,</a></li>
-                          <li><a href="#">RENT,</a></li>
-                          <li><a href="#">SALE,</a></li>
-                          <li><a href="#">OFFICE</a></li>                          
+                          <li>TAG:</li>
+                          <li><a href="#"> {{ article.article_tag }}</a></li>                          
                         </ul>
                       </div>
                     </div>

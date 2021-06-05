@@ -12,5 +12,7 @@ urlpatterns = [
     path('add_property', views.add_property, name='add_property'),
     path('my_properties', views.my_properties, name='my_properties'),
     path('review', views.review, name='review'),
-    path('blogs', views.blogs, name='blogs')
+    path('blogs', views.blogs, name='blogs'),
+    path('blogs/blog_details/<int:blog_id>/', views.blog_details, name='blog_details'), 
+    path('all_agents', views.all_agents, name='all_agents'),
 ]

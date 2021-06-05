@@ -178,4 +178,13 @@ def review(request):
 
 def blogs(request):
     articles = Article.objects.all()
-    return render(request, 'main/blogs.html', {'articles': articles})
+    empty_check = Article.objects.all().count()
+    return render(request, 'main/blogs.html', {'articles': articles, 'empty_check': empty_check})
+
+def blog_details(request, blog_id):
+    article = get_object_or_404(Article, pk=blog_id)
+    return render(request, 'main/blog_details.html', {'article': article})
+
+def all_agents(request):
+    
+    return render(request, 'main/all_agents.html')
