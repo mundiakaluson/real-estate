@@ -130,7 +130,7 @@ class Review(models.Model):
 class Article(models.Model):
     article_title = models.CharField(max_length=256)
     article_intro = models.CharField(max_length=512)
-    article_post_date = models.CharField(max_length=64)
+    article_post_date = models.DateField(max_length=64)
     article_author = models.ForeignKey(User, on_delete=models.CASCADE)
     article_tag = models.CharField(max_length=64)
     article_picture = models.ImageField(blank=True, null=True, upload_to=blog_pictures)
