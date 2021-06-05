@@ -160,7 +160,7 @@ class Profile(models.Model):
     profile_picture = models.ImageField(upload_to=profile_picture)
     country = CountryField(blank_label='(Please Select your Country)')
     region = models.CharField(max_length=128)
-    registered_as = models.PositiveSmallIntegerField(choiced=REGISTERED_AS, null=True, blank=True)
+    registered_as = models.PositiveSmallIntegerField(choices=REGISTERED_AS, null=True, blank=True)
 
     def __str__(self):
         return self.user.username

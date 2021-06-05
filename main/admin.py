@@ -37,7 +37,7 @@ class ReviewAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     pass
 
-class ProfileInline(admin.StackedInLine):
+class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
     verbose_name_plural = 'Profile'
