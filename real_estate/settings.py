@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'main',
     'crispy_forms',
     'user_visit',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [

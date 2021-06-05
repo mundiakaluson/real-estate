@@ -45,6 +45,12 @@ class ProfileInline(admin.StackedInline):
 
 class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline,)
+    list_display = ('username', 'email', 'first_name', 'last_name')
+    list_select_related = ('profile', )
+    search_fields =  ('username', 'email')
+    ordering = ('username','email')
+
+    filter_vertical = ()
     
     def gef_inline_instances(self, request, obj=None):
         if not obj:

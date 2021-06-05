@@ -3,7 +3,12 @@ from django.contrib.auth.models import User
 from django.contrib import auth 
 from .forms import PropertyForm
 from .models import (
-    Property, PageView, UserInformation, Review, Article
+    Property, 
+    PageView, 
+    UserInformation, 
+    Review, 
+    Article,
+    Profile
 )
 from django.utils import timezone
 from django.core.exceptions import ValidationError
@@ -186,5 +191,6 @@ def blog_details(request, blog_id):
     return render(request, 'main/blog_details.html', {'article': article})
 
 def all_agents(request):
-    
-    return render(request, 'main/all_agents.html')
+    users = User.objects.all()
+    profiles = Profile.objects.all()
+    return render(request, 'main/all_agents.html', {'users': users, 'profiles': profiles})

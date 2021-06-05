@@ -20,4 +20,4 @@ def blog_pictures(instance, picture_title):
 def profile_picture(instance, picture_title):
     title = instance.user
     slug = slugify(title)
-    return "users/%s/%s-%s" % (title, slug, picture_title_title)
+    return "users/%s/%s-%s" % (title, slug, picture_title)
