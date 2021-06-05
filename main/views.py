@@ -191,6 +191,5 @@ def blog_details(request, blog_id):
     return render(request, 'main/blog_details.html', {'article': article})
 
 def all_agents(request):
-    users = User.objects.all()
     profiles = Profile.objects.all()
-    return render(request, 'main/all_agents.html', {'users': users, 'profiles': profiles})
+    return render(request, 'main/all_agents.html', {'profiles': profiles})

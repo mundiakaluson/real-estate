@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
     <section id="aa-property-header">
@@ -16,20 +17,20 @@
         </div>
       </div>
     </div>
-  </section> 
-  <h2 class="text-center">Avatar List</h2><hr>
+  </section>
+  <hr><h2 class="text-center">Avatar List</h2><hr>
     {% for profile in profiles %}
         <div class="container">
             <ul class="w3-li w3-card-4">
-                <li class="w3-bar rounded ">
+                <li class="w3-bar rounded "><hr>
                 <img src="{{ profile.profile_picture.url }}" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
                     <div class="w3-bar-item">
                             <span class="w3-large">{{ profile.user.first_name }} {{ profile.user.last_name }}</span><br><hr>
                             <li class="list-group-item">Email <span class="badge">{{ profile.user.email }}</span></li>
-                            <li class="list-group-item">Phone <span class="badge">12</span></li>
-                            <li class="list-group-item">Last Time Active <span class="badge">12</span></li>
-                            <li class="list-group-item">Date Registered <span class="badge">12</span></li>
-                            <li class="list-group-item">Ratings <span class="badge">12</span></li>
+                            <li class="list-group-item">Phone <span class="badge">{{ profile.phone_number }}</span></li>
+                            <li class="list-group-item">Last Time Active <span class="badge">{{ profile.user.last_login | naturaltime }}</span></li>
+                            <li class="list-group-item">Date Registered <span class="badge">{{ profile.user.date_joined }}</span></li>
+                            <li class="list-group-item">Registered As <span class="badge">{{ profile.registered_as }}</span></li>
                     </div>
                 </li>
                 <hr>
