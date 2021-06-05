@@ -3,7 +3,8 @@ from .models import (
     Property, 
     PageView, 
     UserInformation,
-    Review
+    Review, 
+    Article
 )
 
 class PropertyAdmin(admin.ModelAdmin):
@@ -30,7 +31,11 @@ class ReviewAdmin(admin.ModelAdmin):
     readonly_fields = ['reviewed_user', 'comment_reviewed', 'rating_reviewed', 'average_review', 'date_reviewed']
     list_display = ['reviewed_user', 'rating_reviewed', 'average_review', 'date_reviewed']
 
+class ArticleAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(PageView, PageViewAdmin)
 admin.site.register(UserInformation, UserInformationAdmin)
 admin.site.register(Review, ReviewAdmin)
+admin.site.register(Article, ArticleAdmin)

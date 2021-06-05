@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth 
 from .forms import PropertyForm
-from .models import Property, PageView, UserInformation, Review
+from .models import (
+    Property, PageView, UserInformation, Review, Article
+)
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 from user_visit.models import UserVisit
@@ -175,4 +177,5 @@ def review(request):
     return redirect('home')
 
 def blogs(request):
-    return render(request, 'main/blogs.html')
+    articles = Article.objects.all()
+    return render(request, 'main/blogs.html', {'articles': articles})
