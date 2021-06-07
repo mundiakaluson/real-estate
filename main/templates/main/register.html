@@ -1,5 +1,7 @@
 {% load static %}
-{% include "includes/css.html" %}  
+{% include "includes/css.html" %}
+{% load socialaccount %}
+
 <body>
     <section id="aa-signin">
     <div class="container">
@@ -39,6 +41,9 @@
                 </div>
                 <p class="lead text-center">
                     Already registered? Head over to the <a style="color: black;" href="#"> Login Page </a>
+                </p><hr>
+                <p class="lead text-center">
+                    Or continue with <a style="color: black;" href="{% provider_login_url 'google' %}"> Google </a>
                 </p>
                 <div class="aa-single-submit">
                   <input type="submit" value="Create Account" name="submit">                    
