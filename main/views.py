@@ -20,32 +20,33 @@ from django.db.models import Avg, Sum
 global properties
 
 def home(request):
-    data_capture = UserInformation()
-    user_ip_address = UserVisit().remote_addr
+    if request.user.is_authenticated:
+        data_capture = UserInformation()
+        user_ip_address = UserVisit().remote_addr
 
-    user_checker = UserInformation.objects.filter(
-        visitor = request.user
-    )
-    ip_checker = UserVisit.objects.filter(
-        remote_addr = user_ip_address
-    )
-    if not user_checker and not ip_checker:
-        location_object = GeoIP2()
-        captured_info = location_object.city('72.14.207.99') #! for test purposes    
-        data_capture.visitor = request.user
-        data_capture.city = captured_info.get('city')
-        data_capture.continent_code = captured_info.get('continent_code')
-        data_capture.continent_name = captured_info.get('continent_name')
-        data_capture.country_code = captured_info.get('country_code')
-        data_capture.country_name = captured_info.get('country_name')
-        data_capture.dma_code = captured_info.get('dma_code')
-        data_capture.is_in_european_union = captured_info.get('is_in_european_union')
-        data_capture.latitude = captured_info.get('latitude')
-        data_capture.longitude = captured_info.get('longitude')
-        data_capture.postal_code = captured_info.get('postal_code')
-        data_capture.region = captured_info.get('region')
-        data_capture.time_zone = captured_info.get('time_zone')
-        data_capture.save()
+        user_checker = UserInformation.objects.filter(
+            visitor = request.user
+        )
+        ip_checker = UserVisit.objects.filter(
+            remote_addr = user_ip_address
+        )
+        if not user_checker and not ip_checker:
+            location_object = GeoIP2()
+            captured_info = location_object.city('72.14.207.99') #! for test purposes    
+            data_capture.visitor = request.user
+            data_capture.city = captured_info.get('city')
+            data_capture.continent_code = captured_info.get('continent_code')
+            data_capture.continent_name = captured_info.get('continent_name')
+            data_capture.country_code = captured_info.get('country_code')
+            data_capture.country_name = captured_info.get('country_name')
+            data_capture.dma_code = captured_info.get('dma_code')
+            data_capture.is_in_european_union = captured_info.get('is_in_european_union')
+            data_capture.latitude = captured_info.get('latitude')
+            data_capture.longitude = captured_info.get('longitude')
+            data_capture.postal_code = captured_info.get('postal_code')
+            data_capture.region = captured_info.get('region')
+            data_capture.time_zone = captured_info.get('time_zone')
+            data_capture.save()
     
     return render(request, 'main/home.html')
 
@@ -110,7 +111,7 @@ def register_success(request):
     return render(request, 'main/register_success.html')
 
 def logout(request):
-    auth.logout(request, user)
+    auth.logout(request)
     return redirect('home')
 
 def add_property(request):
@@ -169,11 +170,6 @@ def review(request):
         review_object.reviewed_user = request.POST['reviewed_user']
         user_rated = request.POST['reviewed_user']
         user_rated_review = request.POST['rating_reviewed']
-        review_object.average_review = Review.objects.get(
-            rating_reviewed = user_rated_review
-        ).annotate(
-            average_rating = Avg('rating_reviewed')
-        )
         review_object.save()
 
         #current_user_reviews = Review.objects.filter(reviewed_user=review_object.reviewed_user)
