@@ -168,3 +168,10 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
+class FAQS(models.Model):
+    faqs_headline = models.CharField(max_length=256, null=True, blank=True)
+    faqs_content = models.TextField()
+
+    def __str__(self):
+        return self.faqs_headline

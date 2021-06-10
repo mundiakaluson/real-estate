@@ -5,7 +5,8 @@ from .models import (
     UserInformation,
     Review, 
     Article,
-    Profile
+    Profile,
+    FAQS,
 )
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
@@ -57,6 +58,9 @@ class CustomUserAdmin(UserAdmin):
             return list()
         return super(CustomUserAdmin, self).get_inline_instances(request, obj)
 
+class FAQSAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(PageView, PageViewAdmin)
 admin.site.register(UserInformation, UserInformationAdmin)
@@ -64,3 +68,4 @@ admin.site.register(Review, ReviewAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+admin.site.register(FAQS, FAQSAdmin)

@@ -193,3 +193,6 @@ def blog_details(request, blog_id):
 def all_agents(request):
     profiles = Profile.objects.all()
     return render(request, 'main/all_agents.html', {'profiles': profiles})
+
+def faqs(request):
+    return render(request, 'main/faqs.html')

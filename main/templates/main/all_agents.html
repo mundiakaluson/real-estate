@@ -19,8 +19,8 @@
     </div>
   </section>
   <hr><h2 class="text-center">Avatar List</h2><hr>
-  {% if not profile.registered_as == 'CLIENT' %}
     {% for profile in profiles %}
+    {% if profile.registered_as != 'Client' %}
         <div class="container">
             <ul class="w3-li w3-card-4">
                 <li class="w3-bar rounded "><hr>
@@ -37,8 +37,8 @@
                 <hr>
             </ul>
     </div>
+    {% endif %}
     {% endfor %}
-  {% endif %}
     
   
 {% endblock content %}
