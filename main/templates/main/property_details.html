@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load humanize %}
+{% load social_share %}
 
 {% block content %}
   <section id="aa-property-header">
@@ -36,34 +37,71 @@
                <img src="{{ properties.property_pic3.url }}" alt="img">
              </div>
              <div class="aa-properties-info">
-               <span class="aa-price">Price ${{ properties.property_price }}</span>
+               <span class="aa-price">Price ${{ properties.property_price }}</span><hr>
+               {% if property.property_rooms == None %}
+               <span class="lead">Property has no rooms</span>
+               {% else %}
+               <span class="lead">Rooms: {{ properties.property_rooms }}</span>
+               {% endif %}<hr>
                <h4>Property Introduction</h4>
                <p>{{ properties.property_description }}
                <h4>Property Description</h4>
                <p>{{ properties.property_about }}</p>
                <h4>Propery Features</h4>
                <ul>
-                 <li>Kitchen: {{ properties.kitchen }}</li>
-                 <li>3 Baths</li>
-                 <li>Kitchen</li>
-                 <li>Air Condition</li>
-                 <li>Belcony</li>
-                 <li>Gym</li>
-                 <li>Garden</li>
-                 <li>CCTV</li>
-                 <li>Children Play Ground</li>
-                 <li>Comunity Center</li>
-                 <li>Security System</li>
+                 {% if properties.kitchen == True %}
+                    <li>Kitchen: <i class="fa fa-check" aria-hidden="true"></i></li>
+                 {% elif properties.kitchen == False %}
+                    <li>Kitchen: <i class="fa fa-times" aria-hidden="true"></i></li>
+                 {% endif %}
+                 {% if properties.air_condition == True %}
+                    <li>Air Condition: <i class="fa fa-check" aria-hidden="true"></i></li>
+                 {% elif properties.air_condition == False %}
+                    <li>Air Condition: <i class="fa fa-times" aria-hidden="true"></i></li>
+                 {% endif %}
+                 {% if properties.balcony == True %}
+                    <li>Kitchen: <i class="fa fa-check" aria-hidden="true"></i></li>
+                 {% elif properties.balcony == False %}
+                    <li>Balcony: <i class="fa fa-times" aria-hidden="true"></i></li>
+                 {% endif %}
+                 {% if properties.gym == True %}
+                    <li>Gym: <i class="fa fa-check" aria-hidden="true"></i></li>
+                 {% elif properties.gym == False %}
+                    <li>Gym: <i class="fa fa-times" aria-hidden="true"></i></li>
+                 {% endif %}
+                 {% if properties.garden == True %}
+                    <li>Garden: <i class="fa fa-check" aria-hidden="true"></i></li>
+                 {% elif properties.garden == False %}
+                    <li>Garden: <i class="fa fa-times" aria-hidden="true"></i></li>
+                 {% endif %}
+                 {% if properties.cctv == True %}
+                    <li>CCTV: <i class="fa fa-check" aria-hidden="true"></i></li>
+                 {% elif properties.cctv == False %}
+                    <li>CCTV: <i class="fa fa-times" aria-hidden="true"></i></li>
+                 {% endif %}
+                 {% if properties.playground == True %}
+                    <li>Playground: <i class="fa fa-check" aria-hidden="true"></i></li>
+                 {% elif properties.playground == False %}
+                    <li>Playground: <i class="fa fa-times" aria-hidden="true"></i></li>
+                 {% endif %}
+                 {% if properties.furnished == True %}
+                    <li>Furnished: <i class="fa fa-check" aria-hidden="true"></i></li>
+                 {% elif properties.furnished == False %}
+                    <li>Furnished: <i class="fa fa-times" aria-hidden="true"></i></li>
+                 {% endif %}
+                 {% if properties.parking == True %}
+                    <li>Parking: <i class="fa fa-check" aria-hidden="true"></i></li>
+                 {% elif properties.parking == False %}
+                    <li>Parking: <i class="fa fa-times" aria-hidden="true"></i></li>
+                 {% endif %}
                </ul>
                </div>
              <!-- Properties social share -->
              <div class="aa-properties-social">
                <ul>
-                 <li>Share</li>
-                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                 <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                 <li>Share</li><hr>
+                 {% post_to_facebook request.get_full_path ' Post to Facebook' 'fa fa-facebook btn-lg btn-primary text-center' %}<hr>
+                 {% post_to_twitter request.get_full_path ' Post to Twitter' ' Tweet to Twitter' 'fa fa-twitter btn-lg btn-primary text-center' %}<hr>
                </ul>
              </div>
              <!-- Nearby properties -->
@@ -74,62 +112,45 @@
                </div>
                <div class="aa-nearby-properties-area">
                  <div class="row">
-                   <div class="col-md-6">
-                     <article class="aa-properties-item">
-                        <a class="aa-properties-item-img" href="#">
-                          <img alt="img" src="{% static 'img/item/1.jpg' %}">
-                        </a>
-                        <div class="aa-tag for-sale">
-                          For Sale
-                        </div>
-                        <div class="aa-properties-item-content">
-                          <div class="aa-properties-info">
-                            <span>5 Rooms</span>
-                            <span>2 Beds</span>
-                            <span>3 Baths</span>
-                            <span>1100 SQ FT</span>
-                          </div>
-                          <div class="aa-properties-about">
-                            <h3><a href="#">Appartment Title</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                          </div>
-                          <div class="aa-properties-detial">
-                            <span class="aa-price">
-                              $35000
-                            </span>
-                            <a class="aa-secondary-btn" href="#">View Details</a>
-                          </div>
-                        </div>
-                      </article>
-                   </div>
+                 {% for nearby_property in nearby_properties %}
                    <div class="col-md-6">
                      <article class="aa-properties-item">
                       <a class="aa-properties-item-img" href="#">
-                        <img alt="img" src="{% static 'img/item/2.jpg' %}">
+                        <img alt="img" src="{{ nearby_property.property_pic1.url }}">
                       </a>
-                      <div class="aa-tag for-sale">
-                        For Sale
-                      </div>
+                      {% if nearby_property.property_status == "For Rent" %}
+                        <div class="aa-tag for-rent">
+                            For Rent
+                        </div>
+                    {% elif nearby_property.property_status == "For Sale" %}
+                        <div class="aa-tag for-sale">
+                            For Sale
+                        </div>
+                    {% elif nearby_property.property_status == "Sold Out" %}
+                        <div class="aa-tag sold-out">
+                            Sold Out
+                        </div>
+                    {% endif %}
                       <div class="aa-properties-item-content">
                         <div class="aa-properties-info">
-                          <span>5 Rooms</span>
-                          <span>2 Beds</span>
-                          <span>3 Baths</span>
-                          <span>1100 SQ FT</span>
+                          <span>{{ nearby_property.property_rooms }} Room(s)</span>
+                          <span>Owner: {{ nearby_property.property_owner }}</span>
+                          <span>SQR MTRS{{ nearby_property.property_square_meters }}</span>
                         </div>
                         <div class="aa-properties-about">
-                          <h3><a href="#">Appartment Title</a></h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                          <h3><a href="#">{{ nearby_property.property_title }}</a></h3>
+                          <p>{{ nearby_property.property_intro }}</p>                      
                         </div>
                         <div class="aa-properties-detial">
                           <span class="aa-price">
-                            $35000
+                            {{ nearby_property.property_price }}
                           </span>
-                          <a class="aa-secondary-btn" href="#">View Details</a>
+                          <a class="aa-secondary-btn" href="{% url 'property_details' nearby_property.id %}">View Details</a>
                         </div>
                       </div>
                     </article>
                    </div>
+                   {% endfor %}
                  </div>
                </div>
 

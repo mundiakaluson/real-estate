@@ -67,9 +67,13 @@ def property_details(request, property_id):
             property_viewed = properties,
             view = 1
         )
-        
+    
+    nearby_properties = Property.objects.filter(
+        property_location = properties.property_location,
+        property_active = True
+    ).order_by('property_post_date')[:2]
     views = PageView.objects.filter(property_viewed=properties).count()
-    return render(request, 'main/property_details.html', {'properties': properties, 'views': views})
+    return render(request, 'main/property_details.html', {'properties': properties, 'views': views, 'nearby_properties': nearby_properties})
 
 def register(request):
     if request.method == 'POST':

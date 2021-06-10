@@ -30,6 +30,7 @@ class Property(models.Model):
         ('Property Owner', 'Property Owner'),
         ('Property Agent', 'Property Agent'),
         ('Property Manager', 'Property Manager'),
+        ('Real Estate Company', 'Real Estate Company')
     ]
 
     TYPES = [
@@ -145,17 +146,12 @@ class Article(models.Model):
     article_content = models.TextField()
 
 class Profile(models.Model):
-    ADMIN = 1
-    AGENT = 2
-    REAL_ESTATE_DEVELOPER = 3
-    AUCTIONEER = 4
-    CLIENT = 5
     REGISTERED_AS = (
-        (ADMIN, 'Admin'),
-        (AGENT, 'Agent'),
-        (REAL_ESTATE_DEVELOPER, 'Real Estate Developer'),
-        (AUCTIONEER, 'Auctioneer'),
-        (CLIENT, 'Client'),
+        ('ADMIN', 'Admin'),
+        ('AGENT', 'Agent'),
+        ('REAL_ESTATE_DEVELOPER', 'Real Estate Developer'),
+        ('AUCTIONEER', 'Auctioneer'),
+        ('CLIENT', 'Client'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = PhoneNumberField(blank=True, null=True)
