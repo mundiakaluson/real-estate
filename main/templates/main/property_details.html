@@ -29,7 +29,7 @@
           <div class="aa-properties-content">            
             <!-- Start properties content body -->
             <div class="aa-properties-details">
-            <h2 style="text-align: center;"> {{ properties.property_title }} </h2>
+            
             <hr>
              <div class="aa-properties-details-img">
                <img src="{{ properties.property_pic1.url }}" alt="img">
@@ -37,7 +37,16 @@
                <img src="{{ properties.property_pic3.url }}" alt="img">
              </div>
              <div class="aa-properties-info">
+             <h2> {{ properties.property_title }} </h2>
                <span class="aa-price">Price ${{ properties.property_price }}</span><hr>
+               {% if properties.property_rooms != 0 %}
+               <p class="aa-price"><i class="fa fa-bed" aria-hidden="true"></i> {{ properties.property_rooms }}</p>
+               {% endif %}
+               {% if properties.property_bathroom != 0 %}
+               <p class="aa-price"><i class="fa fa-bath" aria-hidden="true"></i> {{ properties.property_rooms }}</p>
+               {% endif %}
+               {{ properties.property_square_meters }}
+               <p class="aa-price">H6</p><hr>
                {% if property.property_rooms == None %}
                <span class="lead">Property has no rooms</span>
                {% else %}

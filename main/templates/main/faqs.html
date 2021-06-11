@@ -22,10 +22,12 @@
 
 <div class="container">
     <h2 class="text-center">Frequently Asked Questions and Answers</h2><hr>
-        <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-light w3-left-align well">Accordion</button>
+    {% for faq in faqs %}
+        <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-light w3-left-align well">{{ faq.faqs_headline }}</button>
         <div id="Demo1" class="w3-hide w3-animate-zoom">
-            <p class="w3-button w3-block w3-left-align well well-sm">Link 1</p>
+            <p class="w3-button w3-block w3-left-align">{{ faq.faqs_content }}</p>
         </div>
+    {% endfor %}
 </div>
 
 <script>

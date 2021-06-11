@@ -8,7 +8,8 @@ from .models import (
     UserInformation, 
     Review, 
     Article,
-    Profile
+    Profile,
+    FAQS,
 )
 from django.utils import timezone
 from django.core.exceptions import ValidationError
@@ -195,4 +196,5 @@ def all_agents(request):
     return render(request, 'main/all_agents.html', {'profiles': profiles})
 
 def faqs(request):
-    return render(request, 'main/faqs.html')
+    faqs = FAQS.objects.all()
+    return render(request, 'main/faqs.html', {'faqs': faqs})
