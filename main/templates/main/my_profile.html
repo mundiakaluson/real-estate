@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load countries %}
+{% block content %}
+<section id="aa-property-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-property-header-inner">
+                    <h2>My Profile</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="{% url 'home' %}">HOME</a>
+                        </li>
+                        <li class="active"> {{ request.user | capfirst }}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<body class="w3-light-grey">
+    {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+    {% endif %} 
+
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  <h2 class="w3-text-grey w3-padding-16 text-center">My Profile</h2>
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="{{ user.profile.profile_picture.url }}" style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2>{{ request.user.username | capfirst }}</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Registered As: {{ request.user.profile.registered_as }}</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Names: {{ request.user.first_name }} {{ request.user.last_name }} </p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>Email: {{ request.user.email }}</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>Phone Number: {{ request.user.profile.phone_number }}</p>
+          <hr>
+
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>My Information</b></p>
+          <p>Registered Date: {{ request.user.date_joined }}</p>
+          <p>Country: {{ request.user.profile.country }}</p>
+          <p>Region: {{ request.user.profile.region }}</p>
+          <br>
+
+          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>My Ratings</b></p>
+          <p>English</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
+          </div>
+          <p>Spanish</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
+          </div>
+          <p>German</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
+          </div>
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16">Edit My Profile</h2>
+        <div class="w3-container">
+        <h4 class="w3-opacity"><b>Personal Details</b></h4><hr>
+        <form action="{% url 'my_profile' %}" method="POST">
+        {% csrf_token %}
+        <h5 class="w3-text-teal"><b>Email</b></h5>
+            <p class="w3-text-grey"> {{ request.user.email }} <span class="badge">unchangable</span></p>
+          <h5 class="w3-text-teal"><b>Username</b></h5>
+            <p class="w3-text-grey"> {{ request.user.username }} <span class="badge">unchangable</span></p>
+          <h5 class="w3-text-teal"><b>First Name</b></h5>
+            <input type="text" class="form-control" name="first_name">
+          <h5 class="w3-text-teal"><b>Last Name</b></h5>
+            <input type="text" class="form-control" name="last_name">
+          <h5 class="w3-text-teal"><b>Phone Number</b></h5>
+            <input type="text" class="form-control" name="phone_number">
+          <h5 class="w3-text-teal"><b>Profile Picture</b></h5>
+            <input type="file" name="profile_picture" />
+          <hr>
+        </div>
+        <div class="w3-container">
+        <h4 class="w3-opacity"><b>My Location</b></h4><hr>
+          <h5 class="w3-text-teal"><b>Country</b></h5>
+          {% get_countries as countries %}
+          <select>
+          {% for country in countries %}
+            <option name="country" value="{{ country.name }}">{{ country.code }} - {{ country.name }}</option>
+          {% endfor %}
+          </select>
+          <h5 class="w3-text-teal"><b>Region</b></h5>
+          <input type="text" class="form-control" name="region"><br>
+          <input type="submit" class="btn btn-success" name="submit" value="Accept Changes and Save Profile">
+          </form>
+          <p>Other sensitive information is only changable by contacting the admin.</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+        <h4 class="w3-opacity"><b>Account Status</b></h4><hr>
+          <h5 class="w3-text-teal"><b>Active
+          {% if request.user.is_active %}
+            <i class="fa fa-check" aria-hidden="true"></i>
+          {% else %}
+            <i class="fa fa-times" aria-hidden="true"></i>
+          {% endif %}</b></h5>
+          <h5 class="w3-text-teal"><b>Authenticated
+          {% if request.user.is_authenticated %}
+            <i class="fa fa-check" aria-hidden="true"></i>
+          {% else %}
+            <i class="fa fa-times" aria-hidden="true"></i>
+          {% endif %}</b></h5>
+          <h6 class="w3-text-teal">Authentication Time: {{ request.user.last_login }}</h6>
+          <p></p><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+</body>
+{% endblock content %}

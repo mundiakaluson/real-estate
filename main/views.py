@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth 
-from .forms import PropertyForm
+from .forms import PropertyForm, ProfileForm
+from django_countries.data import COUNTRIES
+from django.contrib import messages
 from .models import (
     Property, 
     PageView, 
@@ -198,3 +200,23 @@ def all_agents(request):
 def faqs(request):
     faqs = FAQS.objects.all()
     return render(request, 'main/faqs.html', {'faqs': faqs})
+
+def my_profile(request):
+    current_profile = Profile.objects.get(user=request.user)
+    current_user = User.objects.get(username=request.user)
+    if request.method == 'POST':
+        if request.POST['first_name'] and request.POST['last_name'] and request.POST['phone_number'] and request.POST['profile_picture'] and request.POST['country'] and request.POST['region']:
+            current_user.first_name = request.POST['first_name']
+            current_user.last_name = request.POST['last_name']
+            current_profile.phone_number = request.POST['phone_number']
+            current_profile.profile_picture = request.POST['profile_picture']
+            current_profile.country = request.POST.get('country')
+            current_profile.region = request.POST['region']
+            current_user.save()
+            current_profile.save()
+            messages.success(request, 'Profile Changed Successfully! Changes will take place as the server refreshes the Database.', extra_tags='alert')
+            return render(request, 'main/my_profile.html')
+    return render(request, 'main/my_profile.html')
+
+def update_profile(request):
+    pass

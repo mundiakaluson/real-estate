@@ -1,5 +1,5 @@
 from django.forms import ModelForm, Textarea, HiddenInput
-from .models import Property
+from .models import Property, Profile
 from django.utils.translation import gettext_lazy as _
 class PropertyForm(ModelForm):
     class Meta:
@@ -23,3 +23,8 @@ class PropertyForm(ModelForm):
             'property_post_date':
                 HiddenInput()
         }
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['phone_number', 'country', 'profile_picture', 'region', 'registered_as']

@@ -43,65 +43,38 @@
                <p class="aa-price"><i class="fa fa-bed" aria-hidden="true"></i> {{ properties.property_rooms }}</p>
                {% endif %}
                {% if properties.property_bathroom != 0 %}
-               <p class="aa-price"><i class="fa fa-bath" aria-hidden="true"></i> {{ properties.property_rooms }}</p>
+               <p class="aa-price"><i class="fa fa-bath" aria-hidden="true"></i> {{ properties.property_bathroom }}</p>
                {% endif %}
-               {{ properties.property_square_meters }}
-               <p class="aa-price">H6</p><hr>
-               {% if property.property_rooms == None %}
-               <span class="lead">Property has no rooms</span>
-               {% else %}
-               <span class="lead">Rooms: {{ properties.property_rooms }}</span>
-               {% endif %}<hr>
-               <h4>Property Introduction</h4>
-               <p>{{ properties.property_description }}
                <h4>Property Description</h4>
                <p>{{ properties.property_about }}</p>
                <h4>Propery Features</h4>
                <ul>
                  {% if properties.kitchen == True %}
                     <li>Kitchen: <i class="fa fa-check" aria-hidden="true"></i></li>
-                 {% elif properties.kitchen == False %}
-                    <li>Kitchen: <i class="fa fa-times" aria-hidden="true"></i></li>
                  {% endif %}
                  {% if properties.air_condition == True %}
                     <li>Air Condition: <i class="fa fa-check" aria-hidden="true"></i></li>
-                 {% elif properties.air_condition == False %}
-                    <li>Air Condition: <i class="fa fa-times" aria-hidden="true"></i></li>
                  {% endif %}
                  {% if properties.balcony == True %}
                     <li>Kitchen: <i class="fa fa-check" aria-hidden="true"></i></li>
-                 {% elif properties.balcony == False %}
-                    <li>Balcony: <i class="fa fa-times" aria-hidden="true"></i></li>
                  {% endif %}
                  {% if properties.gym == True %}
                     <li>Gym: <i class="fa fa-check" aria-hidden="true"></i></li>
-                 {% elif properties.gym == False %}
-                    <li>Gym: <i class="fa fa-times" aria-hidden="true"></i></li>
                  {% endif %}
                  {% if properties.garden == True %}
                     <li>Garden: <i class="fa fa-check" aria-hidden="true"></i></li>
-                 {% elif properties.garden == False %}
-                    <li>Garden: <i class="fa fa-times" aria-hidden="true"></i></li>
                  {% endif %}
                  {% if properties.cctv == True %}
                     <li>CCTV: <i class="fa fa-check" aria-hidden="true"></i></li>
-                 {% elif properties.cctv == False %}
-                    <li>CCTV: <i class="fa fa-times" aria-hidden="true"></i></li>
                  {% endif %}
                  {% if properties.playground == True %}
                     <li>Playground: <i class="fa fa-check" aria-hidden="true"></i></li>
-                 {% elif properties.playground == False %}
-                    <li>Playground: <i class="fa fa-times" aria-hidden="true"></i></li>
                  {% endif %}
                  {% if properties.furnished == True %}
                     <li>Furnished: <i class="fa fa-check" aria-hidden="true"></i></li>
-                 {% elif properties.furnished == False %}
-                    <li>Furnished: <i class="fa fa-times" aria-hidden="true"></i></li>
                  {% endif %}
                  {% if properties.parking == True %}
                     <li>Parking: <i class="fa fa-check" aria-hidden="true"></i></li>
-                 {% elif properties.parking == False %}
-                    <li>Parking: <i class="fa fa-times" aria-hidden="true"></i></li>
                  {% endif %}
                </ul>
                </div>
@@ -176,11 +149,15 @@
               <h2 class="lead">Property Information</h2>
               <h6 class="lead"><i class="fa fa-user" aria-hidden="true"></i> Owner: {{ properties.property_owner | capfirst }}</h6>
               <h6 class="lead"><i class="fa fa-calendar" aria-hidden="true"></i> Posted: {{ properties.property_post_date | naturaltime }}</h6>
-              <h6 class="lead"><i class="fa fa-phone" aria-hidden="true"></i> Contact</h6>
               <h6 class="lead"><i class="fa fa-map-marker" aria-hidden="true"></i> Location: {{ properties.property_location }}</h6>
               <h6 class="lead"><i class="fa fa-building" aria-hidden="true"></i> Condition: {{ properties.property_condition }}</h6>
               <h6 class="lead"><i class="fa fa-check" aria-hidden="true"></i> Status: {{ properties.property_status }}</h6>
               <h6 class="lead"><i class="fa fa-eye" aria-hidden="true"></i> Views: {{ views }}</h6>
+              <button class="aa-secondary-btn" data-toggle="collapse" data-target="#demo">View Contacts</button></p>
+              <div id="demo" class="collapse">
+              <i class="fa fa-reply-all" aria-hidden="true"></i> Email: {{ properties.property_owner.email }} <br>
+              <i class="fa fa-phone" aria-hidden="true"></i> Phone: {{ properties.property_owner.profile.phone_number }}
+              </div>
               <button id="myBtn" class="aa-secondary-btn">Review this Service</button>
               <div id="myModal" class="modal">
                 <div class="modal-content">
