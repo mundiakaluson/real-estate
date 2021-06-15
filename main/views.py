@@ -220,3 +220,6 @@ def my_profile(request):
 
 def update_profile(request):
     pass
+
+def contact(request):
+    return render(request, 'main/contact.html')

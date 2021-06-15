@@ -18,4 +18,5 @@ urlpatterns = [
     path('faqs', views.faqs, name='faqs'),
     path('my_profile', views.my_profile, name='my_profile'),
     path('update_profile', views.update_profile, name='update_profile'),
+    path('contact', views.contact, name='contact'),
 ]
