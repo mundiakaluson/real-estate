@@ -1,7 +1,8 @@
 from pathlib import Path
 import django_heroku
+import os 
 
-django_heroku.settings(locals(), test_runner=False)
+PROJECT_DIR = os.path.dirname(__file__)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,9 +124,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-import os 
-
-PROJECT_DIR = os.path.dirname(__file__)
 
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 
@@ -174,3 +172,5 @@ EMAIL_HOST_USER = 'mundia0000@gmail.com'
 EMAIL_HOST_PASSWORD = 'Adminminus1'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_heroku.settings(locals(), test_runner=False)
