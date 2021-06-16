@@ -43,9 +43,9 @@
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="aa-header-right">
-                  <a href="register.html" class="aa-register">Auction Properties</a>
-                  <a href="signin.html" class="aa-login">Check out properties</a>
-                  <a href="{% url 'logout' %}" class="aa-login">Logout</a>
+                  <a href="" class="aa-register">Auction Properties</a>
+                  <a href="{% url 'properties' %}" class="aa-login">Check out properties</a>
+                  <a href="{% url 'logout' %}" class="aa-login badge">Logout</a>
                 </div>
               </div>
             </div>
@@ -64,8 +64,8 @@
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="aa-header-right">
-                  <a href="register.html" class="aa-register">Register</a>
-                  <a href="signin.html" class="aa-login">Login</a>
+                  <a href="{% url 'register' %}" class="aa-register">Register</a>
+                  <a href="{% url 'login' %}" class="aa-login">Login</a>
                 </div>
               </div>
             </div>
@@ -86,30 +86,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- Text based logo -->
-           <a class="navbar-brand aa-logo" href="index.html"> KALA <span>HOMES</span></a>
-           <!-- Image based logo -->
-           <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
+           <a class="navbar-brand aa-logo-img" href="index.html"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
                <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">CURRENCY <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
-                <li><a href="properties.html">PROPERTIES</a></li>
-                <li><a href="properties-detail.html">PROPERTIES DETAIL</a></li>                                            
+                <li><a href="">USD</a></li>
+                <li><a href="">KES</a></li>                                            
               </ul>
             </li>
-            <li><a href="gallery.html">GALLERY</a></li>                                         
+            <li><a href="gallery.html">FAQs</a></li>                                         
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">LANGUAGE <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">                
-                <li><a href="blog-archive.html">BLOG</a></li>
-                <li><a href="blog-single.html">BLOG DETAILS</a></li>                                            
-              </ul>
             </li>
-            <li><a href="contact.html">CONTACT</a></li>
-           <li><a href="404.html">404 PAGE</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT</a></li>
+            <li><a href="{% url 'blogs' %}">BLOGS</a></li>
           </ul>                            
         </div>    
       </div>          
@@ -129,7 +122,7 @@
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="aa-footer-left">
-               <p>Designed by <a rel="nofollow" href="http://www.markups.io/">MarkUps.io</a></p>
+               <p>Designed by TL</p>
               </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">

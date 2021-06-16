@@ -232,8 +232,8 @@ img {
 }
 #aa-menu-area .main-navbar .navbar-header .aa-logo-img {
   border: none;
-  height: 50px;
-  width: 235px;
+  height: 70px;
+  width: 90px;
 }
 #aa-menu-area .main-navbar .navbar-header .aa-logo-img img {
   width: 100%;
@@ -2476,7 +2476,7 @@ img {
 ====================*/
 
 #aa-footer {
-  background-color: #444;
+  background-color: #089c8c;
   display: inline;
   float: left;
   padding: 30px 0;

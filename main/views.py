@@ -4,6 +4,8 @@ from django.contrib import auth
 from .forms import PropertyForm, ProfileForm
 from django_countries.data import COUNTRIES
 from django.contrib import messages
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import (
     Property, 
     PageView, 
@@ -23,6 +25,7 @@ from django.db.models import Avg, Sum
 global properties
 
 def home(request):
+    latest_properties = Property.objects.filter(property_active=True)[:3]
     if request.user.is_authenticated:
         data_capture = UserInformation()
         user_ip_address = UserVisit().remote_addr
@@ -51,7 +54,7 @@ def home(request):
             data_capture.time_zone = captured_info.get('time_zone')
             data_capture.save()
     
-    return render(request, 'main/home.html')
+    return render(request, 'main/home.html', {'latest_properties': latest_properties})
 
 def properties(request):
     all_approved_properties = Property.objects.filter(property_active=True)
@@ -222,4 +225,15 @@ def update_profile(request):
     pass
 
 def contact(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        comment = request.POST['comment']
+        if name and email and subject and comment:
+            try:
+                send_mail(subject, f'Sender Mail: {email}. \n Message: {comment}', email, ['mundiakaluson@gmail.com'], )
+                return render(request, 'main/contact.html', {'success': 'Message Sent!'})
+            except BadHeaderError:
+                return HttpResponseRedirect('/main/contact', {'error': 'Message could not be sent!'})
     return render(request, 'main/contact.html')
