@@ -181,4 +181,8 @@ LANGUAGE = (
     ('fr', _('French')),
 )
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
+
 django_heroku.settings(locals(), test_runner=False)

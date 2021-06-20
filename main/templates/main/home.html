@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
   <section id="aa-slider">
@@ -14,7 +15,7 @@
             <span class="aa-top-slider-catg">{% trans "Buy Rent Global" %}</span>
             <h2 class="aa-top-slider-title">{% trans "Find the best property that suits you!" %}</h2>
             <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>{% trans "Anywhere, Anytime!" %}</p>
-            <p class="aa-top-slider-price">{% "Or list your property to get a quick match!" %}</p>
+            <p class="aa-top-slider-price">{% trans "Or list your property to get a quick match!" %}</p>
             <a href="{% url 'properties' %}" class="aa-top-slider-btn">{% trans "Check out our listings!" %}<span class="fa fa-angle-double-right"></span></a>
           </div>
           <!-- / Top slider content -->
@@ -33,17 +34,17 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="aa-single-advance-search">
-                  <input type="text" placeholder="Type Your Location">
+                  <input type="text" placeholder="{% trans 'Type Your Location' %}">
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="aa-single-advance-search">
                   <select>
-                   <option value="0" selected>Category</option>
-                    <option value="1">Flat</option>
-                    <option value="2">Land</option>
-                    <option value="3">Plot</option>
-                    <option value="4">Commercial</option>
+                   <option value="0" selected>{% trans "Category" %}</option>
+                    <option value="1">{% trans "Flat" %}</option>
+                    <option value="2">{% trans "Land" %} </option>
+                    <option value="3">{% trans "Plot" %}</option>
+                    <option value="4">{% trans "Commercial" %}</option>
                   </select>
                 </div>
               </div>
@@ -123,17 +124,17 @@
               <div class="col-md-7">
                 <div class="aa-about-us-right">
                   <div class="aa-title">
-                    <h2>About Us</h2>
+                    <h2>{% trans "About Us" %}</h2>
                     <span></span>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ab dignissimos vitae maxime adipisci blanditiis rerum quae quos! Id at rerum maxime modi fugit vero corrupti, ad atque sit laborum ipsum sunt blanditiis suscipit odio, aut nostrum assumenda nobis rem a maiores temporibus non commodi laboriosam, doloremque expedita! Corporis, provident?</p>                  
+                  <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ab dignissimos vitae maxime adipisci blanditiis rerum quae quos! Id at rerum maxime modi fugit vero corrupti, ad atque sit laborum ipsum sunt blanditiis suscipit odio, aut nostrum assumenda nobis rem a maiores temporibus non commodi laboriosam, doloremque expedita! Corporis, provident?" %}</p>                  
                   <ul>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia.</li>                    
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia.</li>
+                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis." %}</li>
+                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit." %}</li>
+                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia." %}</li>                    
+                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis." %}</li>
+                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit." %}</li>
+                    <li>{% trans " ipsum dolor sit amet, consectetur adipisicing elit. Quia." %}</li>
                   </ul>
                 </div>
               </div>
@@ -211,9 +212,9 @@
         <div class="col-md-12">
           <div class="aa-service-area">
             <div class="aa-title">
-              <h2>Our Service</h2>
+              <h2>{% trans "Our Services" %}</h2>
               <span></span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus.</p>
+              <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus." %}</p>
             </div>
             <!-- service content -->
             <div class="aa-service-content">
@@ -279,7 +280,7 @@
         <div class="col-md-12">
           <div class="aa-latest-blog-area">
             <div class="aa-title">
-              <h2>Get your inspiration for the next property listing or purchase</h2>
+              <h2>{% trans "Get your inspiration for the next property listing or purchase" %}</h2>
               <span></span>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe magni, est harum repellendus. Accusantium, nostrum!</p>
             </div>

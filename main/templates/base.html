@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Buy Rent Global | Home</title>
+    <title>Buy Rent Global | {% trans "Home" %}</title>
     
     <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
@@ -43,9 +43,9 @@
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="aa-header-right">
-                  <a href="" class="aa-register">Auction Properties</a>
-                  <a href="{% url 'properties' %}" class="aa-login">Check out properties</a>
-                  <a href="{% url 'logout' %}" class="aa-login badge">Logout</a>
+                  <a href="" class="aa-register">{% trans "Auction Properties" %}</a>
+                  <a href="{% url 'properties' %}" class="aa-login">{% trans "Check out properties" %}</a>
+                  <a href="{% url 'logout' %}" class="aa-login badge">{% trans "Logout" %}</a>
                 </div>
               </div>
             </div>
@@ -64,8 +64,8 @@
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="aa-header-right">
-                  <a href="{% url 'register' %}" class="aa-register">Register</a>
-                  <a href="{% url 'login' %}" class="aa-login">Login</a>
+                  <a href="{% url 'register' %}" class="aa-register">{% trans "Register" %}</a>
+                  <a href="{% url 'login' %}" class="aa-login">{% trans "Login" %}</a>
                 </div>
               </div>
             </div>
@@ -99,10 +99,10 @@
             </li>
             <li><a href="gallery.html">FAQs</a></li>                                         
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">LANGUAGE <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">{% trans "LANGUAGE" %} <span class="caret"></span></a>
             </li>
-            <li><a href="{% url 'contact' %}">CONTACT</a></li>
-            <li><a href="{% url 'blogs' %}">BLOGS</a></li>
+            <li><a href="{% url 'contact' %}">{% trans "CONTACT" %}</a></li>
+            <li><a href="{% url 'blogs' %}">{% trans "BLOGS" %}</a></li>
           </ul>                            
         </div>    
       </div>          
@@ -122,7 +122,7 @@
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="aa-footer-left">
-               <p>Designed by TL</p>
+               <p>{% trans "Designed by TL" %}</p>
               </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -135,11 +135,11 @@
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="aa-footer-right">
-                <a href="#">Home</a>
-                <a href="#">Support</a>
-                <a href="#">License</a>
-                <a href="#">FAQ</a>
-                <a href="#">Privacy & Term</a>
+                <a href="#">{% trans "Home" %}</a>
+                <a href="#">{% trans "Support" %}</a>
+                <a href="#">{% trans "License" %}</a>
+                <a href="#">{% trans "FAQ" %}</a>
+                <a href="#">{% trans "Privacy & Term" %}</a>
               </div>
             </div>            
           </div>
