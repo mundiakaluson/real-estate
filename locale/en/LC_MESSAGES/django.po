@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-20 12:10+0000\n"
+"POT-Creation-Date: 2021-06-20 12:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1265,6 +1265,150 @@ msgstr ""
 
 #: main/forms.py:10
 msgid "Max character are 1000 for this section!"
+msgstr ""
+
+#: main/templates/base.html:8 main/templates/base.html:138
+msgid "Home"
+msgstr ""
+
+#: main/templates/base.html:46
+msgid "Auction Properties"
+msgstr ""
+
+#: main/templates/base.html:47
+msgid "Check out properties"
+msgstr ""
+
+#: main/templates/base.html:48
+msgid "Logout"
+msgstr ""
+
+#: main/templates/base.html:67
+msgid "Register"
+msgstr ""
+
+#: main/templates/base.html:68
+msgid "Login"
+msgstr ""
+
+#: main/templates/base.html:102
+msgid "LANGUAGE"
+msgstr ""
+
+#: main/templates/base.html:104
+msgid "CONTACT"
+msgstr ""
+
+#: main/templates/base.html:105
+msgid "BLOGS"
+msgstr ""
+
+#: main/templates/base.html:125
+msgid "Designed by TL"
+msgstr ""
+
+#: main/templates/base.html:139
+msgid "Support"
+msgstr ""
+
+#: main/templates/base.html:140
+msgid "License"
+msgstr ""
+
+#: main/templates/base.html:141
+msgid "FAQ"
+msgstr ""
+
+#: main/templates/base.html:142
+msgid "Privacy & Term"
+msgstr ""
+
+#: main/templates/main/home.html:15
+msgid "Buy Rent Global"
+msgstr ""
+
+#: main/templates/main/home.html:16
+msgid "Find the best property that suits you!"
+msgstr ""
+
+#: main/templates/main/home.html:17
+msgid "Anywhere, Anytime!"
+msgstr ""
+
+#: main/templates/main/home.html:18
+msgid "Or list your property to get a quick match!"
+msgstr ""
+
+#: main/templates/main/home.html:19
+msgid "Check out our listings!"
+msgstr ""
+
+#: main/templates/main/home.html:37
+msgid "Type Your Location"
+msgstr ""
+
+#: main/templates/main/home.html:43
+msgid "Category"
+msgstr ""
+
+#: main/templates/main/home.html:44
+msgid "Flat"
+msgstr ""
+
+#: main/templates/main/home.html:45
+msgid "Land"
+msgstr ""
+
+#: main/templates/main/home.html:46
+msgid "Plot"
+msgstr ""
+
+#: main/templates/main/home.html:47
+msgid "Commercial"
+msgstr ""
+
+#: main/templates/main/home.html:127
+msgid "About Us"
+msgstr ""
+
+#: main/templates/main/home.html:130
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ab "
+"dignissimos vitae maxime adipisci blanditiis rerum quae quos! Id at rerum "
+"maxime modi fugit vero corrupti, ad atque sit laborum ipsum sunt blanditiis "
+"suscipit odio, aut nostrum assumenda nobis rem a maiores temporibus non "
+"commodi laboriosam, doloremque expedita! Corporis, provident?"
+msgstr ""
+
+#: main/templates/main/home.html:132 main/templates/main/home.html:135
+msgid ""
+">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis."
+msgstr ""
+
+#: main/templates/main/home.html:133 main/templates/main/home.html:136
+msgid ">Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+msgstr ""
+
+#: main/templates/main/home.html:134
+msgid ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia."
+msgstr ""
+
+#: main/templates/main/home.html:137
+msgid " ipsum dolor sit amet, consectetur adipisicing elit. Quia."
+msgstr ""
+
+#: main/templates/main/home.html:215
+msgid "Our Services"
+msgstr ""
+
+#: main/templates/main/home.html:217
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis "
+"quae vero voluptatibus."
+msgstr ""
+
+#: main/templates/main/home.html:283
+msgid "Get your inspiration for the next property listing or purchase"
 msgstr ""
 
 #: real_estate/settings.py:180
