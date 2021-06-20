@@ -11,11 +11,11 @@
           <img src="{% static 'img/slider/1.jpg' %}" alt="img">
           <!-- Top slider content -->
           <div class="aa-top-slider-content">
-            <span class="aa-top-slider-catg">Buy Rent Global</span>
-            <h2 class="aa-top-slider-title">Find the best property that suits you!</h2>
-            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Anywhere, Anytime!</p>
-            <p class="aa-top-slider-price">Or list your property to get a quick match!</p>
-            <a href="{% url 'properties' %}" class="aa-top-slider-btn">Check out our listings!<span class="fa fa-angle-double-right"></span></a>
+            <span class="aa-top-slider-catg">{% trans "Buy Rent Global" %}</span>
+            <h2 class="aa-top-slider-title">{% trans "Find the best property that suits you!" %}</h2>
+            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>{% trans "Anywhere, Anytime!" %}</p>
+            <p class="aa-top-slider-price">{% "Or list your property to get a quick match!" %}</p>
+            <a href="{% url 'properties' %}" class="aa-top-slider-btn">{% trans "Check out our listings!" %}<span class="fa fa-angle-double-right"></span></a>
           </div>
           <!-- / Top slider content -->
         </div>
