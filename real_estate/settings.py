@@ -1,6 +1,7 @@
 from pathlib import Path
 import django_heroku
 import os 
+from django.utils.translation import gettext_lazy as _
 
 PROJECT_DIR = os.path.dirname(__file__)
 
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -111,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -172,5 +173,12 @@ EMAIL_HOST_USER = 'mundia0000@gmail.com'
 EMAIL_HOST_PASSWORD = 'Adminminus1'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+LANGUAGE_CODE = 'en-us'
+
+LANGUAGE = (
+    ('en', _('English')),
+    ('fr', _('French')),
+)
 
 django_heroku.settings(locals(), test_runner=False)
