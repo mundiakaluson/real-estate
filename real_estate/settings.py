@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_social_share',
     'django_countries',
     'whitenoise.runserver_nostatic',
+    'coverage',
 ]
 
 MIDDLEWARE = [

@@ -19,4 +19,7 @@ urlpatterns = [
     path('my_profile', views.my_profile, name='my_profile'),
     path('update_profile', views.update_profile, name='update_profile'),
     path('contact', views.contact, name='contact'),
+    path('for_rent', views.for_rent, name='for_rent'),
+    path('for_sale', views.for_sale, name='for_sale'),
+    path('property_search', views.property_search, name='property_search'),
 ]

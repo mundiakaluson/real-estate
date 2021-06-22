@@ -22,11 +22,11 @@
         <div style="{padding-top: 100px;}" class="container">
             <div class="jumbotron rounded text-center"><br>
                 <h1 class="display-4">So you've Registered with us! What's next?</h1>
-                    <p class="lead">For agents auctioning or renting homes click on "For Agents"</p>
+                    <p class="lead">Looking to Rent or Sell your property? Click on "For Property Listers"</p>
                         <hr class="my-4">
-                    <p>For clients looking for homes press "For Clients"</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">For Agents</a>
-                <a class="btn btn-primary btn-lg" href="#" role="button">For Clients</a>
+                    <p>Looking for property to buy or rent? Click on "For Clients"</p>
+                <a class="btn btn-primary btn-lg" href="{% url 'my_properties' %}" role="button">For Property Listers</a>
+                <a class="btn btn-primary btn-lg" href="{% url 'properties' %}" role="button">For Clients</a>
             </div>
         </div>
     </section>

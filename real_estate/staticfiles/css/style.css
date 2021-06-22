@@ -160,7 +160,7 @@ img {
   width: 100%;
 }
 #aa-header .aa-header-area .aa-header-left .aa-telephone-no {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   float: left;
   font-size: 15px;
 }
@@ -171,10 +171,10 @@ img {
   display: none !important;
 }
 #aa-header .aa-header-area .aa-header-left .aa-telephone-no .skype_c2c_text_span {
-  color: #fff !important;
+  color: rgb(0, 0, 0) !important;
 }
 #aa-header .aa-header-area .aa-header-left .aa-email {
-  color: #fff;
+  color: rgb(0, 0, 0);
   float: left;
   letter-spacing: 0.5px;
   margin-left: 20px;
@@ -191,13 +191,13 @@ img {
 }
 #aa-header .aa-header-area .aa-header-right .aa-register {
   border-right: 1px solid #f8f8f8;
-  color: #fff;
+  color: rgb(0, 0, 0);
   margin-right: 5px;
   padding-right: 10px;
   font-size: 15px;
 }
 #aa-header .aa-header-area .aa-header-right .aa-login {
-  color: #fff;
+  color: rgb(0, 0, 0);
   font-size: 15px;
 }
 
@@ -240,7 +240,7 @@ img {
   height: 100%;
 }
 #aa-menu-area .main-navbar .navbar-nav li a {
-  color: #fff;
+  color: rgb(0, 0, 0);
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;

@@ -55,6 +55,9 @@
             <hr>
             <h2> My Properties</h2>
             <hr>
+            {% if property_check == 0 %}
+              <p class="text-center"> No Properties! Click <a href="{% url 'add_property' %}">here</a> to add.</p>
+            {% endif %}
             <div class="aa-properties-content-body">
               <ul class="aa-properties-nav">
               {% for property in my_properties %}

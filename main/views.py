@@ -168,8 +168,9 @@ def add_property(request):
     return render(request, 'main/add_property.html', {'property_form': property_form})
 
 def my_properties(request):
+    property_check = Property.objects.filter(property_owner=request.user, property_active=True).count()
     my_properties = Property.objects.filter(property_owner=request.user, property_active=True)
-    return render(request, 'main/my_properties.html', {'my_properties': my_properties})
+    return render(request, 'main/my_properties.html', {'my_properties': my_properties, 'property_check': property_check})
 
 def review(request):
     if request.method == 'POST':
@@ -237,3 +238,15 @@ def contact(request):
             except BadHeaderError:
                 return HttpResponseRedirect('/main/contact', {'error': 'Message could not be sent!'})
     return render(request, 'main/contact.html')
+
+def for_rent(request):
+    for_rent_properties = Property.objects.filter(property_active=True, property_status='For Rent')
+    return render(request, 'main/for_rent.html', {'for_rent_properties': for_rent_properties})
+def for_sale(request):
+    for_sale_properties = Property.objects.filter(property_active=True, property_status='For Sale')
+    return render(request, 'main/for_sale.html', {'for_sale_properties': for_sale_properties})
+
+def property_search(request):
+    condition = request.POST.getlist('condition')
+    print(condition)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

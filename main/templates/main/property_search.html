@@ -129,15 +129,17 @@
             <!-- Start Single properties sidebar -->
             <div class="aa-properties-single-sidebar">
               <h3>Properties Search</h3>
-              <form action="{% url 'property_search' %}">
+              <form action="">
                 <div class="aa-single-advance-search">
                   <input type="text" placeholder="Type Your Location">
                 </div>
                 <div class="aa-single-advance-search">
-                  <select id="" name="condition">
-                   <option selected="" value="New">New</option>
-                    <option value="Renovated">Renovated</option>
-                    <option value="Old">Old</option>
+                  <select id="" name="">
+                   <option selected="" value="0">Category</option>
+                    <option value="1">Flat</option>
+                    <option value="2">Land</option>
+                    <option value="3">Plot</option>
+                    <option value="4">Commercial</option>
                   </select>
                 </div>
                 <div class="aa-single-advance-search">

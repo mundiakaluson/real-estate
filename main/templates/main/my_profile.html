@@ -52,7 +52,7 @@
 
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>My Information</b></p>
           <p>Registered Date: {{ request.user.date_joined }}</p>
-          <p>Country: {{ request.user.profile.country }}</p>
+          <p>Country: {{ request.user.profile.country.name }}</p>
           <p>Region: {{ request.user.profile.region }}</p>
           <br>
 
@@ -102,12 +102,7 @@
         <div class="w3-container">
         <h4 class="w3-opacity"><b>My Location</b></h4><hr>
           <h5 class="w3-text-teal"><b>Country</b></h5>
-          {% get_countries as countries %}
-          <select>
-          {% for country in countries %}
-            <option name="country" value="{{ country.name }}">{{ country.code }} - {{ country.name }}</option>
-          {% endfor %}
-          </select>
+          <p class="w3-text-grey">{{ request.user.profile.country.code }} - {{ request.user.profile.country.name }}</p>
           <h5 class="w3-text-teal"><b>Region</b></h5>
           <input type="text" class="form-control" name="region"><br>
           <input type="submit" class="btn btn-success" name="submit" value="Accept Changes and Save Profile">
