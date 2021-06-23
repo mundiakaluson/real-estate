@@ -144,7 +144,7 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 GEOIP_PATH = os.path.join(PROJECT_DIR, 'geoip/')
-
+"""
 AUTHENTICATION_BACKENDS = (
  'django.contrib.auth.backends.ModelBackend',
  'allauth.account.auth_backends.AuthenticationBackend',
@@ -163,7 +163,7 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         }
     }
-}
+}"""
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
