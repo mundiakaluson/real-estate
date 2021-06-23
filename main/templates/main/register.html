@@ -15,6 +15,7 @@
                 <p class="display-1">Register an Account to auction, rent, or buy property instantly!</p>
               </div>
               <form class="contactform" action="" method="POST">
+              {% csrf_token %}
                 <div class="aa-single-field">
                   <label for="name">Username <span class="required">*</span></label>
                   <input type="text" required="required" aria-required="true" value="" name="username" placeholder="This will be your signin ID">
