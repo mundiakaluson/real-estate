@@ -17,7 +17,7 @@ DISABLE_COLLECTSTATIC=1
 SECRET_KEY = '+kad@m2sawr_rcgw^ync*92+#pc8&8v(6hufcz#ig&r&9-r@^9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'https://buyrentglobal.herokuapp.com', '147.182.135.197']
 
@@ -84,23 +84,23 @@ WSGI_APPLICATION = 'real_estate.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-if DEBUG:
+"""if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'buyrentglobal',
-        'USER': 'buyrentglobaladmin',
-        'PASSWORD': '1adminMinus',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+else:"""
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'buyrentglobal',
+    'USER': 'buyrentglobaladmin',
+    'PASSWORD': '1adminMinus',
+    'HOST': 'localhost',
+    'PORT': '',
+}
 }
 
 # Password validation
