@@ -20,7 +20,7 @@ SECRET_KEY = '+kad@m2sawr_rcgw^ync*92+#pc8&8v(6hufcz#ig&r&9-r@^9'
 DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-ALLOWED_HOSTS = ['147.182.135.197']
+ALLOWED_HOSTS = ['localhost', '147.182.135.197', '127.0.0.1']
 
 
 
