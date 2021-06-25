@@ -3,278 +3,289 @@
 {% load i18n %}
 
 {% block content %}
-  <section id="aa-slider">
-    <div class="aa-slider-area"> 
-      <!-- Top slider -->
-      <div class="aa-top-slider">
-        <!-- Top slider single slide -->
-        <div class="aa-top-slider-single">
-          <img src="{% static 'img/slider/1.jpg' %}" alt="img">
-          <!-- Top slider content -->
-          <div class="aa-top-slider-content">
-            <span class="aa-top-slider-catg">{% trans "Buy Rent Global" %}</span>
-            <h2 class="aa-top-slider-title">{% trans "Find the best property that suits you!" %}</h2>
-            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>{% trans "Anywhere, Anytime!" %}</p>
-            <p class="aa-top-slider-price">{% trans "Or list your property to get a quick match!" %}</p>
-            <a href="{% url 'properties' %}" class="aa-top-slider-btn">{% trans "Check out our listings!" %}<span class="fa fa-angle-double-right"></span></a>
-          </div>
-          <!-- / Top slider content -->
+<section id="aa-slider">
+    <div class="aa-slider-area">
+        <!-- Top slider -->
+        <div class="aa-top-slider">
+            <!-- Top slider single slide -->
+            <div class="aa-top-slider-single">
+                <img src="{% static 'img/slider/1.png' %}" alt="img">
+                <!-- Top slider content -->
+                <div class="aa-top-slider-content">
+                    <span class="aa-top-slider-catg">{% trans "Buy Rent Global" %}</span>
+                    <h2 class="aa-top-slider-title">{% trans "Find the best property that suits you!" %}</h2>
+                    <p class="aa-top-slider-location">
+                        <i class="fa fa-map-marker"></i>{% trans "Anywhere, Anytime!" %}
+                    </p>
+                    <p class="aa-top-slider-price">{% trans "Or list your property to get a quick match!" %}</p>
+                    <a href="{% url 'properties' %}" class="aa-top-slider-btn">{% trans "Check out our listings!" %}
+                        <span class="fa fa-angle-double-right"></span>
+                    </a>
+                </div>
+                <!-- / Top slider content -->
+            </div>
         </div>
-      </div>
     </div>
-  </section>
-  <!-- End slider  -->
-
-  <!-- Advance Search -->
-  <section id="aa-advance-search">
+</section>
+<!-- End slider  -->
+<!-- Advance Search -->
+<section id="aa-advance-search">
     <div class="container">
-      <div class="aa-advance-search-area">
-        <div class="form">
-         <div class="aa-advance-search-top">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="aa-single-advance-search">
-                  <input type="text" placeholder="{% trans 'Type Your Location' %}">
+        <div class="aa-advance-search-area">
+            <div class="form">
+                <div class="aa-advance-search-top">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="aa-single-advance-search">
+                                <input type="text" placeholder="{% trans 'Type Your Location' %}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="aa-single-advance-search">
+                                <select>
+                                    <option value="0" selected>{% trans "Category" %}</option>
+                                    <option value="1">{% trans "Flat" %}</option>
+                                    <option value="2">{% trans "Land" %}</option>
+                                    <option value="3">{% trans "Plot" %}</option>
+                                    <option value="4">{% trans "Commercial" %}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="aa-single-advance-search">
+                                <select>
+                                    <option value="0" selected>Type</option>
+                                    <option value="1">Flat</option>
+                                    <option value="2">Land</option>
+                                    <option value="3">Plot</option>
+                                    <option value="4">Commercial</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="aa-single-advance-search">
+                                <select>
+                                    <option value="0" selected>Type</option>
+                                    <option value="1">Flat</option>
+                                    <option value="2">Land</option>
+                                    <option value="3">Plot</option>
+                                    <option value="4">Commercial</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="aa-single-advance-search">
+                                <input class="aa-search-btn" type="submit" value="Search">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-2">
-                <div class="aa-single-advance-search">
-                  <select>
-                   <option value="0" selected>{% trans "Category" %}</option>
-                    <option value="1">{% trans "Flat" %}</option>
-                    <option value="2">{% trans "Land" %} </option>
-                    <option value="3">{% trans "Plot" %}</option>
-                    <option value="4">{% trans "Commercial" %}</option>
-                  </select>
+                <div class="aa-advance-search-bottom">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="aa-single-filter-search">
+                                <span>AREA (SQ)</span>
+                                <span>FROM</span>
+                                <span id="skip-value-lower" class="example-val">30.00</span>
+                                <span>TO</span>
+                                <span id="skip-value-upper" class="example-val">100.00</span>
+                                <div id="aa-sqrfeet-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="aa-single-filter-search">
+                                <span>PRICE ($)</span>
+                                <span>FROM</span>
+                                <span id="skip-value-lower2" class="example-val">30.00</span>
+                                <span>TO</span>
+                                <span id="skip-value-upper2" class="example-val">100.00</span>
+                                <div id="aa-price-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-2">
-                 <div class="aa-single-advance-search">
-                  <select>
-                    <option value="0" selected>Type</option>
-                    <option value="1">Flat</option>
-                    <option value="2">Land</option>
-                    <option value="3">Plot</option>
-                    <option value="4">Commercial</option>
-                  </select>
-              </div>
-              </div>
-              <div class="col-md-2">
-                 <div class="aa-single-advance-search">
-                  <select>
-                    <option value="0" selected>Type</option>
-                    <option value="1">Flat</option>
-                    <option value="2">Land</option>
-                    <option value="3">Plot</option>
-                    <option value="4">Commercial</option>
-                  </select>
-              </div>
-              </div>
-              <div class="col-md-2">
-                <div class="aa-single-advance-search">
-                  <input class="aa-search-btn" type="submit" value="Search">
-                </div>
-              </div>
             </div>
-          </div>
-         <div class="aa-advance-search-bottom">
-           <div class="row">
-            <div class="col-md-6">
-              <div class="aa-single-filter-search">
-                <span>AREA (SQ)</span>
-                <span>FROM</span>
-                <span id="skip-value-lower" class="example-val">30.00</span>
-                <span>TO</span>
-                <span id="skip-value-upper" class="example-val">100.00</span>
-                <div id="aa-sqrfeet-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
-                </div>                  
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="aa-single-filter-search">
-                <span>PRICE ($)</span>
-                <span>FROM</span>
-                <span id="skip-value-lower2" class="example-val">30.00</span>
-                <span>TO</span>
-                <span id="skip-value-upper2" class="example-val">100.00</span>
-                <div id="aa-price-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
-                </div>      
-              </div>
-            </div>
-          </div>  
-         </div>
         </div>
-      </div>
     </div>
-  </section>
-  <!-- / Advance Search -->
-
-  <!-- About us -->
-  <section id="aa-about-us">
+</section>
+<!-- / Advance Search -->
+<!-- About us -->
+<section id="aa-about-us">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="aa-about-us-area">
-            <div class="row">
-              <div class="col-md-5">
-                <div class="aa-about-us-left">
-                  <img src="{% static 'img/about-us.jpg' %}" alt="image">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-about-us-area">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="aa-about-us-left">
+                                <img src="{% static 'img/about-us.jpg' %}" alt="image">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="aa-about-us-right">
+                                <div class="aa-title">
+                                    <h2>{% trans "About Us" %}</h2>
+                                    <span></span>
+                                </div>
+                                <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ab dignissimos vitae maxime adipisci blanditiis rerum quae quos! Id at rerum maxime modi fugit vero corrupti, ad atque sit laborum ipsum sunt blanditiis suscipit odio, aut nostrum assumenda nobis rem a maiores temporibus non commodi laboriosam, doloremque expedita! Corporis, provident?" %}</p>
+                                <ul>
+                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis." %}</li>
+                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit." %}</li>
+                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia." %}</li>
+                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis." %}</li>
+                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit." %}</li>
+                                    <li>{% trans " ipsum dolor sit amet, consectetur adipisicing elit. Quia." %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-7">
-                <div class="aa-about-us-right">
-                  <div class="aa-title">
-                    <h2>{% trans "About Us" %}</h2>
-                    <span></span>
-                  </div>
-                  <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ab dignissimos vitae maxime adipisci blanditiis rerum quae quos! Id at rerum maxime modi fugit vero corrupti, ad atque sit laborum ipsum sunt blanditiis suscipit odio, aut nostrum assumenda nobis rem a maiores temporibus non commodi laboriosam, doloremque expedita! Corporis, provident?" %}</p>                  
-                  <ul>
-                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis." %}</li>
-                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit." %}</li>
-                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia." %}</li>                    
-                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis." %}</li>
-                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit." %}</li>
-                    <li>{% trans " ipsum dolor sit amet, consectetur adipisicing elit. Quia." %}</li>
-                  </ul>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
-  <!-- / About us -->
-
-  <!-- Latest property -->
-  <section id="aa-latest-property">
+</section>
+<!-- / About us -->
+<!-- Latest property -->
+<section id="aa-latest-property">
     <div class="container">
-      <div class="aa-latest-property-area">
-        <div class="aa-title">
-          <h2>Latest Properties</h2>
-          <span></span>
-          <p>Check out our latest properties!</p>         
-        </div>
-        <div class="aa-latest-properties-content">
-          <div class="row">
-          {% for property in latest_properties %}
-            <div class="col-md-4">
-              <article class="aa-properties-item">
-                <a href="#" class="aa-properties-item-img">
-                  <img src="{{ property.property_pic1.url }}" alt="img" width="100" height="300">
-                </a>
-                {% if property.property_status == "For Rent" %}
-                        <div class="aa-tag for-rent">
-                            For Rent
-                        </div>
-                    {% elif property.property_status == "For Sale" %}
-                        <div class="aa-tag for-sale">
-                            For Sale
-                        </div>
-                    {% elif property.property_status == "Sold Out" %}
-                        <div class="aa-tag sold-out">
-                            Sold Out
-                        </div>
-                    {% endif %}
-                <div class="aa-properties-item-content">
-                  <div class="aa-properties-info">
-                    <span>
-                      {% if property.property_rooms > 0 %}
+        <div class="aa-latest-property-area">
+            <div class="aa-title">
+                <h2>Latest Properties</h2>
+                <span></span>
+                <p>Check out our latest properties!</p>
+            </div>
+            <div class="aa-latest-properties-content">
+                <div class="row">
+                    {% for property in latest_properties %}
+                    <div class="col-md-4">
+                        <article class="aa-properties-item">
+                            <a href="#" class="aa-properties-item-img">
+                                <img
+                                    src="{{ property.property_pic1.url }}"
+                                    alt="img"
+                                    width="100"
+                                    height="300"
+                                >
+                            </a>
+                            {% if property.property_status == "For Rent" %}
+                            <div class="aa-tag for-rent">
+                                For Rent
+                            </div>
+                            {% elif property.property_status == "For Sale" %}
+                            <div class="aa-tag for-sale">
+                                For Sale
+                            </div>
+                            {% elif property.property_status == "Sold Out" %}
+                            <div class="aa-tag sold-out">
+                                Sold Out
+                            </div>
+                            {% endif %}
+                            <div class="aa-properties-item-content">
+                                <div class="aa-properties-info">
+                                    <span>
+                                        {% if property.property_rooms > 0 %}
                           {{ property.property_rooms }} Rooms
                       {% endif %}
-                    </span>
-                    <span>Owner: {{ property.property_owner }}</span>
-                    <span>{{ property.property_square_meters }} SQR MTRS</span>
-                  </div>
-                  <div class="aa-properties-about">
-                    <h3><a href="{% url 'property_details' property.id %}"> {{ property.property_title }}</a></h3>
-                    <p>{{ property.property_description }}</p>                      
-                  </div>
-                  <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $ {{ property.property_price }}
-                    </span>
-                    <a href="{% url 'property_details' property.id %}" class="aa-secondary-btn">View Details</a>
-                  </div>
+                                    </span>
+                                    <span>Owner: {{ property.property_owner }}</span>
+                                    <span>{{ property.property_square_meters }} SQR MTRS</span>
+                                </div>
+                                <div class="aa-properties-about">
+                                    <h3>
+                                        <a href="{% url 'property_details' property.id %}"> {{ property.property_title }}</a>
+                                    </h3>
+                                    <p>{{ property.property_description }}</p>
+                                </div>
+                                <div class="aa-properties-detial">
+                                    <span class="aa-price">
+                                        $ {{ property.property_price }}
+                                    </span>
+                                    <a href="{% url 'property_details' property.id %}" class="aa-secondary-btn">View Details</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
                 </div>
-              </article>
             </div>
-            {% endfor %}
-      </div>
-    </div>
-  </section>
-  <!-- / Latest property -->
-
-  <!-- Service section -->
-  <section id="aa-service">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="aa-service-area">
-            <div class="aa-title">
-              <h2>{% trans "Our Services" %}</h2>
-              <span></span>
-              <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus." %}</p>
+        </section>
+        <!-- / Latest property -->
+        <!-- Service section -->
+        <section id="aa-service">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-service-area">
+                            <div class="aa-title">
+                                <h2>{% trans "Our Services" %}</h2>
+                                <span></span>
+                                <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus." %}</p>
+                            </div>
+                            <!-- service content -->
+                            <div class="aa-service-content">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="aa-single-service">
+                                            <div class="aa-service-icon">
+                                                <span class="fa fa-home"></span>
+                                            </div>
+                                            <div class="aa-single-service-content">
+                                                <h4>
+                                                    <a href="#">Property Sale</a>
+                                                </h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="aa-single-service">
+                                            <div class="aa-service-icon">
+                                                <span class="fa fa-check"></span>
+                                            </div>
+                                            <div class="aa-single-service-content">
+                                                <h4>
+                                                    <a href="#">Property Rent</a>
+                                                </h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="aa-single-service">
+                                            <div class="aa-service-icon">
+                                                <span class="fa fa-crosshairs"></span>
+                                            </div>
+                                            <div class="aa-single-service-content">
+                                                <h4>
+                                                    <a href="#">Property Development</a>
+                                                </h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="aa-single-service">
+                                            <div class="aa-service-icon">
+                                                <span class="fa fa-bar-chart-o"></span>
+                                            </div>
+                                            <div class="aa-single-service-content">
+                                                <h4>
+                                                    <a href="#">Market Analysis</a>
+                                                </h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- service content -->
-            <div class="aa-service-content">
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="aa-single-service">
-                    <div class="aa-service-icon">
-                      <span class="fa fa-home"></span>
-                    </div>
-                    <div class="aa-single-service-content">
-                      <h4><a href="#">Property Sale</a></h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="aa-single-service">
-                    <div class="aa-service-icon">
-                      <span class="fa fa-check"></span>
-                    </div>
-                    <div class="aa-single-service-content">
-                      <h4><a href="#">Property Rent</a></h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="aa-single-service">
-                    <div class="aa-service-icon">
-                      <span class="fa fa-crosshairs"></span>
-                    </div>
-                    <div class="aa-single-service-content">
-                      <h4><a href="#">Property Development</a></h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="aa-single-service">
-                    <div class="aa-service-icon">
-                      <span class="fa fa-bar-chart-o"></span>
-                    </div>
-                    <div class="aa-single-service-content">
-                      <h4><a href="#">Market Analysis</a></h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- / Service section -->
-  <!-- / Client brand -->
-
-  <!-- Latest blog -->
-  <section id="aa-latest-blog">
+        </section>
+        <!-- / Service section -->
+        <!-- / Client brand -->
+        <!-- <section id="aa-latest-blog">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -286,7 +297,6 @@
             </div>
             <div class="aa-latest-blog-content">
               <div class="row">
-                <!-- start single blog -->
                 <div class="col-md-4">
                   <article class="aa-blog-single">
                     <figure class="aa-blog-img">
@@ -304,7 +314,6 @@
                    
                   </article>
                 </div>
-                <!-- start single blog -->
                 <div class="col-md-4">
                   <article class="aa-blog-single">
                     <figure class="aa-blog-img">
@@ -321,7 +330,6 @@
                     </div>                   
                   </article>
                 </div>
-                <!-- start single blog -->
                 <div class="col-md-4">
                   <article class="aa-blog-single">
                     <figure class="aa-blog-img">
@@ -344,7 +352,90 @@
         </div>
       </div>
     </div>
-  </section>
-  <!-- / Latest blog -->
+  </section> -->
+        <section id="aa-latest-blog">
+            <h2 class="text-center">{% trans "Frequently Asked Questions and Answers" %}</h2>
+                <hr>
+                
+                <div class="faq">
+                
+                {% for faq in faqs %}
+                <label for="faq-a">
+                
+                    <p class="faq-heading">{{ faq.faqs_headline }}</p>
+                    <div class="faq-arrow"></div>
+                    <p class="faq-text">{{ faq.faqs_point1 }}<br></p>
+                    <p class="faq-text">{{ faq.faqs_point2 }}</p>
+                    <p class="faq-text">{{ faq.faqs_point3 }}</p>
+                    <p class="faq-text">{{ faq.faqs_point4 }}</p>
+                    <p class="faq-text">{{ faq.faqs_point5 }}</p>
+                    <p class="faq-text">{{ faq.faqs_point6 }}</p>
+                    <p class="faq-text">{{ faq.faqs_point7 }}</p>
+                    
+                </label>
+                {% endfor %}
+            </div>
+            
+        </section>
+        <style>
 
+          @import url(https://fonts.googleapis.com/css?family=Lato);
+
+          @import url(https://fonts.googleapis.com/css?family=Open Sans);
+
+          .faq-heading {
+            font-family: Lato;   
+            font-weight: 400;
+            font-size: 19px;
+            -webkit-transition: text-indent 0.2s;
+            text-indent: 20px;
+            color: #333;
+          }
+
+          .faq-text {
+            font-family: Open Sans;   
+            font-weight: 400;
+            color: #919191;
+            width:95%;
+            padding-left:20px;
+            margin-bottom:5px;
+          }
+
+          .faq {
+            width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 4px;
+            position: relative;
+            border: 1px solid #E1E1E1;
+          }
+          .faq label {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            height: 110px;
+            padding-top:1px;
+          
+            background-color: #FAFAFA;
+            border-bottom: 1px solid #E1E1E1;
+          }
+
+          .faq .faq-arrow {
+            width: 5px;
+            height: 5px;
+            transition: -webkit-transform 0.8s;
+            transition: transform 0.8s;
+            transition: transform 0.8s, -webkit-transform 0.8s;
+            -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-top: 2px solid rgba(0, 0, 0, 0.33);
+            border-right: 2px solid rgba(0, 0, 0, 0.33);
+            float: right;
+            position: relative;
+            top: -30px;
+            right: 27px;
+            -webkit-transform: rotate(45deg);
+                    transform: rotate(45deg);
+          }
+        </style>
 {% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2>Our Terms and Conditions</h2>
+            <ol class="breadcrumb">
+            <li><a href="#">HOME</a></li>            
+            <li class="active">Terms and Conditions</li>
+          </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+  <div class="container" id="aa-latest-property">
+    <div class="aa-title">
+        <h2>{% trans "Terms and Conditions of our services" %}</h2>
+            <span></span>
+    </div>
+    {% for tac_instance in tac_instances %}
+        <h4 class="container">{{ tac_instance.tac_heading }}</h4>    
+        <p class="container">{{ tac_instance.tac_instance }}</p>
+    {% endfor %}
+  </div>
+  <hr>
+{% endblock content %}

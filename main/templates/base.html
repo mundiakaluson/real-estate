@@ -1,6 +1,7 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
-{% load i18n %}
+
   <head>
     {% load static %}
     <meta charset="utf-8">
@@ -86,7 +87,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-           <a class="navbar-brand aa-logo-img" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+           <a class="navbar-brand aa-logo-img" href="{% url 'home' %}">Buy Rent Global</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
@@ -101,8 +102,6 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="">{% trans "LANGUAGE" %} <span class="caret"></span></a>
             </li>
-            <li><a href="{% url 'contact' %}">{% trans "CONTACT" %}</a></li>
-            <li><a href="{% url 'blogs' %}">{% trans "BLOGS" %}</a></li>
             <li><a href="{% url 'for_rent' %}">{% trans "FOR RENT" %}</a></li>
             <li><a href="{% url 'for_sale' %}">{% trans "FOR SALE" %}</a></li>
           </ul>                            
@@ -137,11 +136,9 @@
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="aa-footer-right">
-                <a href="#">{% trans "Home" %}</a>
-                <a href="#">{% trans "Support" %}</a>
-                <a href="#">{% trans "License" %}</a>
-                <a href="#">{% trans "FAQ" %}</a>
-                <a href="#">{% trans "Privacy & Term" %}</a>
+                <a href="{% url 'home' %}">{% trans "Home" %}</a>
+                <a href="{% url 'contact' %}">{% trans "Support" %}</a>
+                <a href="{% url 'terms_and_conditions' %}">{% trans "Privacy & Term" %}</a>
               </div>
             </div>            
           </div>

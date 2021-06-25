@@ -22,4 +22,5 @@ urlpatterns = [
     path('for_rent', views.for_rent, name='for_rent'),
     path('for_sale', views.for_sale, name='for_sale'),
     path('property_search', views.property_search, name='property_search'),
+    path('terms_and_conditions', views.terms_and_conditions, name='terms_and_conditions')
 ]

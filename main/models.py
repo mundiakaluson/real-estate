@@ -34,29 +34,10 @@ class Property(models.Model):
     ]
 
     TYPES = [
-        ('Mansion', 'Mansion'),
-        ('Bungalow', 'Bungalow'),
-        ('Cottage', 'Cottage'),
+        ('House', 'House'),
         ('Apartment', 'Apartment'),
-        ('Condo', 'Condo'),
-        ('Villa', 'Villa'),
-        ('Ranch House', 'Ranch House'),
-        ('Beach House', 'Beach House'),
-        ('Hostel', 'Hostel'),
-        ('Pent House', 'Pent House'),
-        ('Bedsitter', 'Bedsitter'),
-        ('Cabin', 'Cabin'),
-        ('Castle', 'Castle'),
-        ('Houseboats', 'Houseboats'),
-        ('Ranch', 'Ranch'),
-        ('Farm House', 'Farm House'),
-        ('Office', 'Office'),
-        ('Mall', 'Mall'),
-        ('Store', 'Store'),
-        ('Shop', 'Shop'),
-        ('Hotel', 'Hotel'),
-        ('Land', 'Land'),
-        ('Plot', 'Plot'),
+        ('Commercial', 'Commercial'),
+        ('Land', 'Land')
     ]
 
     property_owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
@@ -172,7 +153,21 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 
 class FAQS(models.Model):
     faqs_headline = models.CharField(max_length=256, null=True, blank=True)
-    faqs_content = models.TextField()
+    faqs_point1 = models.TextField(null=True, blank=True)
+    faqs_point2 = models.TextField(null=True, blank=True)
+    faqs_point3 = models.TextField(null=True, blank=True)
+    faqs_point4 = models.TextField(null=True, blank=True)
+    faqs_point5 = models.TextField(null=True, blank=True)
+    faqs_point6 = models.TextField(null=True, blank=True)
+    faqs_point7 = models.TextField(null=True, blank=True)
+
 
     def __str__(self):
         return self.faqs_headline
+
+class TermsAndConditions(models.Model):
+    tac_heading = models.CharField(max_length=128, null=True, blank=True)
+    tac_instance = models.TextField()
+
+    def __str__(self):
+        return str(self.tac_heading)

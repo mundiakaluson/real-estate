@@ -38,15 +38,10 @@
                                             {% if property_form.errors %}
                                                 <p class="invalid-feedback" style="color: red;">Please correct the errors before listing your property</p>
                                             {% endif %}
-                                            {% for error in form.non_field_errors %}
-                                                <p style="color: red;">{{error}}</p>
-                                            {% endfor %}
                                             <h4> Property created on: {{ property_form.property_post_date }}</h4>
                                             {{ property_form.property_owner }}
-                                            {{ property_form.property_active }}
-                                            {{ property_form.property_owner }}
-                                            {{ property_form.property_title | as_crispy_field }}
-                                            {{ property_form.property_price | as_crispy_field }}
+                                            {{ property_form.property_title|as_crispy_field }}
+                                            {{ property_form.property_price|as_crispy_field }}
                                             {{ property_form.property_description | as_crispy_field }}
                                             {{ property_form.property_about | as_crispy_field }}
                                             {{ property_form.property_location | as_crispy_field }}
@@ -54,7 +49,7 @@
                                             {{ property_form.property_status | as_crispy_field}}
                                             {{ property_form.property_square_meters | as_crispy_field }}
                                             {{ property_form.property_posted_by | as_crispy_field }}
-                                            {{ property_from.property_rooms | as_crispy_field }}
+                                            {{ property_form.property_rooms | as_crispy_field }}
                                             {{ property_form.property_bathroom | as_crispy_field }}
                                             {{ property_form.property_type | as_crispy_field }}
                                             {{ property_form.property_pic1 | as_crispy_field }}

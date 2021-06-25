@@ -22,6 +22,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'https://buyrentglobal.herokuapp.com']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [

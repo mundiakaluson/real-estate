@@ -223,8 +223,8 @@ img {
   padding: 0;
 }
 #aa-menu-area .main-navbar .navbar-header .aa-logo {
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   font-family: 'Noto Sans', sans-serif;
   font-size: 30px;
   padding: 15px;
@@ -248,10 +248,10 @@ img {
   transition: all 0.5s;
 }
 #aa-menu-area .main-navbar .navbar-nav .active a {
-  background-color: #FFF;
+  background-color: rgb(255, 255, 255);
 }
 #aa-menu-area .main-navbar .navbar-nav .open a {
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
 }
 #aa-menu-area .main-navbar .navbar-nav .dropdown-menu {
   border: none;
@@ -266,7 +266,7 @@ img {
   margin-right: -30px;
 }
 #aa-menu-area .navbar-fixed-top {
-  background-color: #FFF;
+  background-color: rgb(255, 255, 255);
   padding: 15px 0;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -501,7 +501,7 @@ img {
   height: 700px;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgb(207, 207, 207);
   left: 20%;
   padding: 30px;
   position: absolute;

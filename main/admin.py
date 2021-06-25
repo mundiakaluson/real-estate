@@ -7,6 +7,7 @@ from .models import (
     Article,
     Profile,
     FAQS,
+    TermsAndConditions,
 )
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
@@ -61,6 +62,9 @@ class CustomUserAdmin(UserAdmin):
 class FAQSAdmin(admin.ModelAdmin):
     pass
 
+class TermsAndConditionsAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(PageView, PageViewAdmin)
 admin.site.register(UserInformation, UserInformationAdmin)
@@ -69,3 +73,4 @@ admin.site.register(Article, ArticleAdmin)
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(FAQS, FAQSAdmin)
+admin.site.register(TermsAndConditions, TermsAndConditionsAdmin)

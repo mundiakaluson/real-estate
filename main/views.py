@@ -14,6 +14,7 @@ from .models import (
     Article,
     Profile,
     FAQS,
+    TermsAndConditions,
 )
 from django.utils import timezone
 from django.core.exceptions import ValidationError
@@ -53,8 +54,9 @@ def home(request):
             data_capture.region = captured_info.get('region')
             data_capture.time_zone = captured_info.get('time_zone')
             data_capture.save()
+    faqs = FAQS.objects.all()
     
-    return render(request, 'main/home.html', {'latest_properties': latest_properties})
+    return render(request, 'main/home.html', {'latest_properties': latest_properties, 'faqs': faqs})
 
 def properties(request):
     all_approved_properties = Property.objects.filter(property_active=True)
@@ -242,6 +244,7 @@ def contact(request):
 def for_rent(request):
     for_rent_properties = Property.objects.filter(property_active=True, property_status='For Rent')
     return render(request, 'main/for_rent.html', {'for_rent_properties': for_rent_properties})
+
 def for_sale(request):
     for_sale_properties = Property.objects.filter(property_active=True, property_status='For Sale')
     return render(request, 'main/for_sale.html', {'for_sale_properties': for_sale_properties})
@@ -250,3 +253,7 @@ def property_search(request):
     condition = request.POST.getlist('condition')
     print(condition)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def terms_and_conditions(request):
+    tac_instances = TermsAndConditions.objects.all()
+    return render(request, 'main/terms-and-conditions.html', {'tac_instances': tac_instances})
