@@ -95,7 +95,7 @@ else:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'buyRentGlobal',
+        'NAME': 'buyrentblobal',
         'USER': 'buyrentglobaladmin',
         'PASSWORD': '1adminMinus',
         'HOST': 'localhost',
