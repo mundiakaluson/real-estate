@@ -96,7 +96,7 @@ else:
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'buyRentGlobal',
-        'USER': 'buyRentGlobalAdmin',
+        'USER': 'buyrentglobaladmin',
         'PASSWORD': '1adminMinus',
         'HOST': 'localhost',
         'PORT': '',
