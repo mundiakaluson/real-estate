@@ -17,7 +17,7 @@ DISABLE_COLLECTSTATIC=1
 SECRET_KEY = '+kad@m2sawr_rcgw^ync*92+#pc8&8v(6hufcz#ig&r&9-r@^9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'https://buyrentglobal.herokuapp.com', '147.182.135.197']
 
