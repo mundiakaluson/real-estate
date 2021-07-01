@@ -2831,9 +2831,9 @@ img {
     margin-top: 20px;
   }
 
-  #aa-menu-area .main-navbar .navbar-header .aa-logo-img {
+  #aa-menu-area .main-navbar .navbar-header  {
     height: 45px;
-    width: 200px;
+    width: 500px;
   }
 
   #aa-contact .aa-contact-area .aa-contact-top .aa-contact-top-left {

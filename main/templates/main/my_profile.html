@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load countries %}
+{% load static %}
 {% block content %}
 <section id="aa-property-header">
     <div class="container">
@@ -38,7 +39,11 @@
     
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
+        {% if user.profile.profile_picture %}
           <img src="{{ user.profile.profile_picture.url }}" style="width:100%" alt="Avatar">
+        {% else %}
+          <img src="{% static 'img/default.jpg' %}" style="width:100%" alt="Avatar">
+        {% endif %}  
           <div class="w3-display-bottomleft w3-container w3-text-black">
             <h2>{{ request.user.username | capfirst }}</h2>
           </div>
