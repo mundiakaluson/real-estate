@@ -45,13 +45,13 @@
                 <li><a href="">USD</a></li>
                 <li><a href="">KES</a></li>                                            
               </ul>
-            </li>   
+            </li>    
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="">LANGUAGE <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
-                <li><a href="">ENGLISH</a></li>
-                <li><a href="">FRANCE</a></li> 
-                <li><a href="">ITALIAN</a></li>                                             
+                <li><a href=""><img width="15px" height="15px" src="{% static 'img/united-kingdom.png' %}"> ENGLISH</a></li>
+                <li><a href=""><img width="15px" height="15px" src="{% static 'img/france.png' %}"> FRANCE</a></li> 
+                <li><a href=""><img width="15px" height="15px" src="{% static 'img/italy.png' %}"> ITALIAN</a></li>                                             
               </ul>
             </li>
             {% if request.user.is_authenticated == False %}
@@ -77,12 +77,12 @@
             <li class="dropdown" style="background-color: #5d817e; border-radius: 20px; color: white;">
               <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">{{ request.user | capfirst }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
-                <li><a href="{% url 'my_profile' %}">MY PROFILE</a></li>
-                <li><a href="{% url 'my_properties' %}">MY PROPERTIES</a></li>  
-                <li><a href="{% url 'add_property' %}">ADD PROPERTY</a></li> 
-                <li><a href="{% url 'properties' %}">CHECK OUT PROPERTIES</a></li>
+                <li><a href="{% url 'my_profile' %}"><i class="fa fa-user" aria-hidden="true"></i> MY PROFILE</a></li>
+                <li><a href="{% url 'my_properties' %}"><i class="fa fa-building" aria-hidden="true"></i> MY PROPERTIES</a></li>  
+                <li><a href="{% url 'add_property' %}"><i class="fa fa-plus" aria-hidden="true"></i> ADD PROPERTY</a></li> 
+                <li><a href="{% url 'properties' %}"><i class="fa fa-list" aria-hidden="true"></i> CHECK OUT PROPERTIES</a></li>
                 <hr> 
-                <li><a href="{% url 'logout' %}">LOGOUT</a></li>                                        
+                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>                                        
               </ul>
             </li>
           {% endif %}
