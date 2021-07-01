@@ -12,11 +12,11 @@
                 <img src="{% static 'img/slider/1.png' %}" alt="img">
                 <!-- Top slider content -->
                 <div class="aa-top-slider-content">
-                    <h2 class="aa-top-slider-title">{% trans "Find the best property that suits you!" %}</h2>
+                    <h2 class="aa-top-slider-title">{% trans "BUYRENTGLOBAL" %}</h2>
                     <p class="aa-top-slider-location">
-                        <i class="fa fa-map-marker"></i>{% trans "Anywhere, Anytime!" %}
+                        <i class="fa fa-map-marker"></i>{% trans "Global Interactions, Local Matches!" %}
                     </p>
-                    <p class="aa-top-slider-price">{% trans "Or list your property to get a quick match!" %}</p>
+                    <p class="aa-top-slider-price">{% trans "CONNECTING REALTORS" %}</p>
                     <a href="{% url 'properties' %}" class="aa-top-slider-btn">{% trans "Check out our listings!" %}
                         <span class="fa fa-angle-double-right"></span>
                     </a>
@@ -36,6 +36,11 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="aa-single-advance-search">
+                                <p class="lead">Quickly search to see our listings!</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="aa-single-advance-search">
                                 <input type="text" placeholder="{% trans 'Type Your Location' %}">
                             </div>
                         </div>
@@ -43,62 +48,15 @@
                             <div class="aa-single-advance-search">
                                 <select>
                                     <option value="0" selected>{% trans "Category" %}</option>
-                                    <option value="1">{% trans "Flat" %}</option>
-                                    <option value="2">{% trans "Land" %}</option>
-                                    <option value="3">{% trans "Plot" %}</option>
-                                    <option value="4">{% trans "Commercial" %}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="aa-single-advance-search">
-                                <select>
-                                    <option value="0" selected>Type</option>
-                                    <option value="1">Flat</option>
-                                    <option value="2">Land</option>
-                                    <option value="3">Plot</option>
-                                    <option value="4">Commercial</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="aa-single-advance-search">
-                                <select>
-                                    <option value="0" selected>Type</option>
-                                    <option value="1">Flat</option>
-                                    <option value="2">Land</option>
-                                    <option value="3">Plot</option>
-                                    <option value="4">Commercial</option>
+                                    <option value="1">{% trans "For Rent" %}</option>
+                                    <option value="2">{% trans "For Sale" %}</option>
+                                    <option value="3">{% trans "All" %}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="aa-single-advance-search">
                                 <input class="aa-search-btn" type="submit" value="Search">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="aa-advance-search-bottom">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="aa-single-filter-search">
-                                <span>AREA (SQ)</span>
-                                <span>FROM</span>
-                                <span id="skip-value-lower" class="example-val">30.00</span>
-                                <span>TO</span>
-                                <span id="skip-value-upper" class="example-val">100.00</span>
-                                <div id="aa-sqrfeet-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="aa-single-filter-search">
-                                <span>PRICE ($)</span>
-                                <span>FROM</span>
-                                <span id="skip-value-lower2" class="example-val">30.00</span>
-                                <span>TO</span>
-                                <span id="skip-value-upper2" class="example-val">100.00</span>
-                                <div id="aa-price-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
                             </div>
                         </div>
                     </div>
@@ -126,14 +84,16 @@
                                     <h2>{% trans "About Us" %}</h2>
                                     <span></span>
                                 </div>
-                                <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ab dignissimos vitae maxime adipisci blanditiis rerum quae quos! Id at rerum maxime modi fugit vero corrupti, ad atque sit laborum ipsum sunt blanditiis suscipit odio, aut nostrum assumenda nobis rem a maiores temporibus non commodi laboriosam, doloremque expedita! Corporis, provident?" %}</p>
+                                <p>This site is exclusively created to connect all form of Real Estate sector interested parties across the
+                                    world i.e Landlords, Tenants, Real Estate agents, Real Estate Developers to help in <strong> Marketing their
+                                    Properties For FREE </strong> and well based property search engine for Property Buyers and Tenants to
+                                    directly interact at ease.</p>
                                 <ul>
-                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis." %}</li>
-                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit." %}</li>
-                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia." %}</li>
-                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, blanditiis." %}</li>
-                                    <li>{% trans ">Lorem ipsum dolor sit amet, consectetur adipisicing elit." %}</li>
-                                    <li>{% trans " ipsum dolor sit amet, consectetur adipisicing elit. Quia." %}</li>
+                                    <li>BuyRentGlobal.Com does not associate in brokerage or any form of transaction of the properties
+                                        listings by owners or real estate agents.</li>
+                                    <li>All information contact listed at BuyRentGlobal.Com is to
+                                        help the Property Owner or Real Estate Agent to do business at ease and efficiency./li>
+                                    <li>What we provide is Local and International Market advert for the properties listed at our website.</li>
                                 </ul>
                             </div>
                         </div>
@@ -218,7 +178,7 @@
                             <div class="aa-title">
                                 <h2>{% trans "Our Services" %}</h2>
                                 <span></span>
-                                <p>{% trans "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus." %}</p>
+                                <p>Below are the services offered by BuyRentGlobal.Com</p>
                             </div>
                             <!-- service content -->
                             <div class="aa-service-content">
@@ -232,7 +192,7 @@
                                                 <h4>
                                                     <a href="#">Property Sale</a>
                                                 </h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                                                <p>Quickly post your property and get a match that is close to you!</p>
                                             </div>
                                         </div>
                                     </div>
@@ -245,7 +205,7 @@
                                                 <h4>
                                                     <a href="#">Property Rent</a>
                                                 </h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                                                <p>Looking to rent out your property? BuyRentGlobal has you covered!</p>
                                             </div>
                                         </div>
                                     </div>
@@ -258,7 +218,7 @@
                                                 <h4>
                                                     <a href="#">Property Development</a>
                                                 </h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                                                <p>Real Estate Developers also have a special place as we allow them to post continuously developed properties like apartments and homes.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -269,9 +229,9 @@
                                             </div>
                                             <div class="aa-single-service-content">
                                                 <h4>
-                                                    <a href="#">Market Analysis</a>
+                                                    <a href="#">Client Approach</a>
                                                 </h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repellendus quasi asperiores itaque dolorem at.</p>
+                                                <p>BuyRentGlobal offers client approach by giving property owners the privelege of knowing which client is a potential match for their properties.</p>
                                             </div>
                                         </div>
                                     </div>

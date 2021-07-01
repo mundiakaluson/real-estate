@@ -23,55 +23,7 @@
     <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
 
-  <header id="aa-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="aa-header-area">
-          {% if request.user.is_authenticated %}
-            <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="aa-header-left">
-                  <div class="aa-telephone-no">
-                    <span class="fa fa-user"></span>
-                    {{ user.first_name }} {{ user.last_name }}
-                  </div>
-                  <div class="aa-email hidden-xs">
-                    <span class="fa fa-envelope-o"></span> {{ user.email }}
-                  </div>
-                </div>              
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="aa-header-right">
-                  <a href="{% url 'my_properties' %}" class="aa-register">{% trans "My Properties" %}</a>
-                  <a href="{% url 'properties' %}" class="aa-login">{% trans "Check out properties" %}</a>
-                  <a href="{% url 'logout' %}" class="aa-login badge">{% trans "Logout" %}</a>
-                  <a href="{% url 'my_profile' %}" class="aa-login badge">{% trans "My Profile" %}</a>
-                </div>
-              </div>
-            </div>
-          {% else %}
-            <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="aa-header-left">
-                  <div class="aa-email hidden-xs">
-                    <span class="fa fa-envelope-o"></span> info@markups.com
-                  </div>
-                </div>              
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="aa-header-right">
-                  <a href="{% url 'register' %}" class="aa-register">{% trans "Register" %}</a>
-                  <a href="{% url 'login' %}" class="aa-login">{% trans "Login" %}</a>
-                </div>
-              </div>
-            </div>
-          {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+
   <section id="aa-menu-area">
     <nav class="navbar navbar-default main-navbar" role="navigation">  
       <div class="container">
@@ -87,21 +39,42 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-              <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">CURRENCY <span class="caret"></span></a>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">CURRENCY <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
                 <li><a href="">USD</a></li>
                 <li><a href="">KES</a></li>                                            
               </ul>
+            </li>   
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">LANGUAGE <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">                
+                <li><a href="">ENGLISH</a></li>
+                <li><a href="">FRANCE</a></li> 
+                <li><a href="">ITALIAN</a></li>                                             
+              </ul>
             </li>
-            <li><a href="gallery.html">FAQs</a></li>                                         
+            {% if request.user.is_authenticated == False %}
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">ACCOUNTS <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">                
+                <li><a href="{% url 'login' %}">LOGIN</a></li>
+                <li><a href="{% url 'register' %}">REGISTER</a></li> 
+              </ul>
+            </li> 
+            {% endif %}                                   
+            <!--
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="">{% trans "LANGUAGE" %} <span class="caret"></span></a>
             </li>
+            -->
             <li><a href="{% url 'for_rent' %}">{% trans "FOR RENT" %}</a></li>
             <li><a href="{% url 'for_sale' %}">{% trans "FOR SALE" %}</a></li>
+            {% if request.user.is_authenticated == False %}
+              <li><a href="{% url 'register' %}" style="background-color: #5d817e; border-radius: 20px; color: white;">{% trans "LIST YOUR PROPERTY" %}</a></li>
+            {% endif %}
           {% if request.user.is_authenticated %}
-            <li class="dropdown" style="background-color:black; border-radius: 20px; color: white;">
+            <li class="dropdown" style="background-color: #5d817e; border-radius: 20px; color: white;">
               <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">{{ request.user | capfirst }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
                 <li><a href="{% url 'my_profile' %}">MY PROFILE</a></li>
