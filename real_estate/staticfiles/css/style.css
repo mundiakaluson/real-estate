@@ -221,6 +221,8 @@ img {
 }
 #aa-menu-area .main-navbar .navbar-header .navbar-brand {
   padding: 0;
+  width: 100px;
+  height: 46px;
 }
 #aa-menu-area .main-navbar .navbar-header .aa-logo {
   border: 2px solid rgb(255, 255, 255);
@@ -2690,6 +2692,8 @@ img {
   .navbar-collapse.in {
     overflow-x: hidden;
     background-color: #ddd;
+    overflow-y: hidden;
+    width: 555px;
   }
 
   .container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
