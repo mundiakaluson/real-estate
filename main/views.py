@@ -116,7 +116,7 @@ def login(request):
             auth.login(request, user)
             return redirect('home')
         elif user is None:
-            return render(request, 'main/login.html', {'error': 'You have not registered!'})
+            return render(request, 'main/login.html', {'error': 'Username or password does not exist!'})
     return render(request, 'main/login.html')
 
 def register_success(request):

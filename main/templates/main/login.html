@@ -31,7 +31,10 @@
                 </label>                                                          
                 </div> 
                 <p class="lead text-center">
-                    Don't have an account? Head over to the <a style="color: black;" href="#"> Registration Page </a>
+                    Don't have an account? Head over to the <a style="color: black;" href="{% url 'register' %}"> Registration Page </a>
+                </p>
+                <p class="lead text-center">
+                    <a style="color: black;" href="{% url 'reset_password' %}">Forgot Passowrd?</a>
                 </p>
                 <div class="aa-single-submit">
                   <input type="submit" value="Login" class="aa-browse-btn" name="submit">  

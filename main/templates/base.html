@@ -29,7 +29,7 @@
       <div class="container">
         <div class="navbar-header">
           <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggles collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -82,6 +82,7 @@
                 <li><a href="{% url 'add_property' %}"><i class="fa fa-plus" aria-hidden="true"></i> ADD PROPERTY</a></li> 
                 <li><a href="{% url 'properties' %}"><i class="fa fa-list" aria-hidden="true"></i> CHECK OUT PROPERTIES</a></li>
                 <hr> 
+                <li><a href="{% url 'reset_password' %}"><i class="fa fa-refresh" aria-hidden="true"></i> PASSWORD RESET</a></li>  
                 <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>                                        
               </ul>
             </li>
