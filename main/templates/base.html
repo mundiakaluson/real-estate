@@ -40,12 +40,19 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
             <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">PROPERTIES <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">                
+                <li><a href="{% url 'for_rent' %}">{% trans "FOR RENT" %}</a></li>
+                <li><a href="{% url 'for_sale' %}">{% trans "FOR SALE" %}</a></li>                                           
+              </ul>
+            </li>
+            <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="">CURRENCY <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
                 <li><a href="">USD</a></li>
                 <li><a href="">KES</a></li>                                            
               </ul>
-            </li>    
+            </li>  
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="">LANGUAGE <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
@@ -68,8 +75,6 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="">{% trans "LANGUAGE" %} <span class="caret"></span></a>
             </li>
             -->
-            <li><a href="{% url 'for_rent' %}">{% trans "FOR RENT" %}</a></li>
-            <li><a href="{% url 'for_sale' %}">{% trans "FOR SALE" %}</a></li>
             {% if request.user.is_authenticated == False %}
               <li><a href="{% url 'register' %}" style="background-color: #5d817e; border-radius: 20px; color: white;">{% trans "LIST YOUR PROPERTY" %}</a></li>
             {% endif %}
@@ -79,7 +84,7 @@
               <ul class="dropdown-menu" role="menu">                
                 <li><a href="{% url 'my_profile' %}"><i class="fa fa-user" aria-hidden="true"></i> MY PROFILE</a></li>
                 <li><a href="{% url 'my_properties' %}"><i class="fa fa-building" aria-hidden="true"></i> MY PROPERTIES</a></li>  
-                <li><a href="{% url 'add_property' %}"><i class="fa fa-plus" aria-hidden="true"></i> ADD PROPERTY</a></li> 
+                <li><a href="{% url 'add_property' %}"><i class="fa fa-plus" aria-hidden="true"></i> LIST PROPERTY</a></li> 
                 <li><a href="{% url 'properties' %}"><i class="fa fa-list" aria-hidden="true"></i> CHECK OUT PROPERTIES</a></li>
                 <hr> 
                 <li><a href="{% url 'reset_password' %}"><i class="fa fa-refresh" aria-hidden="true"></i> PASSWORD RESET</a></li>  

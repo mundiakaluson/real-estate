@@ -12,7 +12,7 @@
                         <li>
                             <a href="#">HOME</a>
                         </li>
-                        <li class="active">APARTMENT TITLE</li>
+                        <li class="active">ADD PROPERTY</li>
                     </ol>
                 </div>
             </div>
@@ -35,40 +35,48 @@
                             <form method="POST" action="{% url 'add_property' %}" id="" class="" enctype="multipart/form-data">
                                     <div class="col-md-12">
                                             {% csrf_token %}
-                                            {% if property_form.errors %}
-                                                <p class="invalid-feedback" style="color: red;">Please correct the errors before listing your property</p>
-                                            {% endif %}
                                             <h4> Property created on: {{ property_form.property_post_date }}</h4>
                                             {{ property_form.property_owner }}
-                                            {{ property_form.property_title|as_crispy_field }}
-                                            {{ property_form.property_price|as_crispy_field }}
-                                            {{ property_form.property_description | as_crispy_field }}
-                                            {{ property_form.property_about | as_crispy_field }}
-                                            {{ property_form.property_location | as_crispy_field }}
-                                            {{ property_form.property_condition | as_crispy_field }}
-                                            {{ property_form.property_status | as_crispy_field}}
-                                            {{ property_form.property_square_meters | as_crispy_field }}
-                                            {{ property_form.property_posted_by | as_crispy_field }}
-                                            {{ property_form.property_rooms | as_crispy_field }}
-                                            {{ property_form.property_bathroom | as_crispy_field }}
-                                            {{ property_form.property_type | as_crispy_field }}
-                                            {{ property_form.property_pic1 | as_crispy_field }}
-                                            {{ property_form.property_pic2 | as_crispy_field }}
-                                            {{ property_form.property_pic3 | as_crispy_field }}
-                                            {{ property_form.property_pic4 | as_crispy_field }}
-                                            {{ property_form.property_pic5 | as_crispy_field }}
-                                            {{ property_form.property_pic6 | as_crispy_field }}
-                                            {{ property_form.property_pic7 | as_crispy_field }}
-                                            {{ property_form.property_pic8 | as_crispy_field }}
-                                            {{ property_form.kitchen | as_crispy_field }}
-                                            {{ property_form.air_condition | as_crispy_field }}
-                                            {{ property_form.balcony | as_crispy_field }}
-                                            {{ property_form.gym | as_crispy_field }}
-                                            {{ property_form.garden | as_crispy_field }}
-                                            {{ property_form.cctv | as_crispy_field }}
-                                            {{ property_form.playground | as_crispy_field }}
-                                            {{ property_form.furnished | as_crispy_field }}
-                                            {{ property_form.parking | as_crispy_field }}
+                                            <div class="row">
+                                                <div class="col-sm-8">{{ property_form.property_title|as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_price|as_crispy_field }}</div>
+                                                <div class="col-sm-12">{{ property_form.property_description | as_crispy_field }}</div>
+                                                <div class="col-sm-12">{{ property_form.property_about | as_crispy_field }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <h4>Property Information</h4>
+                                                <div class="col-sm-8">{{ property_form.property_location | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_condition | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_status | as_crispy_field}}</div>
+                                                <div class="col-sm-4">{{ property_form.property_square_meters | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_posted_by | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_rooms | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_bathroom | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_type | as_crispy_field }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <h4>Properties Pictures</h4>
+                                                <div class="col-sm-4">{{ property_form.property_pic1 | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_pic2 | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_pic3 | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_pic4 | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_pic5 | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_pic6 | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_pic7 | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.property_pic8 | as_crispy_field }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <h4>Properties Features</h4>
+                                                <div class="col-sm-4">{{ property_form.air_condition | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.garden | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.gym | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.balcony | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.cctv | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.parking | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.furnished | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.playground | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.kitchen | as_crispy_field }}</div>
+                                            </div>
                                             <button type="submit" class="btn btn-primary">List Property</button>
                                       <div>
                                     </div>
@@ -181,9 +189,8 @@
                 <aside class="aa-properties-sidebar">
                     <!-- Start Single properties sidebar -->
                     <div class="aa-properties-single-sidebar">
-                        <h2 class="lead">Property Owner</h2>
-                        <h6 class="lead"> Posting as {{ user.first_name }}</h6>
-                        <h6 class="lead">Registered Date</h6>
+                        <h6 class="lead"> Posting as: <strong>{{ user.first_name }}</strong></h6>
+                        <h6 class="lead"> Post Date: <strong>{{ now }}</h6>
                         <h6 class="lead">Contact</h6>
                         <h2 class="lead">Propery Location</h2>
                         <h6 class="lead">Location</h6>

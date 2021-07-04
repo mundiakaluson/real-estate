@@ -23,6 +23,17 @@ class PropertyForm(ModelForm):
             'property_post_date':
                 HiddenInput()
         }
+        labels = {
+            'property_pic1': '',
+            'property_pic2': '',
+            'property_pic3': '',
+            'property_pic4': '',
+            'property_pic5': '',
+            'property_pic6': '',
+            'property_pic7': '',
+            'property_pic8': '',
+
+        }
 
 class ProfileForm(ModelForm):
     class Meta:

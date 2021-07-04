@@ -129,7 +129,7 @@ def logout(request):
 def add_property(request):
     property_instance = Property()
     logged_user = User.objects.get(username=request.user.username)
-    property_form = PropertyForm(request.POST, request.FILES,)
+    property_form = PropertyForm(request.POST, request.FILES, instance=property_instance)
     
     if property_form.is_valid():
         
@@ -160,12 +160,12 @@ def add_property(request):
         furnished = property_form.cleaned_data['furnished']
         parking = property_form.cleaned_data['parking']
         playground = property_form.cleaned_data['playground']
-        property_form.property_active = False
+        property_form.property_active = True
         property_form.property_post_date = timezone.now()
         user_property_form = property_form.save(commit=False)
         user_property_form.property_owner = request.user
         property_form.save()
-        return render(request, 'main/add_property.html', {'property_form': property_form})
+        return redirect('my_properties')
 
     return render(request, 'main/add_property.html', {'property_form': property_form})
 

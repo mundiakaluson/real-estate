@@ -84,24 +84,24 @@ WSGI_APPLICATION = 'real_estate.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-"""if DEBUG:
+if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-else:"""
-DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'buyrentglobal',
-    'USER': 'buyrentglobaladmin',
-    'PASSWORD': '1adminMinus',
-    'HOST': 'localhost',
-    'PORT': '',
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'buyrentglobal',
+        'USER': 'buyrentglobaladmin',
+        'PASSWORD': '1adminMinus',
+        'HOST': 'localhost',
+        'PORT': '',
+        }
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -153,12 +153,12 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 GEOIP_PATH = os.path.join(PROJECT_DIR, 'geoip/')
+
 """
 AUTHENTICATION_BACKENDS = (
  'django.contrib.auth.backends.ModelBackend',
  'allauth.account.auth_backends.AuthenticationBackend',
  )
-
 
 LOGIN_REDIRECT_URL = '/'
 

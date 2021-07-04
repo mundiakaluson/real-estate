@@ -12,7 +12,7 @@
                         <li>
                             <a href="#">HOME</a>
                         </li>
-                        <li class="active">APARTMENT TITLE</li>
+                        <li class="active">MY PROPERTIES</li>
                     </ol>
                 </div>
             </div>
@@ -60,21 +60,21 @@
             {% endif %}
             <div class="aa-properties-content-body">
               <ul class="aa-properties-nav">
-              {% for property in my_properties %}
+              {% for my_property in my_properties %}
                 <li>
                   <article class="aa-properties-item">
-                    <a class="aa-properties-item-img" href="#">
-                      <img alt="img" width="100px" height="230px" src="{{ property.property_pic1.url }}">
+                    <a class="aa-properties-item-img" href="{% url 'property_details' my_property.id %}">
+                      <img alt="img" width="100px" height="230px" src="{{ my_property.property_pic1.url }}">
                     </a>
-                    {% if property.property_status == "For Rent" %}
+                    {% if my_property.property_status == "For Rent" %}
                         <div class="aa-tag for-rent">
                             For Rent
                         </div>
-                    {% elif property.property_status == "For Sale" %}
+                    {% elif my_property.property_status == "For Sale" %}
                         <div class="aa-tag for-sale">
                             For Sale
                         </div>
-                    {% elif property.property_status == "Sold Out" %}
+                    {% elif my_property.property_status == "Sold Out" %}
                         <div class="aa-tag sold-out">
                             Sold Out
                         </div>
@@ -83,24 +83,24 @@
                     <div class="aa-properties-item-content">
                       <div class="aa-properties-info">
                         <span>
-                        {% if property.property_rooms > 0 %}
-                            {{ property.property_rooms }} Room(s)
+                        {% if my_property.property_rooms > 0 %}
+                            {{ my_property.property_rooms }} Room(s)
                         {% else %}
                             No rooms
                         {% endif %}
                         </span>
-                        <span>Owner: {{ property.property_owner }}</span>
-                        <span>{{ property.property_square_meters }} SQR MTRS</span>
+                        <span>Owner: {{ my_property.property_owner }}</span>
+                        <span>{{ my_property.property_square_meters }} SQR MTRS</span>
                       </div>
                       <div class="aa-properties-about">
-                        <h3><a href="#">{{ property.property_title }}</a></h3>
-                        <p> {{ property.property_description }}</p>                      
+                        <h3><a href="{% url 'property_details' my_property.id %}">{{ my_property.property_title }}</a></h3>
+                        <p> {{ my_property.property_description }}</p>                      
                       </div>
                       <div class="aa-properties-detial">
                         <span class="aa-price">
-                          $ {{ property.property_price }}
+                          $ {{ my_property.property_price }}
                         </span>
-                        <a class="aa-secondary-btn" href="{% url 'property_details' property.id %}">View Details</a>
+                        <a class="aa-secondary-btn" href="{% url 'property_details' my_property.id %}">View Details</a>
                       </div>
                     </div>
                   </article>
