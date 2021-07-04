@@ -26,6 +26,11 @@
         <div class="col-md-8">
           <div class="aa-properties-content">
             <!-- start properties content head -->
+            {% if delete_message %}
+            <div id="info-message">
+              <p style="color:green;" class="text-center alert alert-success">{{ delete_message }}</p>
+            </div>
+            {% endif %}
             <div class="aa-properties-content-head">              
               <div class="aa-properties-content-head-left">
                 <form action="" class="aa-sort-form">
@@ -84,8 +89,7 @@
                       <div class="aa-properties-info">
                         <span>
                         {% if my_property.property_rooms > 0 %}
-                            {{ my_property.property_rooms }} Room(s)
-                        {% else %}
+                            {{ my_property.property_rooms }} Room(s) {% else %}
                             No rooms
                         {% endif %}
                         </span>
@@ -101,6 +105,7 @@
                           $ {{ my_property.property_price }}
                         </span>
                         <a class="aa-secondary-btn" href="{% url 'property_details' my_property.id %}">View Details</a>
+                        <a class="aa-secondary-btn" style="background-color:red;" href="{% url 'delete_property' my_property.id %}">Delete Property</a>
                       </div>
                     </div>
                   </article>
@@ -112,4 +117,9 @@
     </div>
   </section>
 </div>
+    <script>
+      setTimeout(function(){
+      $('#info-message').remove();
+        }, 3000);
+    </script>
 {% endblock content %}

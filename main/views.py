@@ -1,16 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from django.contrib import auth 
+from django.contrib import auth
 from .forms import PropertyForm, ProfileForm
-from django_countries.data import COUNTRIES
 from django.contrib import messages
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import (
-    Property, 
-    PageView, 
-    UserInformation, 
-    Review, 
+    Property,
+    PageView,
+    UserInformation,
+    Review,
     Article,
     Profile,
     FAQS,
@@ -23,7 +22,7 @@ from django.contrib.gis.geoip2 import GeoIP2
 from django.http import HttpResponseRedirect
 from django.db.models import Avg, Sum
 
-global properties
+
 
 def home(request):
     latest_properties = Property.objects.filter(property_active=True)[:3]
@@ -32,14 +31,14 @@ def home(request):
         user_ip_address = UserVisit().remote_addr
 
         user_checker = UserInformation.objects.filter(
-            visitor = request.user
+            visitor=request.user
         )
         ip_checker = UserVisit.objects.filter(
-            remote_addr = user_ip_address
+            remote_addr=user_ip_address
         )
         if not user_checker and not ip_checker:
             location_object = GeoIP2()
-            captured_info = location_object.city('72.14.207.99') #! for test purposes    
+            captured_info = location_object.city('72.14.207.99')  # ! for test purposes
             data_capture.visitor = request.user
             data_capture.city = captured_info.get('city')
             data_capture.continent_code = captured_info.get('continent_code')
@@ -55,33 +54,38 @@ def home(request):
             data_capture.time_zone = captured_info.get('time_zone')
             data_capture.save()
     faqs = FAQS.objects.all()
-    
+
+
     return render(request, 'main/home.html', {'latest_properties': latest_properties, 'faqs': faqs})
+
 
 def properties(request):
     all_approved_properties = Property.objects.filter(property_active=True)
     return render(request, 'main/properties.html', {'all_approved_properties': all_approved_properties})
 
+
 def property_details(request, property_id):
     properties = get_object_or_404(Property, pk=property_id)
     current_user = request.user
     request_view = PageView.objects.filter(
-        viewer = current_user,
-        property_viewed= properties,
+        viewer=current_user,
+        property_viewed=properties,
     )
     if not request_view:
         PageView.objects.create(
-            viewer = current_user,
-            property_viewed = properties,
-            view = 1
+            viewer=current_user,
+            property_viewed=properties,
+            view=1
         )
-    
+
     nearby_properties = Property.objects.filter(
-        property_location = properties.property_location,
-        property_active = True
+        property_location=properties.property_location,
+        property_active=True
     ).order_by('property_post_date')[:2]
     views = PageView.objects.filter(property_viewed=properties).count()
-    return render(request, 'main/property_details.html', {'properties': properties, 'views': views, 'nearby_properties': nearby_properties})
+    return render(request, 'main/property_details.html',
+                  {'properties': properties, 'views': views, 'nearby_properties': nearby_properties})
+
 
 def register(request):
     if request.method == 'POST':
@@ -91,11 +95,11 @@ def register(request):
                 return render(request, 'main/register.html', {'error': 'This username exists!'})
             except User.DoesNotExist:
                 user = User.objects.create_user(
-                    username = request.POST['username'],
-                    first_name = request.POST['first_name'],
-                    last_name = request.POST['last_name'],
-                    email = request.POST['email'],
-                    password = request.POST['password']
+                    username=request.POST['username'],
+                    first_name=request.POST['first_name'],
+                    last_name=request.POST['last_name'],
+                    email=request.POST['email'],
+                    password=request.POST['password']
                 )
                 user.is_active = True
                 user.save()
@@ -104,13 +108,14 @@ def register(request):
 
     return render(request, 'main/register.html')
 
+
 def login(request):
     if request.method == 'POST':
         if not request.POST.get('remember', None):
             request.session.set_expiry(0)
         user = auth.authenticate(
-            username = request.POST['username'],
-            password = request.POST['password']
+            username=request.POST['username'],
+            password=request.POST['password']
         )
         if user is not None:
             auth.login(request, user)
@@ -119,20 +124,22 @@ def login(request):
             return render(request, 'main/login.html', {'error': 'Username or password does not exist!'})
     return render(request, 'main/login.html')
 
+
 def register_success(request):
     return render(request, 'main/register_success.html')
+
 
 def logout(request):
     auth.logout(request)
     return redirect('home')
 
+
 def add_property(request):
     property_instance = Property()
     logged_user = User.objects.get(username=request.user.username)
     property_form = PropertyForm(request.POST, request.FILES, instance=property_instance)
-    
+
     if property_form.is_valid():
-        
         property_title = property_form.cleaned_data['property_title']
         property_price = property_form.cleaned_data['property_price']
         property_description = property_form.cleaned_data['property_description']
@@ -169,10 +176,13 @@ def add_property(request):
 
     return render(request, 'main/add_property.html', {'property_form': property_form})
 
+
 def my_properties(request):
     property_check = Property.objects.filter(property_owner=request.user, property_active=True).count()
     my_properties = Property.objects.filter(property_owner=request.user, property_active=True)
-    return render(request, 'main/my_properties.html', {'my_properties': my_properties, 'property_check': property_check})
+    return render(request, 'main/my_properties.html',
+                  {'my_properties': my_properties, 'property_check': property_check})
+
 
 def review(request):
     if request.method == 'POST':
@@ -185,33 +195,39 @@ def review(request):
         user_rated_review = request.POST['rating_reviewed']
         review_object.save()
 
-        #current_user_reviews = Review.objects.filter(reviewed_user=review_object.reviewed_user)
-        #current_user_reviews.aggregate(Avg('rating_reviewed'))
+        # current_user_reviews = Review.objects.filter(reviewed_user=review_object.reviewed_user)
+        # current_user_reviews.aggregate(Avg('rating_reviewed'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return redirect('home')
+
 
 def blogs(request):
     articles = Article.objects.all()
     empty_check = Article.objects.all().count()
     return render(request, 'main/blogs.html', {'articles': articles, 'empty_check': empty_check})
 
+
 def blog_details(request, blog_id):
     article = get_object_or_404(Article, pk=blog_id)
     return render(request, 'main/blog_details.html', {'article': article})
+
 
 def all_agents(request):
     profiles = Profile.objects.all()
     return render(request, 'main/all_agents.html', {'profiles': profiles})
 
+
 def faqs(request):
     faqs = FAQS.objects.all()
     return render(request, 'main/faqs.html', {'faqs': faqs})
+
 
 def my_profile(request):
     current_profile = Profile.objects.get(user=request.user)
     current_user = User.objects.get(username=request.user)
     if request.method == 'POST':
-        if request.POST['first_name'] and request.POST['last_name'] and request.POST['phone_number'] and request.POST['profile_picture'] and request.POST['country'] and request.POST['region']:
+        if request.POST['first_name'] and request.POST['last_name'] and request.POST['phone_number'] and request.POST[
+            'profile_picture'] and request.POST['country'] and request.POST['region']:
             current_user.first_name = request.POST['first_name']
             current_user.last_name = request.POST['last_name']
             current_profile.phone_number = request.POST['phone_number']
@@ -220,12 +236,16 @@ def my_profile(request):
             current_profile.region = request.POST['region']
             current_user.save()
             current_profile.save()
-            messages.success(request, 'Profile Changed Successfully! Changes will take place as the server refreshes the Database.', extra_tags='alert')
+            messages.success(request,
+                             'Profile Changed Successfully! Changes will take place as the server refreshes the Database.',
+                             extra_tags='alert')
             return render(request, 'main/my_profile.html')
     return render(request, 'main/my_profile.html')
 
+
 def update_profile(request):
     pass
+
 
 def contact(request):
     if request.method == 'POST':
@@ -241,19 +261,35 @@ def contact(request):
                 return HttpResponseRedirect('/main/contact', {'error': 'Message could not be sent!'})
     return render(request, 'main/contact.html')
 
+
 def for_rent(request):
     for_rent_properties = Property.objects.filter(property_active=True, property_status='For Rent')
     return render(request, 'main/for_rent.html', {'for_rent_properties': for_rent_properties})
 
+
 def for_sale(request):
     for_sale_properties = Property.objects.filter(property_active=True, property_status='For Sale')
     return render(request, 'main/for_sale.html', {'for_sale_properties': for_sale_properties})
+
 
 def property_search(request):
     condition = request.POST.getlist('condition')
     print(condition)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
 def terms_and_conditions(request):
     tac_instances = TermsAndConditions.objects.all()
     return render(request, 'main/terms-and-conditions.html', {'tac_instances': tac_instances})
+
+def delete_property(request, property_id):
+    context = {}
+    try:
+        property_to_delete = Property.objects.get(id=property_id)
+        property_to_delete.delete()
+        my_properties = Property.objects.filter(property_owner=request.user, property_active=True)
+        return render(request, 'main/my_properties.html', {'my_properties': my_properties, 'delete_message': 'Deleted Successfully!'})
+    except:
+        context['error_message'] = 'Property does not exist!'
+        my_properties = Property.objects.filter(property_owner=request.user, property_active=True)
+    return render(request, 'main/my_properties.html', {'my_properties': my_properties, 'error_message': 'An error occurred!'})

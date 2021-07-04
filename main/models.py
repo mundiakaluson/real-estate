@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_countries.data import COUNTRIES
 from django.utils import timezone
 from django import forms
 from .extras import (
-    get_pic_name, 
-    validate_image, 
+    get_pic_name,
+    validate_image,
     blog_pictures,
     profile_picture,
 )
@@ -12,8 +13,9 @@ from django_countries.fields import CountryField
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
 
+
 class Property(models.Model):
-    #Main details
+    # Main details
     CONDITIONS = [
         ('New', 'New'),
         ('Renovated', 'Renovated'),
@@ -44,8 +46,8 @@ class Property(models.Model):
     property_title = models.CharField(max_length=256)
     property_description = models.CharField(max_length=1024)
     property_about = models.TextField()
-    property_rooms = models.IntegerField(choices=[(i, i) for i in range (30)], null=True, blank=True)
-    property_bathroom = models.IntegerField(choices=[(i, i) for i in range (30)], null=True, blank=True)
+    property_rooms = models.IntegerField(choices=[(i, i) for i in range(30)], null=True, blank=True)
+    property_bathroom = models.IntegerField(choices=[(i, i) for i in range(30)], null=True, blank=True)
     property_location = models.CharField(max_length=128)
     property_price = models.CharField(max_length=64)
     property_condition = models.CharField(max_length=64, choices=CONDITIONS)
@@ -64,7 +66,7 @@ class Property(models.Model):
     property_pic7 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
     property_pic8 = models.ImageField(upload_to=get_pic_name, blank=True, null=True, validators=[validate_image])
 
-    #Property Extras
+    # Property Extras
     kitchen = models.BooleanField()
     air_condition = models.BooleanField()
     balcony = models.BooleanField()
@@ -78,10 +80,12 @@ class Property(models.Model):
     def __str__(self):
         return self.property_title
 
+
 class PageView(models.Model):
     viewer = models.ForeignKey(User, on_delete=models.CASCADE)
     property_viewed = models.ForeignKey(Property, on_delete=models.CASCADE)
     view = models.PositiveIntegerField()
+
 
 class UserInformation(models.Model):
     visitor = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -101,6 +105,7 @@ class UserInformation(models.Model):
     def __str__(self):
         return "Data for user: %s in country: %s" % (self.visitor, self.country_name)
 
+
 class Review(models.Model):
     RATINGS = [
         (1.0, 1.0),
@@ -118,6 +123,7 @@ class Review(models.Model):
     def __str__(self):
         return "Review for %s left on %s" % (self.reviewed_user, self.date_reviewed)
 
+
 class Article(models.Model):
     article_title = models.CharField(max_length=256)
     article_intro = models.CharField(max_length=512)
@@ -126,6 +132,7 @@ class Article(models.Model):
     article_tag = models.CharField(max_length=64)
     article_picture = models.ImageField(blank=True, null=True, upload_to=blog_pictures)
     article_content = models.TextField()
+
 
 class Profile(models.Model):
     REGISTERED_AS = (
@@ -145,11 +152,13 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+
 @receiver(models.signals.post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
 
 class FAQS(models.Model):
     faqs_headline = models.CharField(max_length=256, null=True, blank=True)
@@ -161,9 +170,9 @@ class FAQS(models.Model):
     faqs_point6 = models.TextField(null=True, blank=True)
     faqs_point7 = models.TextField(null=True, blank=True)
 
-
     def __str__(self):
         return self.faqs_headline
+
 
 class TermsAndConditions(models.Model):
     tac_heading = models.CharField(max_length=128, null=True, blank=True)
