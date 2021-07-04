@@ -56,7 +56,7 @@ class Property(models.Model):
     property_posted_by = models.CharField(max_length=64, choices=POST_OWNER)
     property_post_date = models.DateTimeField(auto_now_add=True, editable=True)
     property_type = models.CharField(max_length=64, choices=TYPES)
-    property_active = models.BooleanField(default=False)
+    property_active = models.BooleanField(default=True)
     property_pic1 = models.ImageField(upload_to=get_pic_name, validators=[validate_image])
     property_pic2 = models.ImageField(upload_to=get_pic_name, validators=[validate_image])
     property_pic3 = models.ImageField(upload_to=get_pic_name, validators=[validate_image])
