@@ -66,17 +66,17 @@ def properties(request):
 
 def property_details(request, property_id):
     properties = get_object_or_404(Property, pk=property_id)
-    current_user = request.user
-    request_view = PageView.objects.filter(
-        viewer=current_user,
-        property_viewed=properties,
-    )
-    if not request_view:
-        PageView.objects.create(
-            viewer=current_user,
+    if request.user.is_authenticated:
+        request_view = PageView.objects.filter(
+            viewer=request.user,
             property_viewed=properties,
-            view=1
         )
+        if not request_view:
+            PageView.objects.create(
+                viewer=current_user,
+                property_viewed=properties,
+                view=1
+            )
 
     nearby_properties = Property.objects.filter(
         property_location=properties.property_location,
