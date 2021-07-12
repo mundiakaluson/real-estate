@@ -12,7 +12,7 @@ from .extras import (
 from django_countries.fields import CountryField
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
-
+from location_field.models.spatial import PlainLocationField
 
 class Property(models.Model):
     # Main details
@@ -48,7 +48,7 @@ class Property(models.Model):
     property_about = models.TextField()
     property_rooms = models.IntegerField(choices=[(i, i) for i in range(30)], null=True, blank=True)
     property_bathroom = models.IntegerField(choices=[(i, i) for i in range(30)], null=True, blank=True)
-    property_location = models.CharField(max_length=128)
+    property_location = PlainLocationField(based_fields=['city'], zoom=7)
     property_price = models.CharField(max_length=64)
     property_condition = models.CharField(max_length=64, choices=CONDITIONS)
     property_status = models.CharField(max_length=64, choices=STATUS)

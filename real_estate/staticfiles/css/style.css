@@ -458,7 +458,7 @@ img {
 ====================*/
 
 #aa-slider {
-  float: left;
+  float: right;
   display: inline;
   width: 100%;
 }
@@ -507,8 +507,9 @@ img {
   left: 20%;
   padding: 30px;
   position: absolute;
-  top: 40%;
+  top: 24%;
   z-index: 999;
+  margin-left: 215px;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-catg {
   font-family: 'Noto Sans', sans-serif;
@@ -575,7 +576,7 @@ img {
   border-radius: 10px 10px 0 0;
   display: inline;
   float: left;
-  margin-top: -100px;
+  margin-top: -320px;
   min-height: 100px;
   padding: 25px 20px;
   position: relative;
