@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django_countries',
     'whitenoise.runserver_nostatic',
     'coverage',
-    'location_field.apps.DefaultConfig',
+    'places',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -197,6 +198,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# PLACES_MAPS_API_KEY = 'AIzaSyA1MyOICbkW-y8xa6DSJl3CHhotCOPjuHc'
+
+PLACES_MAPS_API_KEY='AIzaSyA1MyOICbkW-y8xa6DSJl3CHhotCOPjuHc'
+PLACES_MAP_WIDGET_HEIGHT=0.00000000001
+PLACES_MAP_OPTIONS='{"center": { "lat": 38.971584, "lng": -95.235072 }, "zoom": 10}'
+PLACES_MARKER_OPTIONS='{"draggable": true}'
 
 django_heroku.settings(locals(), test_runner=False)

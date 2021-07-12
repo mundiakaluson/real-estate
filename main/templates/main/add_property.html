@@ -2,6 +2,8 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
+{% load widget_tweaks %}    
+{{ property_form.media }}
 <section id="aa-property-header">
     <div class="container">
         <div class="row">
@@ -45,7 +47,7 @@
                                             </div>
                                             <div class="row">
                                                 <h4>Property Information</h4>
-                                                <div class="col-sm-8">{{ property_form.property_location | as_crispy_field }}</div>
+                                                <div class="col-sm-8"><strong>Property Location*</strong>{{ property_form.property_location | add_class:"col-sm-8" }}</div>
                                                 <div class="col-sm-4">{{ property_form.property_condition | as_crispy_field }}</div>
                                                 <div class="col-sm-4">{{ property_form.property_status | as_crispy_field}}</div>
                                                 <div class="col-sm-4">{{ property_form.property_square_meters | as_crispy_field }}</div>
@@ -76,150 +78,29 @@
                                                 <div class="col-sm-4">{{ property_form.furnished | as_crispy_field }}</div>
                                                 <div class="col-sm-4">{{ property_form.playground | as_crispy_field }}</div>
                                                 <div class="col-sm-4">{{ property_form.kitchen | as_crispy_field }}</div>
-                                                {{ property_form.media }}
+                                                
                                             </div>
-                                            <button type="submit" class="btn btn-primary">List Property</button>
+                                            <div class="row">
+                                                <h4>Nearby Amenities</h4>
+                                                <div class="col-sm-4">{{ property_form.school | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.hospital | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.borehole | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.bus_stop | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.internet_service_provider | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.bank | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.mall | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.shops | as_crispy_field }}</div>
+                                                <div class="col-sm-4">{{ property_form.main_road | as_crispy_field }}</div>
+                                                
+                                            </div>
+                                            <button type="submit" class="btn text-light btn-lg">List Property</button>
                                       <div>
                                     </div>
                                   </div>
                             </form>
                         </div>
-                        <!-- Properties social share -->
-                        <div class="aa-properties-social">
-                            <ul>
-                                <li>Share</li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-pinterest"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                         <!-- Nearby properties -->
-                        <div class="aa-nearby-properties">
-                            <div class="aa-title">
-                                <h2>Nearby Properties</h2>
-                                <span></span>
-                            </div>
-                            <div class="aa-nearby-properties-area">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <article class="aa-properties-item">
-                                            <a class="aa-properties-item-img" href="#">
-                                                <img alt="img" src="{% static 'img/item/1.jpg' %}">
-                                            </a>
-                                            <div class="aa-tag for-sale">
-                                                For Sale
-                                            </div>
-                                            
-                                            <div class="aa-properties-item-content">
-                                                <div class="aa-properties-info">
-                                                    <span>5 Rooms</span>
-                                                    <span>2 Beds</span>
-                                                    <span>3 Baths</span>
-                                                    <span>1100 SQ FT</span>
-                                                </div>
-                                                <div class="aa-properties-about">
-                                                    <h3>
-                                                        <a href="#">Appartment Title</a>
-                                                    </h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                                                </div>
-                                                <div class="aa-properties-detial">
-                                                    <span class="aa-price">
-                                                        $35000
-                                                    </span>
-                                                    <a class="aa-secondary-btn" href="#">View Details</a>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <article class="aa-properties-item">
-                                            <a class="aa-properties-item-img" href="#">
-                                                <img alt="img" src="{% static 'img/item/2.jpg' %}">
-                                            </a>
-                                            <div class="aa-tag for-sale">
-                                                For Sale
-                                            </div>
-                                            <div class="aa-properties-item-content">
-                                                <div class="aa-properties-info">
-                                                    <span>5 Rooms</span>
-                                                    <span>2 Beds</span>
-                                                    <span>3 Baths</span>
-                                                    <span>1100 SQ FT</span>
-                                                </div>
-                                                <div class="aa-properties-about">
-                                                    <h3>
-                                                        <a href="#">Appartment Title</a>
-                                                    </h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>
-                                                </div>
-                                                <div class="aa-properties-detial">
-                                                    <span class="aa-price">
-                                                        $35000
-                                                    </span>
-                                                    <a class="aa-secondary-btn" href="#">View Details</a>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- Start properties sidebar -->
-            <div class="col-md-4">
-                <aside class="aa-properties-sidebar">
-                    <!-- Start Single properties sidebar -->
-                    <div class="aa-properties-single-sidebar">
-                        <h6 class="lead"> Posting as: <strong>{{ user.first_name }}</strong></h6>
-                        <h6 class="lead"> Post Date: <strong>{{ now }}</h6>
-                        <h6 class="lead">Contact</h6>
-                        <h2 class="lead">Propery Location</h2>
-                        <h6 class="lead">Location</h6>
-                        <h2 class="lead">Propery Condition</h2>
-                        <h6 class="lead">Property Status</h6>
-                        <h2 class="lead">For Sale, Rent, Sold</h2>
-                        <h6 class="lead">Condition (Furnished?)</h6>
-                        <h2 class="lead">Post Details</h2>
-                        <h6 class="lead">Date Posted</h6>
-                        <!-- Start Single properties sidebar -->
-                        <div class="aa-properties-single-sidebar">
-                            <h3>Safety Tips</h3>
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="{% static 'img/item/1.jpg' %}" alt="img">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">
-                                        <a href="#">Safety Tips</a>
-                                    </h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                    <span>$65000</span>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
                 </div>
             </div>
         </div>

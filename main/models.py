@@ -12,7 +12,7 @@ from .extras import (
 from django_countries.fields import CountryField
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
-from location_field.models.spatial import PlainLocationField
+from places.fields import PlacesField
 
 class Property(models.Model):
     # Main details
@@ -48,7 +48,7 @@ class Property(models.Model):
     property_about = models.TextField()
     property_rooms = models.IntegerField(choices=[(i, i) for i in range(30)], null=True, blank=True)
     property_bathroom = models.IntegerField(choices=[(i, i) for i in range(30)], null=True, blank=True)
-    property_location = PlainLocationField(based_fields=['city'], zoom=7)
+    property_location = PlacesField()
     property_price = models.CharField(max_length=64)
     property_condition = models.CharField(max_length=64, choices=CONDITIONS)
     property_status = models.CharField(max_length=64, choices=STATUS)
@@ -76,6 +76,17 @@ class Property(models.Model):
     playground = models.BooleanField()
     furnished = models.BooleanField()
     parking = models.BooleanField()
+
+    # Property Amenities
+    school = models.BooleanField(null=True, blank=True)
+    hospital = models.BooleanField(null=True, blank=True)
+    borehole = models.BooleanField(null=True, blank=True)
+    bus_stop = models.BooleanField(null=True, blank=True)
+    internet_service_provider = models.BooleanField(null=True, blank=True)
+    bank = models.BooleanField(null=True, blank=True)
+    mall = models.BooleanField(null=True, blank=True)
+    shops = models.BooleanField(null=True, blank=True)
+    main_road = models.BooleanField(null=True, blank=True)
 
     def __str__(self):
         return self.property_title

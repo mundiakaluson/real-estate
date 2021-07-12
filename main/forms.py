@@ -1,6 +1,8 @@
-from django.forms import ModelForm, Textarea, HiddenInput
+from django.forms import ModelForm, Textarea, HiddenInput, TextInput
 from .models import Property, Profile
 from django.utils.translation import gettext_lazy as _
+from places.fields import PlacesField
+
 class PropertyForm(ModelForm):
     class Meta:
         model = Property
@@ -21,7 +23,7 @@ class PropertyForm(ModelForm):
             'property_active':
                 HiddenInput(),
             'property_post_date':
-                HiddenInput()
+                HiddenInput(),
         }
         labels = {
             'property_pic1': '',
@@ -32,6 +34,7 @@ class PropertyForm(ModelForm):
             'property_pic6': '',
             'property_pic7': '',
             'property_pic8': '',
+            'property_location': 'Property Location'
 
         }
 

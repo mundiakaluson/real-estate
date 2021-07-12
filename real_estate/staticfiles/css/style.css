@@ -458,7 +458,7 @@ img {
 ====================*/
 
 #aa-slider {
-  float: right;
+  float: left;
   display: inline;
   width: 100%;
 }
@@ -503,16 +503,15 @@ img {
   height: 700px;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content {
-  background-color: rgb(207, 207, 207);
+  background-color: rgba(255, 255, 255, 0.8);
   left: 20%;
   padding: 30px;
   position: absolute;
-  top: 24%;
+  top: 40%;
   z-index: 999;
-  margin-left: 215px;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-catg {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 25px;
   font-weight: bold;
   letter-spacing: 5px;
@@ -535,14 +534,14 @@ img {
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-off {
   font-size: 14px;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #555;
   display: inline-block;
   margin-top: 10px;
   font-weight: bold;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-price {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 30px;
   font-weight: bold;
   text-transform: uppercase;

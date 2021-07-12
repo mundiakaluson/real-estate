@@ -12,7 +12,7 @@
             <h2> {{ properties.property_title }}</h2>
             <ol class="breadcrumb">
             <li><a href="{% url 'home' %}">HOME</a></li>            
-            <li class="active">APARTMENT TITLE</li>
+            <li class="active">{{ properties.property_title }}</li>
           </ol>
           </div>
         </div>
@@ -36,6 +36,7 @@
                <img src="{{ properties.property_pic2.url }}" alt="img">
                <img src="{{ properties.property_pic3.url }}" alt="img">
              </div>
+             
              <div class="aa-properties-info">
              <h2> {{ properties.property_title }} </h2>
                <span class="aa-price">Price ${{ properties.property_price }}</span><hr>
@@ -45,38 +46,109 @@
                {% if properties.property_bathroom != 0 %}
                <p class="aa-price"><i class="fa fa-bath" aria-hidden="true"></i> {{ properties.property_bathroom }}</p>
                {% endif %}
+               <div class="col-sm-12">
                <h4>Property Description</h4>
                <p>{{ properties.property_about }}</p>
                <h4>Propery Features</h4>
                <ul>
                  {% if properties.kitchen == True %}
+                  <div class="col-sm-4">
                     <li>Kitchen: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
                  {% endif %}
                  {% if properties.air_condition == True %}
+                  <div class="col-sm-4">
                     <li>Air Condition: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
                  {% endif %}
                  {% if properties.balcony == True %}
+                  <div class="col-sm-4">
                     <li>Kitchen: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
                  {% endif %}
                  {% if properties.gym == True %}
+                  <div class="col-sm-4">
                     <li>Gym: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
                  {% endif %}
                  {% if properties.garden == True %}
+                  <div class="col-sm-4">
                     <li>Garden: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
                  {% endif %}
                  {% if properties.cctv == True %}
+                  <div class="col-sm-4">
                     <li>CCTV: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
                  {% endif %}
                  {% if properties.playground == True %}
+                  <div class="col-sm-4">
                     <li>Playground: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
                  {% endif %}
                  {% if properties.furnished == True %}
+                  <div class="col-sm-4">
                     <li>Furnished: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
                  {% endif %}
                  {% if properties.parking == True %}
+                  <div class="col-sm-4">
                     <li>Parking: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
                  {% endif %}
                </ul>
+               </div>
+               <br>
+               <div class="col-sm-12">
+               <h4>Propery Features</h4>
+               <ul>
+                 {% if properties.school == True %}
+                  <div class="col-sm-4">
+                    <li>School: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
+                 {% endif %}
+                 {% if properties.hospital == True %}
+                  <div class="col-sm-4">
+                    <li>Hospital: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
+                 {% endif %}
+                 {% if properties.borehole == True %}
+                  <div class="col-sm-4">
+                    <li>Borehole: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
+                 {% endif %}
+                 {% if properties.bus_stop == True %}
+                  <div class="col-sm-4">
+                    <li>Bus Stop: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
+                 {% endif %}
+                 {% if properties.internet_service_provider == True %}
+                  <div class="col-sm-4">
+                    <li>Internet Service Provider: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
+                 {% endif %}
+                 {% if properties.bank == True %}
+                  <div class="col-sm-4">
+                    <li>Bank: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
+                 {% endif %}
+                 {% if properties.mall == True %}
+                  <div class="col-sm-4">
+                    <li>Mall: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
+                 {% endif %}
+                 {% if properties.shops == True %}
+                  <div class="col-sm-4">
+                    <li>Shops: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
+                 {% endif %}
+                 {% if properties.main_road == True %}
+                  <div class="col-sm-4">
+                    <li>Main Road: <i class="fa fa-check" aria-hidden="true"></i></li>
+                  </div>
+                 {% endif %}
+               </ul>
+               </div>
                </div>
              <!-- Properties social share -->
              <div class="aa-properties-social">
@@ -147,7 +219,7 @@
             <!-- Start Single properties sidebar -->
             <div class="aa-properties-single-sidebar">
               <h2 class="lead">Property Information</h2>
-              <h6 class="lead"><i class="fa fa-user" aria-hidden="true"></i> Owner: {{ properties.property_owner | capfirst }}</h6>
+              <h6 class="lead"><i class="fa fa-user" aria-hidden="true"></i> {{ properties.property_posted_by }}: {{ properties.property_owner | capfirst }}</h6>
               <h6 class="lead"><i class="fa fa-calendar" aria-hidden="true"></i> Posted: {{ properties.property_post_date | naturaltime }}</h6>
               <h6 class="lead"><i class="fa fa-map-marker" aria-hidden="true"></i> Location: {{ properties.property_location }}</h6>
               <h6 class="lead"><i class="fa fa-building" aria-hidden="true"></i> Condition: {{ properties.property_condition }}</h6>

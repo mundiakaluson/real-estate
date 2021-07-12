@@ -73,7 +73,7 @@ def property_details(request, property_id):
         )
         if not request_view:
             PageView.objects.create(
-                viewer=current_user,
+                viewer=request.user,
                 property_viewed=properties,
                 view=1
             )
@@ -167,7 +167,15 @@ def add_property(request):
         furnished = property_form.cleaned_data['furnished']
         parking = property_form.cleaned_data['parking']
         playground = property_form.cleaned_data['playground']
-        property_form.property_active = True
+        school = property_form.cleaned_data['school']
+        school = property_form.cleaned_data['hospital']
+        school = property_form.cleaned_data['borehole']
+        school = property_form.cleaned_data['bus_stop']
+        school = property_form.cleaned_data['internet_service_provider']
+        school = property_form.cleaned_data['bank']
+        school = property_form.cleaned_data['mall']
+        school = property_form.cleaned_data['shops']
+        school = property_form.cleaned_data['main_road']
         property_form.property_post_date = timezone.now()
         user_property_form = property_form.save(commit=False)
         user_property_form.property_owner = request.user
