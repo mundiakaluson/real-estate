@@ -38,13 +38,13 @@
              </div>
              
              <div class="aa-properties-info">
-             <h2> {{ properties.property_title }} </h2>
-               <span class="aa-price">Price ${{ properties.property_price }}</span><hr>
+             <h2> {{ properties.property_title }} </h4>
+               <h4>Price {{ properties.property_price }}</h5><hr>
                {% if properties.property_rooms != 0 %}
-               <p class="aa-price"><i class="fa fa-bed" aria-hidden="true"></i> {{ properties.property_rooms }}</p>
+               <p class="col-sm-2">Bedrooms: <i class="fa fa-bed" aria-hidden="true"></i> {{ properties.property_rooms }}</p>
                {% endif %}
                {% if properties.property_bathroom != 0 %}
-               <p class="aa-price"><i class="fa fa-bath" aria-hidden="true"></i> {{ properties.property_bathroom }}</p>
+               <p class="col-sm-2">SQR Meters:<i class="fa fa-table" aria-hidden="true"></i> {{ properties.property_bathroom }}</p>
                {% endif %}
                <div class="col-sm-12">
                <h4>Property Description</h4>
@@ -225,12 +225,19 @@
               <h6 class="lead"><i class="fa fa-building" aria-hidden="true"></i> Condition: {{ properties.property_condition }}</h6>
               <h6 class="lead"><i class="fa fa-check" aria-hidden="true"></i> Status: {{ properties.property_status }}</h6>
               <h6 class="lead"><i class="fa fa-eye" aria-hidden="true"></i> Views: {{ views }}</h6>
-              <button class="aa-secondary-btn" data-toggle="collapse" data-target="#demo">View Contacts</button></p>
-              <div id="demo" class="collapse">
-              <i class="fa fa-reply-all" aria-hidden="true"></i> Email: {{ properties.property_owner.email }} <br>
-              <i class="fa fa-phone" aria-hidden="true"></i> Phone: {{ properties.property_owner.profile.phone_number }}
-              </div>
-              <button id="myBtn" class="aa-secondary-btn">Review this Service</button>
+              {% if request.user.is_authenticated %}
+                <button class="btn btn text-center" data-toggle="collapse" data-target="#demo" style="width: 200px">View Contact</button></p>
+                <div id="demo" class="collapse">
+                <hr/><i class="fa fa-phone" aria-hidden="true"></i> <p class="badge"> Phone: {{ properties.property_owner.profile.phone_number }}</p><hr/>
+                </div>
+                <button class="btn btn text-center" data-toggle="collapse" data-target="#demo2" style="width: 200px">View Email</button></p>
+                <div id="demo2" class="collapse">
+                <hr/><i class="fa fa-reply-all" aria-hidden="true"></i><p class="badge"> Email: <a href="mailto:{{ properties.property_owner.emai }}">{{ properties.property_owner.email }}</a></p> <br><hr/>
+                </div>
+                <button id="myBtn" class="btn btn text-center" style="width: 200px">Review this Service</button>
+              {% else %}
+                <button class="btn btn text-center" style="width: 200px"><a href="{% url 'login' %}">View Contact</a></button></p>
+              {% endif %}
               <div id="myModal" class="modal">
                 <div class="modal-content">
                   <span class="close">&times;</span><hr>
@@ -271,17 +278,13 @@
               </div>
             <!-- Start Single properties sidebar -->
             <div class="aa-properties-single-sidebar">
-              <h3>Safety Tips</h3>
+            <hr/>
+              <h3 style="color:red">Safety Tips</h3>
               <div class="media">
-                <div class="media-left">
-                  <a href="#">
-                    <img class="media-object" src="{% static 'img/item/1.jpg' %}" alt="img">
-                  </a>
-                </div>
                 <div class="media-body">
-                  <h4 class="media-heading"><a href="#">Safety Tips</a></h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>                
-                  <span>$65000</span>
+                  <h4 class="media-heading">Safety Tips</h4>
+                  <p>Beware of Agents and Lister posing as property dealers!</p>                
+                  <span>Be sure to meet and discuss property details with the lister personally before initating any payments.</span>
                 </div>              
               </div>
             </div>
