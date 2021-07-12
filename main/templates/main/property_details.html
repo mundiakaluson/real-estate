@@ -39,7 +39,7 @@
              
              <div class="aa-properties-info">
              <h2> {{ properties.property_title }} </h4>
-               <h4>Price {{ properties.property_price }}</h5><hr>
+               <h4>Price: {{ properties.property_price }}</h5><hr>
                {% if properties.property_rooms != 0 %}
                <p class="col-sm-2">Bedrooms: <i class="fa fa-bed" aria-hidden="true"></i> {{ properties.property_rooms }}</p>
                {% endif %}
@@ -236,7 +236,7 @@
                 </div>
                 <button id="myBtn" class="btn btn text-center" style="width: 200px">Review this Service</button>
               {% else %}
-                <button class="btn btn text-center" style="width: 200px"><a href="{% url 'login' %}">View Contact</a></button></p>
+                <button class="btn btn text-center" style="width: 300px"><a href="{% url 'login' %}">Login to View Contact and Email</a></button></p>
               {% endif %}
               <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -282,7 +282,7 @@
               <h3 style="color:red">Safety Tips</h3>
               <div class="media">
                 <div class="media-body">
-                  <h4 class="media-heading">Safety Tips</h4>
+                  <h4 class="media-heading">CAUTION</h4>
                   <p>Beware of Agents and Lister posing as property dealers!</p>                
                   <span>Be sure to meet and discuss property details with the lister personally before initating any payments.</span>
                 </div>              

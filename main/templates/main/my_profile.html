@@ -95,10 +95,25 @@
           <h5 class="w3-text-teal"><b>Username</b></h5>
             <p class="w3-text-grey"> {{ request.user.username }} <span class="badge">unchangable</span></p>
           <h5 class="w3-text-teal"><b>First Name</b></h5>
+            {% if request.user.first_name %}
+              <p class="w3-text-grey">Current First Name: <strong>{{ request.user.first_name }}</strong></p>
+            {% else %}
+              <p class="w3-text-grey">Current First Name: <strong style="color:red;">Not Set!</strong></p>
+            {% endif %}
             <input type="text" class="form-control" name="first_name">
           <h5 class="w3-text-teal"><b>Last Name</b></h5>
+            {% if request.user.last_name %}
+              <p class="w3-text-grey">Current Last Name: <strong>{{ request.user.last_name }}</strong></p>
+            {% else %}
+              <p class="w3-text-grey">Current Last Name: <strong style="color:red;">Not Set!</strong></p>
+            {% endif %}
             <input type="text" class="form-control" name="last_name">
           <h5 class="w3-text-teal"><b>Phone Number</b></h5>
+            {% if request.user.profile.phone_number %}
+              <p class="w3-text-grey">Current Last Name: <strong>{{ request.user.profile.phone_number }}</strong></p>
+            {% else %}
+              <p class="w3-text-grey">Current Last Name: <strong style="color:red;">Not Set!</strong></p>
+            {% endif %}
             <input type="text" class="form-control" name="phone_number">
           <h5 class="w3-text-teal"><b>Profile Picture</b></h5>
             <input type="file" name="profile_picture" />

@@ -155,9 +155,9 @@ class Profile(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = PhoneNumberField(blank=True, null=True)
-    profile_picture = models.ImageField(upload_to=profile_picture, default='default/default.jpg')
-    country = CountryField(blank_label='(Please Select your Country)')
-    region = models.CharField(max_length=128)
+    profile_picture = models.ImageField(upload_to=profile_picture, default='img/default.jpg')
+    country = CountryField(blank_label='(Please Select your Country)', blank=True, null=True)
+    region = models.CharField(max_length=128, blank=True, null=True)
     registered_as = models.CharField(max_length=32, choices=REGISTERED_AS, null=True, blank=True)
 
     def __str__(self):
