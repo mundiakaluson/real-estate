@@ -23,7 +23,7 @@ from django.http import HttpResponseRedirect
 from django.db.models import Avg, Sum
 
 def home(request):
-    latest_properties = Property.objects.filter(property_active=True)[:3]
+    latest_properties = Property.objects.all()[:3]
     if request.user.is_authenticated:
         data_capture = UserInformation()
         user_ip_address = UserVisit().remote_addr
@@ -58,7 +58,7 @@ def home(request):
 
 
 def properties(request):
-    all_approved_properties = Property.objects.filter(property_active=True)
+    all_approved_properties = Property.objects.all()
     return render(request, 'main/properties.html', {'all_approved_properties': all_approved_properties})
 
 
@@ -185,8 +185,8 @@ def add_property(request):
 
 
 def my_properties(request):
-    property_check = Property.objects.filter(property_owner=request.user, property_active=True).count()
-    my_properties = Property.objects.filter(property_owner=request.user, property_active=True)
+    property_check = Property.objects.filter(property_owner=request.user).count()
+    my_properties = Property.objects.filter(property_owner=request.user)
     return render(request, 'main/my_properties.html',
                   {'my_properties': my_properties, 'property_check': property_check})
 
