@@ -10,7 +10,9 @@ coverage==5.5
 cryptography==3.4.7
 defusedxml==0.7.1
 dj-database-url==0.5.0
+dj-places==4.0.0
 Django==3.2.3
+django-address==0.2.5
 django-allauth==0.44.0
 django-braces==1.14.0
 django-countries==7.2.1
@@ -22,6 +24,7 @@ django-phonenumber-field==5.2.0
 django-social-share==2.2.1
 django-star-ratings==0.9.1
 django-user-visit==0.4.1
+django-widget-tweaks==1.4.8
 geoip2==4.2.0
 gunicorn==20.1.0
 idna==2.10
