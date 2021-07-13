@@ -22,8 +22,6 @@ from django.contrib.gis.geoip2 import GeoIP2
 from django.http import HttpResponseRedirect
 from django.db.models import Avg, Sum
 
-
-
 def home(request):
     latest_properties = Property.objects.filter(property_active=True)[:3]
     if request.user.is_authenticated:
@@ -232,29 +230,45 @@ def faqs(request):
 
 
 def my_profile(request):
+    try:
+        profile = request.user
+    except UserProfile.DoesNotExist:
+        profile = Profile(user=request.user)
+
     current_profile = Profile.objects.get(user=request.user)
     current_user = User.objects.get(username=request.user)
-    if request.method == 'POST':
-        if request.POST['first_name'] and request.POST['last_name'] and request.POST['phone_number'] and request.POST[
-            'profile_picture'] and request.POST['country'] and request.POST['region']:
-            current_user.first_name = request.POST['first_name']
-            current_user.last_name = request.POST['last_name']
-            current_profile.phone_number = request.POST['phone_number']
-            current_profile.profile_picture = request.POST['profile_picture']
-            current_profile.country = request.POST.get('country')
-            current_profile.region = request.POST['region']
-            current_user.save()
-            current_profile.save()
-            messages.success(request,
-                             'Profile Changed Successfully! Changes will take place as the server refreshes the Database.',
-                             extra_tags='alert')
-            return render(request, 'main/my_profile.html')
-    return render(request, 'main/my_profile.html')
+    profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+    if profile_form.is_valid():
+        phone_number = profile_form.cleaned_data['phone_number']
+        country = profile_form.cleaned_data['country']
+        profile_picture = profile_form.cleaned_data['profile_picture']
+        region = profile_form.cleaned_data['region']
+        registered_as = profile_form.cleaned_data['registered_as']
+        user_profile_form = profile_form.save(commit=False)
+        user_profile_form.user = request.user
+        profile_form.save()
+        messages.success(request, 'Profile Changed Successfully! Changes will take place as the server refreshes the Database.', extra_tags='alert')
+        return render(request, 'main/my_profile.html', {'profile_form': profile_form})
+    return render(request, 'main/my_profile.html', {'profile_form': profile_form})
+    # if request.method == 'POST':
+    #     if request.POST['first_name'] and request.POST['last_name'] and request.POST['phone_number'] and request.POST[
+    #         'profile_picture'] and request.POST['country'] and request.POST['region']:
+    #         current_user.first_name = request.POST['first_name']
+    #         current_user.last_name = request.POST['last_name']
+    #         current_profile.phone_number = request.POST['phone_number']
+    #         current_profile.profile_picture = request.POST['profile_picture']
+    #         current_profile.country = request.POST.get('country')
+    #         current_profile.region = request.POST['region']
+    #         current_user.save()
+    #         current_profile.save()
+    #         messages.success(request,
+    #                          'Profile Changed Successfully! Changes will take place as the server refreshes the Database.',
+    #                          extra_tags='alert')
+    #         return render(request, 'main/my_profile.html')
 
 
 def update_profile(request):
-    pass
-
+    return render(request, 'main/my_profile.html', {'profile_form': profile_form})
 
 def contact(request):
     if request.method == 'POST':

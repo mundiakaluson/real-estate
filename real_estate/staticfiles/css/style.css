@@ -503,11 +503,11 @@ img {
   height: 700px;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content {
-  background-color: rgba(255, 255, 255, 0.8);
-  left: 20%;
+  background-color: rgba(223, 223, 223, 0.8);
+  left: 35%;
   padding: 30px;
   position: absolute;
-  top: 40%;
+  top: 23%;
   z-index: 999;
 }
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-catg {

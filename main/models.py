@@ -147,13 +147,12 @@ class Article(models.Model):
 
 class Profile(models.Model):
     REGISTERED_AS = (
-        ('Admin', 'Admin'),
         ('Agent', 'Agent'),
         ('Real Estate Developer', 'Real Estate Developer'),
         ('Auctioneer', 'Auctioneer'),
         ('Client', 'Client'),
     )
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     phone_number = PhoneNumberField(blank=True, null=True)
     profile_picture = models.ImageField(upload_to=profile_picture, default='img/default.jpg')
     country = CountryField(blank_label='(Please Select your Country)', blank=True, null=True)

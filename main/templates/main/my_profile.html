@@ -2,6 +2,7 @@
 {% load countries %}
 {% load static %}
 {% block content %}
+{% load crispy_forms_tags %}
 <section id="aa-property-header">
     <div class="container">
         <div class="row">
@@ -23,14 +24,12 @@
 <body class="w3-light-grey">
     {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-success" role="alert">
-                    {{ message }}
-                </div>
+                <p style="colo:green;" class="alert">{{ message }}</p>
             {% endfor %}
     {% endif %} 
 
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
-
+  
   <!-- The Grid -->
   <div class="w3-row-padding">
   <h2 class="w3-text-grey w3-padding-16 text-center">My Profile</h2>
@@ -90,44 +89,76 @@
         <h4 class="w3-opacity"><b>Personal Details</b></h4><hr>
         <form action="{% url 'my_profile' %}" method="POST">
         {% csrf_token %}
+        {{ profile_form.errors }}
+        {{ profile_form.user }}
+        <div class="col-sm-6">
         <h5 class="w3-text-teal"><b>Email</b></h5>
             <p class="w3-text-grey"> {{ request.user.email }} <span class="badge">unchangable</span></p>
+        </div>
+        <div class="col-sm-6">
           <h5 class="w3-text-teal"><b>Username</b></h5>
             <p class="w3-text-grey"> {{ request.user.username }} <span class="badge">unchangable</span></p>
+        </div>
+          <div class="col-sm-6">
           <h5 class="w3-text-teal"><b>First Name</b></h5>
-            {% if request.user.first_name %}
               <p class="w3-text-grey">Current First Name: <strong>{{ request.user.first_name }}</strong></p>
-            {% else %}
-              <p class="w3-text-grey">Current First Name: <strong style="color:red;">Not Set!</strong></p>
-            {% endif %}
-            <input type="text" class="form-control" name="first_name">
+          </div>
+          <div class="col-sm-6">
           <h5 class="w3-text-teal"><b>Last Name</b></h5>
-            {% if request.user.last_name %}
-              <p class="w3-text-grey">Current Last Name: <strong>{{ request.user.last_name }}</strong></p>
-            {% else %}
-              <p class="w3-text-grey">Current Last Name: <strong style="color:red;">Not Set!</strong></p>
-            {% endif %}
-            <input type="text" class="form-control" name="last_name">
+              <p class="w3-text-grey">Current Phone Number: <strong>{{ request.user.last_name }}</strong></p>
+          </div>
+          <div class="col-sm-6">
           <h5 class="w3-text-teal"><b>Phone Number</b></h5>
             {% if request.user.profile.phone_number %}
-              <p class="w3-text-grey">Current Last Name: <strong>{{ request.user.profile.phone_number }}</strong></p>
+              <p class="w3-text-grey">Current Phone Number: <strong>{{ request.user.profile.phone_number }}</strong></p>
             {% else %}
-              <p class="w3-text-grey">Current Last Name: <strong style="color:red;">Not Set!</strong></p>
+              <p class="w3-text-grey">Current Phone Number: <strong style="color:red;">Not Set!</strong></p>
             {% endif %}
-            <input type="text" class="form-control" name="phone_number">
+            {{ profile_form.phone_number | as_crispy_field}}
+          </div>
+          <div class="col-sm-6">
           <h5 class="w3-text-teal"><b>Profile Picture</b></h5>
-            <input type="file" name="profile_picture" />
-          <hr>
+            {{ profile_form.profile_picture | as_crispy_field }}
         </div>
         <div class="w3-container">
-        <h4 class="w3-opacity"><b>My Location</b></h4><hr>
+        <h4 class="w3-opacity"><b>My Location</b></h4>
+        <div class="col-sm-12">
+        
           <h5 class="w3-text-teal"><b>Country</b></h5>
-          <p class="w3-text-grey">{{ request.user.profile.country.code }} - {{ request.user.profile.country.name }}</p>
-          <h5 class="w3-text-teal"><b>Region</b></h5>
-          <input type="text" class="form-control" name="region"><br>
-          <input type="submit" class="btn btn-success" name="submit" value="Accept Changes and Save Profile">
+          {% if request.user.profile.country.name %}
+            <p class="w3-text-grey">{{ request.user.profile.country.code }} - {{ request.user.profile.country.name }}</p>
+          {% else %}
+            <p class="w3-text-grey">Current Country: <strong style="color:red;">Not Set!</strong></p>
+          {% endif %}
+          {{ profile_form.country | as_crispy_field }}
+          </div>
+          <div class="col-sm-6">
+            <h5 class="w3-text-teal"><b>Region</b></h5>
+            {% if request.user.profile.region %}
+              <p class="w3-text-grey">{{ request.user.profile.region }}</p>
+            {% else %}
+            <p class="w3-text-grey">Current Region: <strong style="color:red;">Not Set!</strong></p>
+              {{ profile_form.region | as_crispy_field }}
+            {% endif %}
+            
+          </div><hr>
+          <div class="col-sm-6">
+            <h5 class="w3-text-teal"><b>Registered As</b></h5>
+            {% if request.user.profile.registered_as %}
+              <p class="w3-text-grey">{{ request.user.profile.registered_as }}</p>
+            {% else %}
+              <p class="w3-text-grey">Current Region: <strong style="color:red;">Not Set!</strong></p>
+              {{ profile_form.registered_as | as_crispy_field }}
+            {% endif %}
+            
+          </div>
+          <div class="col-sm-12" style="padding-top: 20px">
+            <input type="submit" class="btn btn-success" name="submit" value="Accept Changes and Save Profile">
+          </div>
           </form>
-          <p>Other sensitive information is only changable by contacting the admin.</p>
+          <div class="col-sm-12" style="padding-top: 20px">
+            <p>Other sensitive information is only changable by contacting the admin.</p>
+          </div>
           <hr>
         </div>
         <div class="w3-container">

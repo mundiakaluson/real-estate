@@ -102,8 +102,8 @@
                 <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a></li>                                        
               </ul>
             </li>
-            {% if request.user.profile.phone_number and request.user.profile.country and request.user.profile.region == None %}
-              <li><a style="color:red;" href="{% url 'my_properties' %}">UPDATE PROFILE!</a></li>
+            {% if request.user.profile.phone_number == None and request.user.profile.country == None and request.user.profile.region == None and request.user.profile.registered_as == None %}
+              <li class="text-center" style="color:red"><a href="{% url 'my_profile' %}">UPDATE PROFILE!</a></li>
             {% endif %}
              
           {% endif %}
