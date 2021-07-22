@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="row">
                                                 <h4>Property Information</h4>
-                                                <div class="col-sm-8"><strong>Property Location*</strong>{{ property_form.property_location | add_class:"col-sm-8" }}</div>
+                                                <div class="col-sm-8">{{ property_form.property_location | as_crispy_field }}</div>
                                                 <div class="col-sm-4">{{ property_form.property_condition | as_crispy_field }}</div>
                                                 <div class="col-sm-4">{{ property_form.property_status | as_crispy_field}}</div>
                                                 <div class="col-sm-4">{{ property_form.property_square_meters | as_crispy_field }}</div>
@@ -106,4 +106,21 @@
             </div>
         </div>
     </section>
+    <script>
+        let autocomplete;
+        function initMap() {
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('id_property_location'),
+                {
+                    types: ['establishment'],
+                    componentRestrictions: {},
+                    fields: ['geometry', 'name']
+                }
+            );
+        }
+    </script>
+    <script async="false"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWVR_xo7GaYDBJ6nKIIatjTtqds6aeVbA&libraries=places&callback=initMap">
+    </script>
+    
     {% endblock content %}
