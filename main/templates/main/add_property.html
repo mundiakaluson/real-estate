@@ -37,7 +37,6 @@
                             <form method="POST" action="{% url 'add_property' %}" id="" class="" enctype="multipart/form-data">
                                     <div class="col-md-12">
                                             {% csrf_token %}
-                                            {{ property_form.errors }}
                                             <h4> Property created on: {{ property_form.property_post_date }}</h4>
                                             {{ property_form.property_owner }}
                                             <div class="row">
