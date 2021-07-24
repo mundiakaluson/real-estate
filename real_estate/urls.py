@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from real_estate import settings
 from django.conf.urls.static import static
+from django_private_chat2 import urls as django_private_chat2_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls'), name='home'),
     path('accounts/', include('allauth.urls')),
+    path('chats/', include(django_private_chat2_urls))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
