@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
 {% load crispy_forms_tags %}
+<title>{% block title %} {{ block.super }} | UID: {{ request.user.id }} - {{ request.user.username }}{% endblock title %}</title>
 <section id="aa-property-header">
     <div class="container">
         <div class="row">
@@ -105,7 +106,7 @@
           </div>
           <div class="col-sm-6">
           <h5 class="w3-text-teal"><b>Last Name</b></h5>
-              <p class="w3-text-grey">Current Phone Number: <strong>{{ request.user.last_name }}</strong></p>
+              <p class="w3-text-grey">Current Last Name: <strong>{{ request.user.last_name }}</strong></p>
           </div>
           <div class="col-sm-6">
           <h5 class="w3-text-teal"><b>Phone Number</b></h5>
@@ -147,7 +148,7 @@
             {% if request.user.profile.registered_as %}
               <p class="w3-text-grey">{{ request.user.profile.registered_as }}</p>
             {% else %}
-              <p class="w3-text-grey">Current Region: <strong style="color:red;">Not Set!</strong></p>
+              <p class="w3-text-grey">Current: <strong style="color:red;">Not Set!</strong></p>
               {{ profile_form.registered_as | as_crispy_field }}
             {% endif %}
             
@@ -183,7 +184,6 @@
   </div>
   
 </div>
-<script src="pidie-
 
 </body>
 {% endblock content %}

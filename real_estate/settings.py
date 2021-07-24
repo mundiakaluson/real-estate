@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'coverage',
     'places',
     'widget_tweaks',
+    'django_private_chat2.apps.DjangoPrivateChat2Config',
 ]
 
 MIDDLEWARE = [
