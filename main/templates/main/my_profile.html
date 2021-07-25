@@ -112,7 +112,7 @@
               <p class="w3-text-grey">Current Phone Number: <strong>{{ request.user.profile.phone_number }}</strong></p>
             {% else %}
               <p class="w3-text-grey">Current Phone Number: <strong style="color:red;">Not Set!</strong></p>
-              <input name="phone_number" type="text" id="id_phone_number"/>
+              <input name="phone_number" type="text" id="phone" class="form-control"/>
             {% endif %}
             
           </div>
@@ -124,14 +124,14 @@
         <h4 class="w3-opacity"><b>My Location</b></h4>
         <div class="col-sm-12">
         
-          <h5 class="w3-text-teal"><b>Country</b></h5>
+          <h5 class="w3-text-teal"><b>Country and City</b></h5>
           {% if request.user.profile.country.name %}
             <p class="w3-text-grey">{{ request.user.profile.country.code }} - {{ request.user.profile.country.name }}</p>
           {% else %}
-            <p class="w3-text-grey">Current Country: <strong style="color:red;">Not Set!</strong></p>
-            <input type="text" name="country" id="countryInput"/>
-            <script>
-              </script>
+            <p class="w3-text-grey">Current Country and City: <strong style="color:red;">Not Set!</strong></p>
+            <div class="aa-single-field">
+            <input type="text" name="country" id="countryInput" class="form-control"/>
+            </div>
           {% endif %}
           </div>
           <div class="col-sm-6">
@@ -140,7 +140,7 @@
               <p class="w3-text-grey">{{ request.user.profile.region }}</p>
             {% else %}
             <p class="w3-text-grey">Current Region: <strong style="color:red;">Not Set!</strong></p>
-              <input type="text" name="region"/>
+              <input type="text" name="region" class="form-control"/>
             {% endif %}
             
           </div><hr>
@@ -150,7 +150,7 @@
               <p class="w3-text-grey">{{ request.user.profile.registered_as }}</p>
             {% else %}
               <p class="w3-text-grey">Current: <strong style="color:red;">Not Set!</strong></p>
-              <select id="regList" onchange="regFunc()">
+              <select id="regList" onchange="regFunc()" class="form-control col-sm-2">
               <option>--Registering As--<option>
               <option>Agent</option>
               <option>Real Estate Developer</option>
@@ -158,16 +158,18 @@
               <option>Client</option>
               <option>Other</option>
               </select>
-              <input type="text" name="registered_as" id="regInput"/>
+              <input type="text" name="registered_as" id="regInput" class="form-control col-sm-2" style="display: none;"/>
               <script>
                 function regFunc() {
                   var regList = document.getElementById("regList");
                   
                   if (regList.options[regList.selectedIndex].text == "Other") {
+                    regInput.style.display = "block";
                     regInput.value = '';
                     regInput.placeholder='Please Specify your Specialization';
                   }
                   if(regList.options[regList.selectedIndex].text != "Other") {
+                    regInput.style.display = "none";
                     document.getElementById("regInput").value = regList.options[regList.selectedIndex].text;
                   }
                 }
@@ -213,5 +215,29 @@
     allowDropdown: true,
   }));
 </script>
+<script>
+        let autocomplete;
+        function initMap() {
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('countryInput'),
+                {
+                    types: ['geocode'],
+                    componentRestrictions: {},
+                    fields: ['name', 'cities']
+                }
+            );
+        }
+    </script>
+    <script async="false"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWVR_xo7GaYDBJ6nKIIatjTtqds6aeVbA&libraries=places&callback=initMap">
+    </script>
+    <script>
+      const phoneInputField = document.querySelector("#phone");
+      const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        initialCountry: "auto",
+      });
+ </script>
 </body>
 {% endblock content %}

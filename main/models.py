@@ -144,18 +144,12 @@ class Article(models.Model):
 
 
 class Profile(models.Model):
-    REGISTERED_AS = (
-        ('Agent', 'Agent'),
-        ('Real Estate Developer', 'Real Estate Developer'),
-        ('Auctioneer', 'Auctioneer'),
-        ('Client', 'Client'),
-    )
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     profile_picture = models.ImageField(upload_to=profile_picture, default='img/default.jpg')
-    country = CountryField(blank_label='(Please Select your Country)', blank=True, null=True)
+    country = models.CharField(blank=True, null=True, max_length=20)
     region = models.CharField(max_length=128, blank=True, null=True)
-    registered_as = models.CharField(max_length=32, choices=REGISTERED_AS, null=True, blank=True)
+    registered_as = models.CharField(max_length=32, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
