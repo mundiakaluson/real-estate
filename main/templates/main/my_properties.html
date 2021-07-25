@@ -105,11 +105,23 @@
                           $ {{ my_property.property_price }}
                         </span>
                         <a class="aa-secondary-btn" href="{% url 'property_details' my_property.id %}">View Details</a>
-                        <a class="aa-secondary-btn" style="background-color:red;" href="{% url 'delete_property' my_property.id %}">Delete Property</a>
+                        <a class="aa-secondary-btn" style="background-color:red;" href="{% url 'delete_property' my_property.id %}" id="onDelete">Delete Property</a>
                       </div>
                     </div>
                   </article>
                 </li>
+                <script>
+                $('#onDelete').on('click', function(e) {
+                e.preventDefault();
+                $.ajax({
+                  url: "{% url 'delete_property' my_property.id %}",
+                  type: 'POST',
+                  beforeSend: function (xhr) {
+                            xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+                        }
+                })
+              })
+              </script>
               {% endfor %}
               </ul>
             </div>

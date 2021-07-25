@@ -11,7 +11,6 @@ from .extras import (
 )
 from django_countries.fields import CountryField
 from django.dispatch import receiver
-from phonenumber_field.modelfields import PhoneNumberField
 
 class Property(models.Model):
     # Main details
@@ -152,7 +151,7 @@ class Profile(models.Model):
         ('Client', 'Client'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
-    phone_number = PhoneNumberField(blank=True, null=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
     profile_picture = models.ImageField(upload_to=profile_picture, default='img/default.jpg')
     country = CountryField(blank_label='(Please Select your Country)', blank=True, null=True)
     region = models.CharField(max_length=128, blank=True, null=True)

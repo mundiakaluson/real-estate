@@ -2,7 +2,6 @@ from django.forms import ModelForm, Textarea, HiddenInput, TextInput
 from .models import Property, Profile
 from django.utils.translation import gettext_lazy as _
 from django_countries.data import COUNTRIES
-from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 class PropertyForm(ModelForm):
     class Meta:
@@ -45,7 +44,6 @@ class ProfileForm(ModelForm):
         fields = ['user', 'phone_number', 'country', 'profile_picture', 'region', 'registered_as']
         widgets = {
             'user': HiddenInput(),
-            'phone_number': PhoneNumberPrefixWidget(),
         }
         labels = { 
             'phone_number': '',
