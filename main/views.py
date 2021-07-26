@@ -82,12 +82,8 @@ def property_details(request, property_id):
         property_active=True
     ).order_by('property_post_date')[:2]
     views = PageView.objects.filter(property_viewed=properties).count()
-    current_property_name = properties.property_title
-    current_property_id = properties.id
-    current_property_location = properties.property_location
-    all_property_information = "%s-%s-%s" % (current_property_id, current_property_name, current_property_location)
     return render(request, 'main/property_details.html',
-                  {'properties': properties, 'views': views, 'nearby_properties': nearby_properties, 'all_property_information': all_property_information})
+                  {'properties': properties, 'views': views, 'nearby_properties': nearby_properties})
 
 
 def register(request):
