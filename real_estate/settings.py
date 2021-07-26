@@ -195,6 +195,8 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale/'),
 )
 
+AUTH_PROFILE_MODULE = 'main.Profile'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -98,7 +98,7 @@
               </ul>
             </li>
             {% if request.user.profile.phone_number == None and request.user.profile.country == None and request.user.profile.region == None and request.user.profile.registered_as == None %}
-              <li class="text-center" style="color:red"><a href="{% url 'my_profile' %}">UPDATE PROFILE!</a></li>
+              <li class="text-center"><a style="color: #5d817e; background-color:white; border-radius: 20px;" href="{% url 'my_profile' %}">UPDATE PROFILE!</a></li>
             {% endif %}
              
           {% endif %}

@@ -146,7 +146,7 @@ class Article(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
-    profile_picture = models.ImageField(upload_to=profile_picture, default='img/default.jpg')
+    profile_picture = models.ImageField(upload_to=profile_picture, default='img/default.jpg', blank=True, null=True)
     country = models.CharField(blank=True, null=True, max_length=20)
     region = models.CharField(max_length=128, blank=True, null=True)
     registered_as = models.CharField(max_length=32, null=True, blank=True)
