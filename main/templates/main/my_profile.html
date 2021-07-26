@@ -24,16 +24,22 @@
 </section>
 
 <body class="w3-light-grey">
-    {% if messages %}
-            {% for message in messages %}
-                <p style="colo:green;" class="alert">{{ message }}</p>
-            {% endfor %}
-    {% endif %} 
+     
 
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
   
   <!-- The Grid -->
-  <div class="w3-row-padding">
+  <div class="w3-row-padding"><br/>
+  {% if messages %}
+            {% for message in messages %}
+                <p style="colo:green;" class="alert alert-success" id="exit-alert">{{ message }}</p>
+            {% endfor %}
+    {% endif %}
+    <script>
+      setTimeout(function(){
+      $('#exit-alert').remove();
+        }, 3000);
+    </script>
   <h2 class="w3-text-grey w3-padding-16 text-center">My Profile</h2>
     <!-- Left Column -->
     <div class="w3-third">
