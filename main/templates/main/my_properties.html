@@ -102,7 +102,7 @@
                       </div>
                       <div class="aa-properties-detial">
                         <span class="aa-price">
-                          $ {{ my_property.property_price }}
+                          KES: {{ my_property.property_price }}
                         </span>
                         <a class="aa-secondary-btn" href="{% url 'property_details' my_property.id %}">View Details</a>
                         <a class="aa-secondary-btn" style="background-color:red;" href="{% url 'delete_property' my_property.id %}" id="onDelete">Delete Property</a>
