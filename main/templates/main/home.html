@@ -149,11 +149,11 @@
                                 <div class="aa-properties-info">
                                     <span>
                                         {% if property.property_rooms > 0 %}
-                          {{ property.property_rooms }} Rooms
-                      {% endif %}
+                                            <i class="fa fa-bed" aria-hidden="true"></i> : {{ property.property_rooms }} Rooms
+                                        {% endif %}
                                     </span>
-                                    <span>Property: {{ property.property_type }}</span>
-                                    <span>{{ property.property_square_meters }} SQR MTRS</span>
+                                    <span><span class="iconify" data-icon="fa:shower" data-inline="false"></span> : {{ my_property.property_bathroom }} Baths</span>
+                                    <span><span class="iconify" data-icon="emojione-monotone:triangular-ruler" data-inline="false"></span> : {{ property.property_square_meters }} SQR MTR</span>
                                 </div>
                                 <div class="aa-properties-about">
                                     <h3>
