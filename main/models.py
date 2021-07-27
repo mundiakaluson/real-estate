@@ -144,7 +144,7 @@ class Article(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     profile_picture = models.ImageField(upload_to=profile_picture, default='img/default.jpg', blank=True, null=True)
     country = models.CharField(blank=True, null=True, max_length=20)
@@ -155,12 +155,10 @@ class Profile(models.Model):
         return self.user.username
 
 
-@receiver(models.signals.post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()
-
+        profile, created = Profile.objects.get_or_create(user=instance).save()
+models.signals.post_save.connect(create_or_update_user_profile, sender=User)
 
 class FAQS(models.Model):
     faqs_headline = models.CharField(max_length=256, null=True, blank=True)

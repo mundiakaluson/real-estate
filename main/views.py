@@ -93,15 +93,17 @@ def register(request):
                 User.objects.get(username=request.POST['username'])
                 return render(request, 'main/register.html', {'error': 'This username exists!'})
             except User.DoesNotExist:
-                user = User.objects.create_user(
+                new_user = User.objects.create_user(
                     username=request.POST['username'],
                     first_name=request.POST['first_name'],
                     last_name=request.POST['last_name'],
                     email=request.POST['email'],
                     password=request.POST['password']
                 )
-                user.is_active = True
-                user.save()
+                new_user.is_active = True
+                new_profile = Profile.objects.create(user=new_user)
+                new_profile.save()
+                new_user.save()
                 auth.login(request, user)
                 return redirect('register_success')
 
@@ -273,9 +275,11 @@ def update_profile(request):
         current_profile = Profile.objects.get(user=request.user)
     except Profile.DoesNotExist:
         current_profile = Profile.objects.create(user=request.user)
-    profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+    profile_form = ProfileForm(request.POST, request.FILES, instance=current_profile)
     if request.method == 'POST':    
         if profile_form.is_valid():
+            user_profile = profile_form.save(commit=False)
+            user_profile.user = request.user
             profile_form.save()
             messages.success(request, 'Profile Changed Successfully! Changes will take place as the server refreshes the Database.', extra_tags='alert')
         return render(request, 'main/my_profile.html', {'profile_form': profile_form})
@@ -339,7 +343,7 @@ def property_search(request):
         results = Property.objects.exclude(
             property_status__isnull=False,
             property_type__isnull=False,
-            property_location__isnull=False,
+            location__isnull=False
         ).filter(
             property_status__icontains=rent_or_sale,
             property_type__icontains=property_type,

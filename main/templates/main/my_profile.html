@@ -97,6 +97,7 @@
         <h4 class="w3-opacity"><b>Personal Details</b></h4><hr>
         <form action="{% url 'update_profile' %}" method="POST" enctype="multipart/form-data" onsubmit="validCheck()">
         {% csrf_token %}
+        {{ profile_form.errors }}
         <div class="col-sm-6">
         <h5 class="w3-text-teal"><b>Email</b></h5>
             <p class="w3-text-grey"> {{ request.user.email }} <span class="badge">unchangable</span></p>
