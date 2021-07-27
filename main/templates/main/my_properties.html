@@ -89,15 +89,15 @@
                       <div class="aa-properties-info">
                         <span>
                         {% if my_property.property_rooms > 0 %}
-                            {{ my_property.property_rooms }} Room(s) {% else %}
+                            <i class="fa fa-bed" aria-hidden="true"></i> : {{ my_property.property_rooms }} Rooms {% else %}
                             No rooms
                         {% endif %}
                         </span>
-                        <span>Property: {{ property.property_type }}</span>
-                        <span>{{ my_property.property_square_meters }} SQR MTRS</span>
+                        <span><span class="iconify" data-icon="fa:shower" data-inline="false"></span> : {{ my_property.property_bathroom }} Baths</span>
+                        <span><span class="iconify" data-icon="emojione-monotone:triangular-ruler" data-inline="false"></span> : {{ my_property.property_square_meters }} SQR MTRS</span>
                       </div>
                       <div class="aa-properties-about">
-                        <h3><a href="{% url 'property_details' my_property.id %}">{{ my_property.property_title }}</a></h3>
+                        <h3><a href="{% url 'property_details' my_property.id %}">{{ my_property.property_location }}</a></h3>
                         <p> {{ my_property.property_description }}</p>                      
                       </div>
                       <div class="aa-properties-detial">

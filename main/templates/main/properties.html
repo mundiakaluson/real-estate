@@ -77,19 +77,19 @@
                       <div class="aa-properties-info">
                         <span>
                         {% if property.property_rooms > 0 %}
-                          {{ property.property_rooms }} Rooms
+                          <i class="fa fa-bed" aria-hidden="true"></i> : {{ property.property_rooms }} Rooms
                         {% endif %}
                         </span>
-                        <span>Property: {{ property.property_type }}</span>
-                        <span>{{ property.property_square_meters }} SQR MTRS</span>
+                        <span><span class="iconify" data-icon="fa:shower" data-inline="false"></span> : {{ property.property_bathroom }} Baths</span>
+                        <span><span class="iconify" data-icon="emojione-monotone:triangular-ruler" data-inline="false"></span> : {{ property.property_square_meters }} SQR MTR</span>
                       </div>
                       <div class="aa-properties-about">
-                        <h3><a href="{% url 'property_details' property.id %}">{{ property.property_title }}</a></h3>
+                        <h3><a href="{% url 'property_details' property.id %}">{{ property.property_location }}</a></h3>
                         <p>{{ property.property_description }}</p>                      
                       </div>
                       <div class="aa-properties-detial">
                         <span class="aa-price">
-                          $ {{ property.property_price }}
+                          KES: {{ property.property_price }}
                         </span>
                         <a class="aa-secondary-btn" href="{% url 'property_details' property.id %}">View Details</a>
                       </div>

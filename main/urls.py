@@ -25,6 +25,7 @@ urlpatterns = [
     path('property_search', views.property_search, name='property_search'),
     path('terms_and_conditions', views.terms_and_conditions, name='terms_and_conditions'),
     path('property/<int:property_id>/', views.delete_property, name='delete_property'),
+    path('property_search', views.property_search, name='property_search'),
     
 
     path('authentication/reset_password', 

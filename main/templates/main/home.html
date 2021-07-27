@@ -34,23 +34,28 @@
             <div class="form">
                 <div class="aa-advance-search-top">
                     <div class="row">
+                        <form action="{% url 'property_search' %}" method="GET">
+                        {% csrf_token %}
                         <div class="col-md-4">
                             <div class="aa-single-advance-search">
-                                <p class="lead">Quickly search to see our listings!</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="aa-single-advance-search">
-                                <input type="text" placeholder="{% trans 'Type Your Location' %}">
+                                <input type="text" placeholder="{% trans 'Type Your Location' %}" name="location" id="location">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="aa-single-advance-search">
-                                <select>
-                                    <option value="0" selected>{% trans "Category" %}</option>
-                                    <option value="1">{% trans "For Rent" %}</option>
-                                    <option value="2">{% trans "For Sale" %}</option>
-                                    <option value="3">{% trans "All" %}</option>
+                                <select name="rent_or_sale">
+                                    <option>For Rent</option>
+                                    <option>For Sale</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="aa-single-advance-search">
+                                <select name="property_type">
+                                    <option>House</option>
+                                    <option>Apartment</option>
+                                    <option>Commercial</option>
+                                    <option>Land</option>
                                 </select>
                             </div>
                         </div>
@@ -59,6 +64,7 @@
                                 <input class="aa-search-btn" type="submit" value="Search">
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -388,13 +394,13 @@ Agent/Owner with the Clients to contact directly and Agree on their on terms..</
             </div>
         </div>
         <div class="panel panel-default ">
-            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question4">
                  <h4 class="panel-title">
                     <p class="ing">Q: Is the Information Listed of Properties Credible?</p>
               </h4>
 
             </div>
-            <div id="question3" class="panel-collapse collapse" style="height: 0px;">
+            <div id="question4" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
@@ -404,14 +410,14 @@ reviews they get from the clients they have handled.</p>
             </div>
         </div>
         <div class="panel panel-default ">
-            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question5">
                  <h4 class="panel-title">
                     <p class="ing">Q: How can an Interested Buyer/Tenant Get First Hand Result/Info of an Acquired same taste of
 Property which he/she might be interested in?</p>
               </h4>
 
             </div>
-            <div id="question3" class="panel-collapse collapse" style="height: 0px;">
+            <div id="question5" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
@@ -421,13 +427,13 @@ taste or Getting a call from an Agent who might have he/she is looking for.</p>
             </div>
         </div>
         <div class="panel panel-default ">
-            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question6">
                  <h4 class="panel-title">
                     <p class="ing">Q: Benefits of a Tenant and a Buyer?</p>
               </h4>
 
             </div>
-            <div id="question3" class="panel-collapse collapse" style="height: 0px;">
+            <div id="question6" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
@@ -449,4 +455,20 @@ taste or Getting a call from an Agent who might have he/she is looking for.</p>
             cursor: pointer;
         }
     </style>
+    <script>
+        let autocomplete;
+        function initMap() {
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('location'),
+                {
+                    types: ['geocode'],
+                    componentRestrictions: {},
+                    fields: ['name', 'cities']
+                }
+            );
+        }
+    </script>
+    <script async="false"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWVR_xo7GaYDBJ6nKIIatjTtqds6aeVbA&libraries=places&callback=initMap">
+    </script>
 {% endblock content %}

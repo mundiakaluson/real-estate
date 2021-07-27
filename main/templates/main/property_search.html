@@ -50,11 +50,18 @@
                 <a id="aa-grid-properties" href="#"><span class="fa fa-th"></span></a>
                 <a id="aa-list-properties" href="#"><span class="fa fa-list"></span></a>
               </div>            
-            </div>
+            </div><br/>
             <!-- Start properties content body -->
-            <div class="aa-properties-content-body">
+            <h2>{{ property_type }}s {{ rent_or_sale }} in {{ location }}</h2>
+            <div class="aa-properties-content-body"><br/>
+              {% if result_check == 0 %}
+                  <h3 class="text-center">
+                  No properties found, try another search.<br/>
+                  <hr/><span class="iconify" data-icon="ic:round-search-off" data-inline="false"></span>
+                  </h3>
+              {% endif %}
               <ul class="aa-properties-nav">
-                {% for property in all_approved_properties %}
+                {% for property in results %}
                 <li>
                   <article class="aa-properties-item">
                     <a class="aa-properties-item-img" href="#">
@@ -77,11 +84,11 @@
                       <div class="aa-properties-info">
                         <span>
                         {% if property.property_rooms > 0 %}
-                          {{ property.property_rooms }} Rooms
+                          <i class="fa fa-bed" aria-hidden="true"></i> : {{ property.property_rooms }} Rooms
                         {% endif %}
                         </span>
-                        <span>Owner: {{ property.property_owner }}</span>
-                        <span>{{ property.property_square_meters }} SQR MTRS</span>
+                        <span><span class="iconify" data-icon="mdi:bunk-bed" data-inline="false"></span> : {{ property.property_bathroom }} Baths</span>
+                        <span><span class="iconify" data-icon="emojione-monotone:triangular-ruler" data-inline="false"></span> : {{ property.property_square_meters }} SQR MTR</span>
                       </div>
                       <div class="aa-properties-about">
                         <h3><a href="{% url 'property_details' property.id %}">{{ property.property_title }}</a></h3>

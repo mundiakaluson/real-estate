@@ -327,3 +327,23 @@ def delete_property(request, property_id):
         context['error_message'] = 'Property does not exist!'
         my_properties = Property.objects.filter(property_owner=request.user, property_active=True)
     return render(request, 'main/my_properties.html', {'my_properties': my_properties, 'error_message': 'An error occurred!'})
+
+def property_search(request):
+    # if request.method == 'POST':
+    #     if request.POST['rent_or_sale'] and request.POST['property_type'] and request.POST['property_type']:
+    if 'rent_or_sale' in request.GET and 'property_type' in request.GET and 'location' in request.GET:
+        rent_or_sale = request.GET['rent_or_sale']
+        property_type = request.GET['property_type']
+        location = request.GET['location']
+
+        results = Property.objects.exclude(
+            property_status__isnull=False,
+            property_type__isnull=False,
+            property_location__isnull=False,
+        ).filter(
+            property_status__icontains=rent_or_sale,
+            property_type__icontains=property_type,
+            property_location__icontains=location,
+        )
+        result_check = results.count()
+    return render(request, 'main/property_search.html', {'results': results, 'result_check': result_check, 'rent_or_sale': rent_or_sale, 'property_type': property_type, 'location': location})
