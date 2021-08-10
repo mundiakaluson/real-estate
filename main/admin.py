@@ -64,6 +64,7 @@ class FAQSAdmin(admin.ModelAdmin):
 
 class TermsAndConditionsAdmin(admin.ModelAdmin):
     pass
+    
 
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(PageView, PageViewAdmin)
