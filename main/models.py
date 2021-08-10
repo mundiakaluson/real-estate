@@ -45,7 +45,7 @@ class Property(models.Model):
     property_about = models.TextField()
     property_rooms = models.IntegerField(choices=[(i, i) for i in range(30)], null=True, blank=True)
     property_bathroom = models.IntegerField(choices=[(i, i) for i in range(30)], null=True, blank=True)
-    property_address = models.CharField(max_length=64)
+    property_location = models.CharField(max_length=64)
     property_price = models.CharField(max_length=64)
     property_condition = models.CharField(max_length=64, choices=CONDITIONS)
     property_status = models.CharField(max_length=64, choices=STATUS)
