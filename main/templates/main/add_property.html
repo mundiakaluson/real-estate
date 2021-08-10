@@ -106,13 +106,6 @@
         </div>
     </section>
     <script>
-        var form = document.getElementById("property_form");
-        var elements = form.elements;
-        for (var i = 0, len = elements.length; i < len; ++i) {
-            elements[i].readOnly = true;
-        }
-    </script>
-    <script>
         let autocomplete;
         function initMap() {
             autocomplete = new google.maps.places.Autocomplete(

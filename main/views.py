@@ -138,7 +138,6 @@ def logout(request):
 
 def add_property(request):
     property_instance = Property()
-    logged_user = User.objects.get(username=request.user.username)
     property_form = PropertyForm(request.POST, request.FILES, instance=property_instance)
 
     if property_form.is_valid():
