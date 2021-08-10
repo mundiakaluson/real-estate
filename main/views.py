@@ -343,7 +343,7 @@ def property_search(request):
         results = Property.objects.exclude(
             property_status__isnull=False,
             property_type__isnull=False,
-            location__isnull=False
+            property_location__isnull=False
         ).filter(
             property_status__icontains=rent_or_sale,
             property_type__icontains=property_type,

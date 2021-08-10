@@ -144,7 +144,7 @@
         <h4 class="w3-opacity"><b>My Location</b></h4>
         <div class="col-sm-12">
         
-          <h5 class="w3-text-teal"><b>Country and City</b></h5>
+          <h5 class="w3-text-teal"><b>State</b></h5>
           {% if request.user.profile.country %}
             <p class="w3-text-grey">Current: <p class="w3-text-teal">{{ request.user.profile.country }}</p></p>
           {% else %}
@@ -156,7 +156,7 @@
           {% endcomment %}
           </div>
           <div class="col-sm-6">
-            <h5 class="w3-text-teal"><b>Region</b></h5>
+            <h5 class="w3-text-teal"><b>Location</b></h5>
             {% if request.user.profile.region %}
               <p class="w3-text-grey">Current: <p class="w3-text-teal">{{ request.user.profile.region }}</p></p>
             {% else %}
