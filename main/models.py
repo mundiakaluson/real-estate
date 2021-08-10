@@ -23,7 +23,6 @@ class Property(models.Model):
     STATUS = [
         ('For Rent', 'For Rent'),
         ('For Sale', 'For Sale'),
-        ('Sold Out', 'Sold Out'),
     ]
 
     POST_OWNER = [
