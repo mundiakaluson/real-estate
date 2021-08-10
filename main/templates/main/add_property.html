@@ -34,7 +34,7 @@
                         <h2>Fill in the property information</h2>
                         <hr>
                         <div class="aa-properties-info">
-                            <form method="POST" action="{% url 'add_property' %}" id="" class="" enctype="multipart/form-data" id="property_form">
+                            <form method="POST" action="{% url 'add_property' %}" id="" class="" enctype="multipart/form-data">
                                     <div class="col-md-12">
                                             {% csrf_token %}
                                             <h4> Property created on: {{ property_form.property_post_date }}</h4>
@@ -105,13 +105,6 @@
             </div>
         </div>
     </section>
-    <script>
-        var form = document.getElementById("property_form");
-        var elements = form.elements;
-        for (var i = 0, len = elements.length; i < len; ++i) {
-            elements[i].readOnly = true;
-        }
-    </script>
     <script>
         let autocomplete;
         function initMap() {
