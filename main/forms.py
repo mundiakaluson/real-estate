@@ -34,7 +34,7 @@ class PropertyForm(ModelForm):
             'property_pic6': '',
             'property_pic7': '',
             'property_pic8': '',
-            'property_location': 'Property Location'
+            'property_location': 'Property Address'
 
         }
 
