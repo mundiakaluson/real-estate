@@ -156,7 +156,7 @@ class Profile(models.Model):
 
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
-        profile, created = Profile.objects.get_or_create(user=instance).save()
+        profile, created = Profile.objects.get_or_create(user=instance)
 models.signals.post_save.connect(create_or_update_user_profile, sender=User)
 
 class FAQS(models.Model):
